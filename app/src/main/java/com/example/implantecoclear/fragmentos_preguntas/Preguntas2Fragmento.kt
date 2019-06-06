@@ -9,10 +9,24 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.implantecoclear.R
-import kotlinx.android.synthetic.main.fragment_preguntas1_fragmento.view.*
+import kotlinx.android.synthetic.main.fragment_preguntas2_fragmento.view.*
 
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
 
-class Preguntas1Fragmento : Fragment() {
+/**
+ * A simple [Fragment] subclass.
+ * Activities that contain this fragment must implement the
+ * [Preguntas2Fragmento.OnFragmentInteractionListener] interface
+ * to handle interaction events.
+ * Use the [Preguntas2Fragmento.newInstance] factory method to
+ * create an instance of this fragment.
+ *
+ */
+class Preguntas2Fragmento : Fragment() {
+
     private var listener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,9 +38,9 @@ class Preguntas1Fragmento : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_preguntas1_fragmento, container, false).apply {
-            one.setOnClickListener {
-                listener?.onNextQuestion("next", 1)
+        val view = inflater.inflate(R.layout.fragment_preguntas2_fragmento, container, false).apply {
+            one2.setOnClickListener {
+                listener?.onNextQuestion("finish", 0)
             }
         }
         return view
@@ -53,10 +67,9 @@ class Preguntas1Fragmento : Fragment() {
     }
 
     companion object {
-
         @JvmStatic
-        fun newInstance(): Preguntas1Fragmento{
-            var frag = Preguntas1Fragmento()
+        fun newInstance(): Preguntas2Fragmento{
+            var frag = Preguntas2Fragmento()
             return frag
         }
     }
