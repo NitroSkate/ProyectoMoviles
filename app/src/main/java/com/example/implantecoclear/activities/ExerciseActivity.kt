@@ -1,5 +1,6 @@
 package com.example.implantecoclear.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -37,7 +38,8 @@ class ExerciseActivity : AppCompatActivity(), Preguntas1Fragmento.OnFragmentInte
             initfragment(id)
         }
         else{
-            Toast.makeText(this, "Finished", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@ExerciseActivity, ScoreActivity::class.java)
+            startActivity(intent)
         }
     }
 
