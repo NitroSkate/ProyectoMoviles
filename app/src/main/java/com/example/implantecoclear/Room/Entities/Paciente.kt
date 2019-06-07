@@ -10,9 +10,9 @@ class Paciente(
     @ColumnInfo(name = "P_nombre")
     var nombre : String,
     @ColumnInfo(name = "P_nivel")
-    var nivel : Int,
+    var nivel : Int
 
-):Parcelable {
+    ): Parcelable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "P_id")
     var id : Int = 0
