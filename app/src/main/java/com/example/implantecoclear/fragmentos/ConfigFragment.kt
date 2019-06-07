@@ -9,11 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.implantecoclear.R
-import kotlinx.android.synthetic.main.fragment_menu.view.*
+import kotlinx.android.synthetic.main.fragment_config.view.*
 
-
-class MenuFragment : Fragment() {
-
+class ConfigFragment : Fragment() {
     private var listener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,13 +22,9 @@ class MenuFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_menu, container, false)
-        view.mode.setOnClickListener {
-            listener?.onClickButton("mode")
-        }
-        view.config.setOnClickListener {
-            listener?.onClickButton("config")
+        val view = inflater.inflate(R.layout.fragment_config, container, false)
+        view.guardar.setOnClickListener {
+            listener?.onClickButton("menu")
         }
         return view
     }
@@ -50,16 +44,16 @@ class MenuFragment : Fragment() {
         listener = null
     }
 
-
     interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
         fun onClickButton(string: String)
     }
 
     companion object {
         @JvmStatic
-        fun newInstance() : MenuFragment{
-            var frag = MenuFragment()
-            return frag
+        fun newInstance(): ConfigFragment{
+            var fragment = ConfigFragment()
+            return fragment
         }
     }
 }

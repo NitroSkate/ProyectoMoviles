@@ -7,11 +7,12 @@ import android.os.Bundle
 import android.view.Menu
 import androidx.fragment.app.Fragment
 import com.example.implantecoclear.activities.ExerciseActivity
+import com.example.implantecoclear.fragmentos.ConfigFragment
 import com.example.implantecoclear.fragmentos.MenuFragment
 import com.example.implantecoclear.fragmentos.ModoFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionListener, MenuFragment.OnFragmentInteractionListener {
+class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionListener, MenuFragment.OnFragmentInteractionListener, ConfigFragment.OnFragmentInteractionListener {
 
 
 
@@ -30,18 +31,24 @@ class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionList
         startActivity(intent)
     }
 
-    override fun onClickButton() {
-        initfragment("mode")
+    override fun onClickButton(string: String) {
+            initfragment(string)
     }
 
     fun initfragment(clave : String){
-        if(clave == "mode"){
-            modo = ModoFragment.newInstance()
-            changefragment(R.id.content, modo)
-        }
-        if(clave == "menu"){
-            menu = MenuFragment.newInstance()
-            changefragment(R.id.content, menu)
+        when (clave) {
+            "mode" -> {
+                modo = ModoFragment.newInstance()
+                changefragment(R.id.content, modo)
+            }
+            "menu" -> {
+                menu = MenuFragment.newInstance()
+                changefragment(R.id.content, menu)
+            }
+            "config" ->{
+                var config = ConfigFragment.newInstance()
+                changefragment(R.id.content, config)
+            }
         }
 
     }
