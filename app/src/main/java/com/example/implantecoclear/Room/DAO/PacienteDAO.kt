@@ -1,4 +1,4 @@
-package com.example.implantecoclear.Room.DAO
+ package com.example.implantecoclear.Room.DAO
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -9,8 +9,8 @@ import com.example.implantecoclear.Room.Entities.Paciente
 @Dao
 interface PacienteDAO {
 
-    @Query("SELECT * FROM Paciente WHERE P_idTerapista = (:idTerapista)")
-    fun getAllPacientes(idTerapista : Int) : LiveData<List<Paciente>>
+    @Query("SELECT * FROM Paciente")
+    fun getAllPacientes() : LiveData<List<Paciente>>
 
     @Query("SELECT * FROM Paciente WHERE P_id = (:idPaciente)")
     fun getOnePaciente(idPaciente : Int) : Paciente

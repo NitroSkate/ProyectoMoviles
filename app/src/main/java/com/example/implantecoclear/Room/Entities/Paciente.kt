@@ -8,6 +8,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "Paciente")
 class Paciente(
+
     @ColumnInfo(name = "P_nombre")
     var nombre : String,
     @ColumnInfo(name = "P_apellido")
@@ -15,11 +16,10 @@ class Paciente(
     @ColumnInfo(name = "P_ingreso")
     var fechaIngreso : String,
     @ColumnInfo(name = "P_nivel")
-    var nivel : Int,
-    @ColumnInfo(name = "P_idTerapista")
-    var id_terapiste : Int
+    var nivel : Int
 
-    ): Parcelable {
+): Parcelable
+{
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "P_id")
     var id : Int = 0
@@ -28,7 +28,6 @@ class Paciente(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readInt(),
         parcel.readInt()
     ) {
         id = parcel.readInt()
@@ -39,7 +38,6 @@ class Paciente(
         parcel.writeString(apellido)
         parcel.writeString(fechaIngreso)
         parcel.writeInt(nivel)
-        parcel.writeInt(id_terapiste)
         parcel.writeInt(id)
     }
 
