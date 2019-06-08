@@ -11,9 +11,16 @@ class Pregunta (
 
     @ColumnInfo(name = "Q_pregunta")
     var pregunta : String,
-    // respuesta = id sonido
     @ColumnInfo(name = "Q_respuesta")
-    var respuesta : Int
+    var respuesta : Int,
+    @ColumnInfo(name = "Q_idSonido")
+    var idSonido : Int,
+    @ColumnInfo(name = "Q_rSonido")
+    var rSonido : String,
+    @ColumnInfo(name = "Q_rSonido")
+    var idImg : Int,
+    @ColumnInfo(name = "Q_rImg")
+    var rImg : String
 
 ) : Parcelable {
 
@@ -22,15 +29,22 @@ class Pregunta (
     var id : Int = 0
 
     constructor(parcel: Parcel) : this(
-        parcel.readString(),
-        parcel.readInt()
-    ) {
+            parcel.readString(),
+            parcel.readInt(),
+            parcel.readInt(),
+            parcel.readString(),
+            parcel.readInt(),
+            parcel.readString()) {
         id = parcel.readInt()
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(pregunta)
         parcel.writeInt(respuesta)
+        parcel.writeInt(idSonido)
+        parcel.writeString(rSonido)
+        parcel.writeInt(idImg)
+        parcel.writeString(rImg)
         parcel.writeInt(id)
     }
 
