@@ -15,11 +15,11 @@ class Pregunta (
     var respuesta : Int,
     @ColumnInfo(name = "Q_idSonido")
     var idSonido : Int,
-    @ColumnInfo(name = "Q_rSonido")
+    @ColumnInfo(name = "Q_rutaSonido")
     var rSonido : String,
-    @ColumnInfo(name = "Q_rSonido")
+    @ColumnInfo(name = "Q_idImg")
     var idImg : Int,
-    @ColumnInfo(name = "Q_rImg")
+    @ColumnInfo(name = "Q_rutaImg")
     var rImg : String
 
 ) : Parcelable {
