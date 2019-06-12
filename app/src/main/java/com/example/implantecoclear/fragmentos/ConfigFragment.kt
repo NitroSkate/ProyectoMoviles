@@ -1,4 +1,4 @@
-package com.example.implantecoclear.fragmentos_preguntas
+package com.example.implantecoclear.fragmentos
 
 import android.content.Context
 import android.net.Uri
@@ -9,11 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.implantecoclear.R
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_preguntas1_fragmento.view.*
+import kotlinx.android.synthetic.main.fragment_config.view.*
 
-
-class Preguntas1Fragmento : Fragment() {
+class ConfigFragment : Fragment() {
     private var listener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,14 +22,9 @@ class Preguntas1Fragmento : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_preguntas1_fragmento, container, false).apply {
-            Picasso.get()
-                .load("https://pm1.narvii.com/6948/f49b77bacb72ab507e4d309c06c279cc5b44f6a2r1-1440-655v2_hq.jpg")
-                .into(image1)
-            one.setOnClickListener {
-                listener?.onNextQuestion("next", 1)
-            }
+        val view = inflater.inflate(R.layout.fragment_config, container, false)
+        view.guardar.setOnClickListener {
+            listener?.onClickButton("menu")
         }
         return view
     }
@@ -53,15 +46,14 @@ class Preguntas1Fragmento : Fragment() {
 
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onNextQuestion(string: String, id:Int)
+        fun onClickButton(string: String)
     }
 
     companion object {
-
         @JvmStatic
-        fun newInstance(): Preguntas1Fragmento{
-            var frag = Preguntas1Fragmento()
-            return frag
+        fun newInstance(): ConfigFragment{
+            var fragment = ConfigFragment()
+            return fragment
         }
     }
 }

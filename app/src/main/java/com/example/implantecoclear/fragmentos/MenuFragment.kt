@@ -27,7 +27,10 @@ class MenuFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_menu, container, false)
         view.mode.setOnClickListener {
-            listener?.onClickButton()
+            listener?.onClickButton("mode")
+        }
+        view.config.setOnClickListener {
+            listener?.onClickButton("config")
         }
         return view
     }
@@ -47,32 +50,12 @@ class MenuFragment : Fragment() {
         listener = null
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments]
-     * (http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
+
     interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onClickButton()
+        fun onClickButton(string: String)
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MenuFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance() : MenuFragment{
             var frag = MenuFragment()
