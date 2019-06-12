@@ -8,6 +8,14 @@
              tools:context=".fragmentos_preguntas.Preguntas1Fragmento">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+            android:id="@+id/image1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_launcher_background"
+    />
+
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

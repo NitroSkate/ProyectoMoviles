@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.implantecoclear.R
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_preguntas1_fragmento.view.*
 
 
@@ -25,6 +26,9 @@ class Preguntas1Fragmento : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_preguntas1_fragmento, container, false).apply {
+            Picasso.get()
+                .load("https://pm1.narvii.com/6948/f49b77bacb72ab507e4d309c06c279cc5b44f6a2r1-1440-655v2_hq.jpg")
+                .into(image1)
             one.setOnClickListener {
                 listener?.onNextQuestion("next", 1)
             }
