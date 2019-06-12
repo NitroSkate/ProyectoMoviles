@@ -27,7 +27,7 @@ class Preguntas1Fragmento : Fragment() {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_preguntas1_fragmento, container, false).apply {
             Picasso.get()
-                .load("https://pm1.narvii.com/6948/f49b77bacb72ab507e4d309c06c279cc5b44f6a2r1-1440-655v2_hq.jpg")
+                .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
                 .into(image1)
             one.setOnClickListener {
                 listener?.onNextQuestion("next", 1)
