@@ -1,4 +1,4 @@
-package com.example.implantecoclear.activities
+package com.polillas.cocleapp.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.implantecoclear.R
-import com.example.implantecoclear.fragmentos_preguntas.Preguntas1Fragmento
-import com.example.implantecoclear.fragmentos_preguntas.Preguntas2Fragmento
+import com.polillas.cocleapp.R
+import com.polillas.cocleapp.fragmentos_preguntas.Preguntas1Fragmento
+import com.polillas.cocleapp.fragmentos_preguntas.Preguntas2Fragmento
 
 class ExerciseActivity : AppCompatActivity(), Preguntas1Fragmento.OnFragmentInteractionListener, Preguntas2Fragmento.OnFragmentInteractionListener {
 

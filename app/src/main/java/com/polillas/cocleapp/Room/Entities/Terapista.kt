@@ -1,4 +1,4 @@
-package com.example.implantecoclear.Room.Entities
+package com.polillas.cocleapp.Room.Entities
 
 import android.os.Parcel
 import android.os.Parcelable

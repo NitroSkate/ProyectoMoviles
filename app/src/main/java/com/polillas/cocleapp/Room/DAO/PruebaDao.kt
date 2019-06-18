@@ -1,11 +1,10 @@
-package com.example.implantecoclear.Room.DAO
+package com.polillas.cocleapp.Room.DAO
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.implantecoclear.Room.Entities.Paciente
-import com.example.implantecoclear.Room.Entities.Prueba
+import com.polillas.cocleapp.Room.Entities.Prueba
 
 @Dao
 interface PruebaDao {

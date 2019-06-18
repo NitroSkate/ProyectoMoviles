@@ -1,8 +1,8 @@
-package com.example.implantecoclear.Room.DAO
+package com.polillas.cocleapp.Room.DAO
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.example.implantecoclear.Room.Entities.Pregunta
+import com.polillas.cocleapp.Room.Entities.Pregunta
 
 @Dao
 interface PreguntaDAO {

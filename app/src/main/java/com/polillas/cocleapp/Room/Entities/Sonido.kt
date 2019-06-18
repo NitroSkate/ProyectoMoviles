@@ -1,4 +1,4 @@
-package com.example.implantecoclear.Room.Entities
+package com.polillas.cocleapp.Room.Entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

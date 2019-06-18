@@ -1,13 +1,14 @@
-package com.example.implantecoclear.Room.RoomDB
+package com.polillas.cocleapp.Room.RoomDB
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.implantecoclear.Room.DAO.*
-import com.example.implantecoclear.Room.Entities.*
+import com.polillas.cocleapp.Room.DAO.*
+import com.polillas.cocleapp.Room.DAO.*
+import com.polillas.cocleapp.Room.Entities.*
 
-@Database(entities = arrayOf(Paciente::class, Pregunta::class, Terapista::class, Sonido::class, Prueba::class), version = 1)
+@Database(entities = arrayOf(Paciente::class, Pregunta::class, Terapista::class, Sonido::class, Prueba::class), version = 1, exportSchema = false)
 public abstract class CoclearDatabase : RoomDatabase(){
 
     abstract fun pruebaDAO() : PruebaDao

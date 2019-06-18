@@ -1,10 +1,10 @@
-package com.example.implantecoclear.activities
+package com.polillas.cocleapp.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.implantecoclear.MainActivity
-import com.example.implantecoclear.R
+import com.polillas.cocleapp.MainActivity
+import com.polillas.cocleapp.R
 import kotlinx.android.synthetic.main.activity_score.*
 
 class ScoreActivity : AppCompatActivity() {
@@ -14,7 +14,7 @@ class ScoreActivity : AppCompatActivity() {
         setContentView(R.layout.activity_score)
         this.apply {
             finish_bt.setOnClickListener {
-                val intent = Intent(this@ScoreActivity, MainActivity::class.java)
+                val intent = Intent(this@ScoreActivity, com.polillas.cocleapp.MainActivity::class.java)
                 startActivity(intent)
             }
         }

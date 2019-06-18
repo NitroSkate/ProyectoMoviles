@@ -1,4 +1,4 @@
-package com.example.implantecoclear.fragmentos
+package com.polillas.cocleapp.fragmentos
 
 import android.content.Context
 import android.net.Uri
@@ -8,10 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import com.example.implantecoclear.R
-import kotlinx.android.synthetic.main.fragment_config.view.*
+import com.polillas.cocleapp.R
+import kotlinx.android.synthetic.main.fragment_menu.view.*
 
-class ConfigFragment : Fragment() {
+
+class MenuFragment : Fragment() {
+
     private var listener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,9 +24,13 @@ class ConfigFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_config, container, false)
-        view.guardar.setOnClickListener {
-            listener?.onClickButton("menu")
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_menu, container, false)
+        view.mode.setOnClickListener {
+            listener?.onClickButton("mode")
+        }
+        view.config.setOnClickListener {
+            listener?.onClickButton("config")
         }
         return view
     }
@@ -44,16 +50,16 @@ class ConfigFragment : Fragment() {
         listener = null
     }
 
+
     interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         fun onClickButton(string: String)
     }
 
     companion object {
         @JvmStatic
-        fun newInstance(): ConfigFragment{
-            var fragment = ConfigFragment()
-            return fragment
+        fun newInstance() : MenuFragment{
+            var frag = MenuFragment()
+            return frag
         }
     }
 }

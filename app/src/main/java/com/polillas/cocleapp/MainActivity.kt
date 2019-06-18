@@ -1,4 +1,4 @@
-package com.example.implantecoclear
+package com.polillas.cocleapp
 
 import android.content.Intent
 import android.net.Uri
@@ -6,10 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import androidx.fragment.app.Fragment
-import com.example.implantecoclear.activities.ExerciseActivity
-import com.example.implantecoclear.fragmentos.ConfigFragment
-import com.example.implantecoclear.fragmentos.MenuFragment
-import com.example.implantecoclear.fragmentos.ModoFragment
+import com.polillas.cocleapp.activities.ExerciseActivity
+import com.polillas.cocleapp.fragmentos.ConfigFragment
+import com.polillas.cocleapp.fragmentos.MenuFragment
+import com.polillas.cocleapp.fragmentos.ModoFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionListener, MenuFragment.OnFragmentInteractionListener, ConfigFragment.OnFragmentInteractionListener {
