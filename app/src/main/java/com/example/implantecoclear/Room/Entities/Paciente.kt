@@ -8,7 +8,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "Paciente")
 class Paciente(
-
+    @PrimaryKey
+    @ColumnInfo(name = "P_id")
+    var id: Int,
     @ColumnInfo(name = "P_nombre")
     var nombre : String,
     @ColumnInfo(name = "P_apellido")
@@ -18,27 +20,22 @@ class Paciente(
     @ColumnInfo(name = "P_nivel")
     var nivel : Int
 
-): Parcelable
-{
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "P_id")
-    var id : Int = 0
-
+): Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readInt(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readInt()
     ) {
-        id = parcel.readInt()
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(id)
         parcel.writeString(nombre)
         parcel.writeString(apellido)
         parcel.writeString(fechaIngreso)
         parcel.writeInt(nivel)
-        parcel.writeInt(id)
     }
 
     override fun describeContents(): Int {
@@ -54,4 +51,6 @@ class Paciente(
             return arrayOfNulls(size)
         }
     }
+
+
 }

@@ -8,44 +8,22 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "Pregunta")
 class Pregunta (
-
-    @ColumnInfo(name = "Q_pregunta")
-    var pregunta : String,
-    @ColumnInfo(name = "Q_respuesta")
-    var respuesta : Int,
+    @PrimaryKey
+    @ColumnInfo(name = "Q_id")
+    var id : Int,
     @ColumnInfo(name = "Q_idSonido")
-    var idSonido : Int,
-    @ColumnInfo(name = "Q_rutaSonido")
-    var rSonido : String,
-    @ColumnInfo(name = "Q_idImg")
-    var idImg : Int,
-    @ColumnInfo(name = "Q_rutaImg")
-    var rImg : String
+    var idSonido : Int
 
 ) : Parcelable {
-
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "Q_id")
-    var id : Int = 0
-
     constructor(parcel: Parcel) : this(
-            parcel.readString(),
-            parcel.readInt(),
-            parcel.readInt(),
-            parcel.readString(),
-            parcel.readInt(),
-            parcel.readString()) {
-        id = parcel.readInt()
+        parcel.readInt(),
+        parcel.readInt()
+    ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(pregunta)
-        parcel.writeInt(respuesta)
-        parcel.writeInt(idSonido)
-        parcel.writeString(rSonido)
-        parcel.writeInt(idImg)
-        parcel.writeString(rImg)
         parcel.writeInt(id)
+        parcel.writeInt(idSonido)
     }
 
     override fun describeContents(): Int {
@@ -61,5 +39,6 @@ class Pregunta (
             return arrayOfNulls(size)
         }
     }
+
 
 }
