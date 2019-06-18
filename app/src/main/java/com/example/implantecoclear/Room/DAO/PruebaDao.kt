@@ -5,12 +5,13 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.implantecoclear.Room.Entities.Paciente
+import com.example.implantecoclear.Room.Entities.Prueba
 
 @Dao
 interface PruebaDao {
 
     @Query("SELECT * FROM Prueba")
-    fun getAllPacientes() : LiveData<List<Paciente>>
+    fun getAllPacientes() : LiveData<List<Prueba>>
 
     /*@Query("SELECT * FROM Prueba WHERE P_id = (:idPaciente)")
     fun getOnePaciente(idPaciente : Int) : Paciente

@@ -4,28 +4,37 @@ import android.os.Parcel
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity(tableName = "Prueba")
 class Prueba(
-    @ColumnInfo(name = "T_nombre")
+    @PrimaryKey
+    @ColumnInfo(name = "P_id")
+    var id : Int,
+    @ColumnInfo(name = "P_nombre")
     var nombre : String,
-    @ColumnInfo(name = "T_apellido")
+    @ColumnInfo(name = "P_apellido")
     var apellido : String,
-    @ColumnInfo(name = "T_paciente")
+    @ColumnInfo(name = "P_paciente")
     var paciente : Int
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readInt(),
         parcel.readString(),
         parcel.readString(),
         parcel.readInt()
-    )
+    ) {
+    }
 
-    override fun writeToParcel(dest: Parcel?, flags: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(id)
+        parcel.writeString(nombre)
+        parcel.writeString(apellido)
+        parcel.writeInt(paciente)
     }
 
     override fun describeContents(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return 0
     }
 
     companion object CREATOR : Parcelable.Creator<Prueba> {
@@ -37,4 +46,5 @@ class Prueba(
             return arrayOfNulls(size)
         }
     }
+
 }

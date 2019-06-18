@@ -4,18 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.implantecoclear.Room.DAO.PacienteDAO
-import com.example.implantecoclear.Room.DAO.PreguntaDAO
-import com.example.implantecoclear.Room.DAO.SonidoDAO
-import com.example.implantecoclear.Room.DAO.TerapistaDAO
-import com.example.implantecoclear.Room.Entities.Paciente
-import com.example.implantecoclear.Room.Entities.Pregunta
-import com.example.implantecoclear.Room.Entities.Sonido
-import com.example.implantecoclear.Room.Entities.Terapista
+import com.example.implantecoclear.Room.DAO.*
+import com.example.implantecoclear.Room.Entities.*
 
-@Database(entities = arrayOf(Paciente::class, Pregunta::class, Terapista::class, Sonido::class), version = 1)
+@Database(entities = arrayOf(Paciente::class, Pregunta::class, Terapista::class, Sonido::class, Prueba::class), version = 1)
 public abstract class CoclearDatabase : RoomDatabase(){
 
+    abstract fun pruebaDAO() : PruebaDao
     abstract fun sonidoDAO() : SonidoDAO
     abstract fun pacienteDAO() : PacienteDAO
     abstract fun preguntaDAO() : PreguntaDAO
