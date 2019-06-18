@@ -1,4 +1,4 @@
-package com.example.implantecoclear
+package com.polillas.cocleapp
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4

@@ -1,4 +1,4 @@
-package com.example.implantecoclear
+package com.polillas.cocleapp
 
 import org.junit.Test
 
