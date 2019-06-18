@@ -2,6 +2,7 @@ package com.example.implantecoclear.fragmentos
 
 import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -42,6 +43,16 @@ class ModoFragment : Fragment() {
         val view =  inflater.inflate(R.layout.fragment_modo, container, false)
         view.desafio.setOnClickListener{
             listener?.onOpcion()
+        }
+        var mediaplayer : MediaPlayer = MediaPlayer.create(this.context, R.raw.pwtb)
+        view.practica.setOnClickListener {
+
+            /*if(mediaplayer.isPlaying()){
+                mediaplayer.pause()
+            }*/
+            //else {
+            mediaplayer.start()
+            //}
         }
         return view
     }
