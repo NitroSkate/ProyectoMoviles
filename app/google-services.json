@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "389021263931",
+    "firebase_url": "https://cocleapp-63041.firebaseio.com",
+    "project_id": "cocleapp-63041",
+    "storage_bucket": "cocleapp-63041.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389021263931:android:86e81282aebc296b",
+        "android_client_info": {
+          "package_name": "com.polillas.cocleapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "389021263931-m084hdr34n057ku94sqs9hir2l43vcqo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.polillas.cocleapp",
+            "certificate_hash": "7d0bd8e0e9aa51d6dc27c6c69e341164732c4ead"
+          }
+        },
+        {
+          "client_id": "389021263931-sklppg0tkcnsknkh55lud9s1mqdktqot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg88vfcINBOmrFMop2TaPRl7UGNSQpbgA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "389021263931-sklppg0tkcnsknkh55lud9s1mqdktqot.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
