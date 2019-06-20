@@ -3,6 +3,7 @@ package com.polillas.cocleapp.fragmentos
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,8 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
 
 import com.polillas.cocleapp.R
 import kotlinx.android.synthetic.main.fragment_account.view.*
@@ -51,13 +54,25 @@ class AccountFragment : Fragment() {
                 }
             }
         }
+
+        view.register.setOnClickListener {
+            var popup = inflater.inflate(R.layout.login, null).apply {
+                send_bt.text = "Register"
+            }
+            var popupview = PopupWindow(popup, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true)
+
+            popupview.showAtLocation(it, Gravity.CENTER,0,0)
+            popup.apply {
+                send_bt.setOnClickListener {
+                    popupview.dismiss()
+                    listener?.onRegister(email.text.toString(), password.text.toString())
+                }
+            }
+
+        }
         return view
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
-    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -76,7 +91,7 @@ class AccountFragment : Fragment() {
 
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
+        fun onRegister(email: String, password: String)
     }
 
     companion object {
