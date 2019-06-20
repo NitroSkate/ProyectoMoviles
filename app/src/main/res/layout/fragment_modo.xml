@@ -1,44 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-xmlns:tools="http://schemas.android.com/tools"
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="#9fff80"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
 
-    <ImageButton
-        style="@style/Base.Widget.AppCompat.Button.Borderless"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/ic_settings_black_24dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.976"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011"
+        app:srcCompat="@drawable/icon" />
 
-
-    <Button
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/practica"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/lL_Practica"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="practica"/>
+        android:layout_margin="20dp"
+        android:background="#009933"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.423">
 
-    <Button
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/practica"
-        android:id="@+id/desafio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="desafio"/>
-
-    <Button
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:layout_above="@id/practica"
-            android:id="@+id/pausa"
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="pausa"/>
+            android:layout_height="match_parent"
+            android:layout_marginRight="20sp"
+            android:text="Practica"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp" />
 
-</RelativeLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/practica"
+            android:layout_margin="10sp"
+            android:layout_marginRight="20sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lL_Desafio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="#ff6600"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.548">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/desafio"
+            android:layout_margin="10sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20sp"
+            android:text="Desafio"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
