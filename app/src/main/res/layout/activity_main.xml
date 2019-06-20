@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.polillas.cocleapp.com.polillas.cocleapp.MainActivity">
+        tools:context="com.polillas.cocleapp.MainActivity">
     <LinearLayout android:id="@+id/content" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent"></LinearLayout>
 
 

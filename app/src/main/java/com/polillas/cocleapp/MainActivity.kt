@@ -7,13 +7,16 @@ import android.os.Bundle
 import android.view.Menu
 import androidx.fragment.app.Fragment
 import com.polillas.cocleapp.activities.ExerciseActivity
+import com.polillas.cocleapp.fragmentos.AccountFragment
 import com.polillas.cocleapp.fragmentos.ConfigFragment
 import com.polillas.cocleapp.fragmentos.MenuFragment
 import com.polillas.cocleapp.fragmentos.ModoFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionListener, MenuFragment.OnFragmentInteractionListener, ConfigFragment.OnFragmentInteractionListener {
-
+class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionListener, MenuFragment.OnFragmentInteractionListener, ConfigFragment.OnFragmentInteractionListener, AccountFragment.OnFragmentInteractionListener {
+    override fun onFragmentInteraction(uri: Uri) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
 
     private lateinit var modo : ModoFragment
@@ -44,6 +47,10 @@ class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionList
             "menu" -> {
                 menu = MenuFragment.newInstance()
                 changefragment(R.id.content, menu)
+            }
+            "terapista" ->{
+                var terapist = AccountFragment.newInstance()
+                changefragment(R.id.content, terapist)
             }
             "config" ->{
                 var config = ConfigFragment.newInstance()

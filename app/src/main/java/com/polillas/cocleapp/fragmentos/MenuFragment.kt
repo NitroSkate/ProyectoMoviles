@@ -32,6 +32,9 @@ class MenuFragment : Fragment() {
         view.config.setOnClickListener {
             listener?.onClickButton("config")
         }
+        view.terapista.setOnClickListener {
+            listener?.onClickButton("terapista")
+        }
         return view
     }
 

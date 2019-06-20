@@ -7,12 +7,22 @@
 
 
     <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_below="@id/mode"
+            android:id="@+id/terapista"
+            android:text="Ingresar como terapista"
+    />
+
+    <Button
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:id="@+id/mode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Seleccionar Modo"/>
+        android:text="Ingresar como paciente"/>
 
 
     <ImageButton
