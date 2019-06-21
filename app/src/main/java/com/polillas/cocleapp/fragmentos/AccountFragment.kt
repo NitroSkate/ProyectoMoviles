@@ -3,6 +3,7 @@ package com.polillas.cocleapp.fragmentos
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.Gravity
 import androidx.fragment.app.Fragment
@@ -50,7 +51,11 @@ class AccountFragment : Fragment() {
             popup.apply {
                 send_bt.setOnClickListener {
                     popupview.dismiss()
-                    Toast.makeText(it.context, "Cuenta creada", Toast.LENGTH_SHORT).show()
+                    if(TextUtils.isEmpty(email.text) || TextUtils.isEmpty(password.text)){
+                        Toast.makeText(it.context, "No se ha podido iniciar sesion", Toast.LENGTH_SHORT).show()
+                    }else {
+                        listener?.onLogin(email.text.toString(), password.text.toString())
+                    }
                 }
             }
         }
@@ -65,7 +70,11 @@ class AccountFragment : Fragment() {
             popup.apply {
                 send_bt.setOnClickListener {
                     popupview.dismiss()
-                    listener?.onRegister(email.text.toString(), password.text.toString())
+                    if(TextUtils.isEmpty(email.text) || TextUtils.isEmpty(password.text)){
+                        Toast.makeText(it.context, "No se ha podido crear la cuenta", Toast.LENGTH_SHORT).show()
+                    }else {
+                        listener?.onRegister(email.text.toString(), password.text.toString())
+                    }
                 }
             }
 
@@ -92,6 +101,7 @@ class AccountFragment : Fragment() {
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         fun onRegister(email: String, password: String)
+        fun onLogin(email: String, password: String)
     }
 
     companion object {
