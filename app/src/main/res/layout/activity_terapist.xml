@@ -8,11 +8,21 @@
         android:layout_height="match_parent"
         tools:context=".activities.TerapistActivity">
 
-    <TextView android:id="@+id/terapista_log" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=""/>
+    <TextView android:id="@+id/terapista_log"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text=""/>
+    
+  <!--  <ListView android:layout_width="" android:layout_height=""></ListView> -->
 
-    <Button android:id="@+id/add" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Agregar paciente"/>
+    <Button android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agregar paciente"/>
 
-    <Button android:id="@+id/logout" android:layout_width="wrap_content" android:layout_height="wrap_content"
+    <Button android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
     android:text="Desconectar"/>
 
 </LinearLayout>

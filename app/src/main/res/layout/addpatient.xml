@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:gravity="center"
+              android:layout_height="match_parent">
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Agregar Paciente"
+              android:textSize="25dp"
+              android:textColor="#000"/>
+
+    <EditText
+              android:id="@+id/name_patient"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:hint="Ingrese el nombre del paciente"/>
+    <EditText
+            android:id="@+id/lname_patient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese el apellido del paciente"/>
+    <EditText
+            android:id="@+id/birth_patient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese la fecha de ingreso del paciente"/>
+    <NumberPicker
+            android:id="@+id/lvl_patient"
+            android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:max="20"
+                  android:min="1"
+    ></NumberPicker>
+    <Button android:id="@+id/add_patient"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Agregar paciente"/>
+
+</LinearLayout>

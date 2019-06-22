@@ -1,5 +1,6 @@
 package com.polillas.cocleapp.activities
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,8 +15,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polillas.cocleapp.R
 import com.polillas.cocleapp.Room.Entities.Paciente
+import com.polillas.cocleapp.Room.Entities.Pacientes
+import com.polillas.cocleapp.Room.Entities.Puntaje
 import kotlinx.android.synthetic.main.activity_terapist.*
+import kotlinx.android.synthetic.main.addpatient.view.*
 import kotlinx.android.synthetic.main.login.view.*
+import java.util.*
 
 class TerapistActivity : AppCompatActivity() {
 
@@ -33,7 +38,7 @@ class TerapistActivity : AppCompatActivity() {
 
         inflater = LayoutInflater.from(this)
 
-        var popup = inflater.inflate(R.layout.login, null)
+        var popup = inflater.inflate(R.layout.addpatient, null)
         var popupview = PopupWindow(popup, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true)
 
         terapista_log.text = "Bienvenido/a " + auth.currentUser?.email
@@ -43,14 +48,17 @@ class TerapistActivity : AppCompatActivity() {
         add.setOnClickListener {
             popupview.showAtLocation(it, Gravity.CENTER,0,0)
             popup.apply {
-                lL_login.setOnClickListener {
+                add_patient.setOnClickListener {
                     popupview.dismiss()
-                    if(TextUtils.isEmpty(email.text) || TextUtils.isEmpty(password.text)){
+                    if(TextUtils.isEmpty(name_patient.text) || TextUtils.isEmpty(lname_patient.text) || TextUtils.isEmpty(birth_patient.text)){
                         Toast.makeText(it.context, "No se ha podido iniciar sesion", Toast.LENGTH_SHORT).show()
                     }else {
-                        val paciente = Paciente(0,email.text.toString(),password.text.toString(),"",0)
+                        val id = UUID.randomUUID().toString()
+                        val list = mutableListOf<Puntaje>()
+                        list.add(Puntaje("0", "0"))
+                        val paciente = Pacientes(id,name_patient.text.toString(),lname_patient.text.toString(),birth_patient.text.toString(),lvl_patient.value,list)
 
-                        db.collection("Pacient " + auth.currentUser?.email).document("0")
+                        db.collection("Pacient " + auth.currentUser?.email).document(id)
                             .set(paciente)
                             .addOnSuccessListener { Log.d("success", "DocumentSnapshot successfully written!") }
                             .addOnFailureListener { e -> Log.w("fail", "Error writing document", e) }
