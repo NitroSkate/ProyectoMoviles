@@ -33,10 +33,7 @@ class TerapistActivity : AppCompatActivity() {
 
         inflater = LayoutInflater.from(this)
 
-        var popup = inflater.inflate(R.layout.login, null).apply{
-            send_bt.text = "Agregar Paciente"
-        }
-
+        var popup = inflater.inflate(R.layout.login, null)
         var popupview = PopupWindow(popup, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true)
 
         terapista_log.text = "Bienvenido/a " + auth.currentUser?.email
@@ -46,7 +43,7 @@ class TerapistActivity : AppCompatActivity() {
         add.setOnClickListener {
             popupview.showAtLocation(it, Gravity.CENTER,0,0)
             popup.apply {
-                send_bt.setOnClickListener {
+                lL_login.setOnClickListener {
                     popupview.dismiss()
                     if(TextUtils.isEmpty(email.text) || TextUtils.isEmpty(password.text)){
                         Toast.makeText(it.context, "No se ha podido iniciar sesion", Toast.LENGTH_SHORT).show()

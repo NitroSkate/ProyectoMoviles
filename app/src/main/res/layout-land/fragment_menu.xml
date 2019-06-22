@@ -29,24 +29,25 @@
 
     <LinearLayout
             android:id="@+id/lL_Paciente"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:background="#005b4f"
             android:gravity="center"
             android:orientation="horizontal"
-            android:padding="10sp"
+            android:padding="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.346" app:layout_constraintHorizontal_bias="0.0">
+            app:layout_constraintVertical_bias="0.502">
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_marginRight="10sp"
+                android:layout_marginRight="20sp"
                 android:gravity="center"
                 android:text="Paciente"
                 android:textColor="#FFFFFF"
@@ -63,18 +64,18 @@
 
     <LinearLayout
             android:id="@+id/lL_Terapista"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:background="#003d33"
             android:gravity="center"
             android:orientation="horizontal"
-            android:padding="10sp"
+            android:padding="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.624" app:layout_constraintHorizontal_bias="0.6">
+            app:layout_constraintVertical_bias="0.502" app:layout_constraintHorizontal_bias="0.981">
 
         <ImageView
                 android:layout_width="wrap_content"
@@ -86,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_marginLeft="10sp"
+                android:layout_marginLeft="20sp"
                 android:gravity="center"
                 android:text="Terapista"
                 android:textColor="#FFFFFF"
