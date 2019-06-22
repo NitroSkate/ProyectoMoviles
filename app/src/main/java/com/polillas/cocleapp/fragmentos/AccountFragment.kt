@@ -14,11 +14,12 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
+//import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 
 import com.polillas.cocleapp.R
 import kotlinx.android.synthetic.main.fragment_account.view.*
+import kotlinx.android.synthetic.main.fragment_new_account.view.*
 import kotlinx.android.synthetic.main.login.*
 import kotlinx.android.synthetic.main.login.view.*
 
@@ -40,42 +41,30 @@ class AccountFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_account, container, false)
-        view.login.setOnClickListener {
-            var popup = inflater.inflate(R.layout.login, null).apply {
-                Log.d("cuenta", "Fragmento lanzado")
-            }
-            var popupview = PopupWindow(popup, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true)
-
-            popupview.showAtLocation(it, Gravity.CENTER,0,0)
-            popup.apply {
-                lL_login.setOnClickListener {
-                    popupview.dismiss()
-                    if(TextUtils.isEmpty(email.text) || TextUtils.isEmpty(password.text)){
-                        Toast.makeText(it.context, "No se ha podido iniciar sesion", Toast.LENGTH_SHORT).show()
-                    }else {
-                        listener?.onLogin(email.text.toString(), password.text.toString())
-                    }
-                }
+        val view = inflater.inflate(R.layout.login, container, false)
+        view.lL_login.setOnClickListener {
+            if(TextUtils.isEmpty(email.text) || TextUtils.isEmpty(password.text)){
+                Toast.makeText(it.context, "No se ha podido iniciar sesion", Toast.LENGTH_SHORT).show()
+            }else {
+                listener?.onLogin(email.text.toString(), password.text.toString())
             }
         }
-
-        view.register.setOnClickListener {
-            var popup = inflater.inflate(R.layout.login, null)
+        
+        view.register_tv.setOnClickListener {
+            var popup = inflater.inflate(R.layout.fragment_new_account, null)
             var popupview = PopupWindow(popup, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true)
-
+    
             popupview.showAtLocation(it, Gravity.CENTER,0,0)
             popup.apply {
-                register_tv.setOnClickListener {
+                tv_create.setOnClickListener {
                     popupview.dismiss()
-                    if(TextUtils.isEmpty(email.text) || TextUtils.isEmpty(password.text)){
+                    if(TextUtils.isEmpty(et_email.text) || TextUtils.isEmpty(et_password.text)){
                         Toast.makeText(it.context, "No se ha podido crear la cuenta", Toast.LENGTH_SHORT).show()
                     }else {
-                        listener?.onRegister(email.text.toString(), password.text.toString())
+                        listener?.onRegister(et_email.text.toString(), et_password.text.toString(), nombre.text.toString(), apellido.text.toString())
                     }
                 }
             }
-
         }
         return view
     }
@@ -86,7 +75,7 @@ class AccountFragment : Fragment() {
         if (context is OnFragmentInteractionListener) {
             listener = context
         } else {
-            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
+            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener") as Throwable
         }
     }
 

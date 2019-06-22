@@ -59,6 +59,7 @@ class AccountActivity : AppCompatActivity(), AccountFragment.OnFragmentInteracti
                         baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT
                     ).show()
+                    
                     updateUI(null)
                 }
             }
