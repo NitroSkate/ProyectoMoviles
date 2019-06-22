@@ -41,7 +41,7 @@ class TerapistActivity : AppCompatActivity() {
         var popup = inflater.inflate(R.layout.addpatient, null)
         var popupview = PopupWindow(popup, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true)
 
-        terapista_log.text = "Bienvenido/a " + auth.currentUser?.email
+        terapista_log.text = "Bienvenido/a " + auth.currentUser?.displayName
 
 
 

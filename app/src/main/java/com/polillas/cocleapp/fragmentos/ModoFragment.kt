@@ -2,9 +2,12 @@ package com.polillas.cocleapp.fragmentos
 
 import android.content.Context
 import android.content.Intent
+import android.media.AudioManager
+import android.media.AudioManager.STREAM_MUSIC
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +15,7 @@ import android.view.ViewGroup
 
 import com.polillas.cocleapp.R
 import kotlinx.android.synthetic.main.fragment_modo.view.*
+import java.io.IOException
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,17 +47,28 @@ class ModoFragment : Fragment() {
         val view =  inflater.inflate(R.layout.fragment_modo, container, false)
         /*view.desafio.setOnClickListener{
             listener?.onOpcion()
-        }
-        var mediaplayer : MediaPlayer = MediaPlayer.create(this.context, R.raw.pwtb)
-        view.practica.setOnClickListener {
+        }*/
+
+        //var mediaplayer : MediaPlayer = MediaPlayer.create(this.context, R.raw.pwtb)
+        view.lL_Practica.setOnClickListener {
+            try {
+
+                val mediaPlayer: MediaPlayer? = MediaPlayer().apply {
+                    setDataSource("https://projecto-moviles.herokuapp.com/upload/sounds/undefined_1561234022587_34.mp3")
+                    prepare()
+                    start()
+                }
+            } catch (e : IOException){
+                e.printStackTrace()
+            }
 
             /*if(mediaplayer.isPlaying()){
                 mediaplayer.pause()
             }*/
             //else {
-            mediaplayer.start()
+            //mediaplayer.start()
             //}
-        }*/
+        }
         return view
     }
 

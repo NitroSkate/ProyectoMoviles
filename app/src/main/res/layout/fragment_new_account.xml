@@ -25,7 +25,7 @@
             android:gravity="center"
             android:layout_gravity="center">
             <EditText
-                android:id="@+id/nombre"
+                android:id="@+id/nombre_et"
                 android:hint="Nombre"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -34,7 +34,7 @@
                 android:layout_margin="20sp"
                 android:inputType="text"/>
             <EditText
-                android:id="@+id/apellido"
+                android:id="@+id/apellido_et"
                 android:hint="Apellido"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

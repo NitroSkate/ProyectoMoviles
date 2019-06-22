@@ -61,7 +61,7 @@ class AccountFragment : Fragment() {
                     if(TextUtils.isEmpty(et_email.text) || TextUtils.isEmpty(et_password.text)){
                         Toast.makeText(it.context, "No se ha podido crear la cuenta", Toast.LENGTH_SHORT).show()
                     }else {
-                        listener?.onRegister(et_email.text.toString(), et_password.text.toString(), nombre.text.toString(), apellido.text.toString())
+                        listener?.onRegister(et_email.text.toString(), et_password.text.toString(), nombre_et.text.toString(), apellido_et.text.toString())
                     }
                 }
             }
@@ -87,7 +87,7 @@ class AccountFragment : Fragment() {
 
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onRegister(email: String, password: String)
+        fun onRegister(email: String, password: String, nombre: String, apellido: String)
         fun onLogin(email: String, password: String)
     }
 

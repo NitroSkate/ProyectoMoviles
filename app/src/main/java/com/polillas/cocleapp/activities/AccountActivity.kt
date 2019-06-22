@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.polillas.cocleapp.R
 import com.polillas.cocleapp.fragmentos.AccountFragment
 
@@ -16,6 +17,8 @@ class AccountActivity : AppCompatActivity(), AccountFragment.OnFragmentInteracti
 
 
     private lateinit var auth: FirebaseAuth
+
+    private lateinit var auth2: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +46,10 @@ class AccountActivity : AppCompatActivity(), AccountFragment.OnFragmentInteracti
             }
     }
 
-    override fun onRegister(email: String, password: String) {
-
+    override fun onRegister(email: String, password: String, nombre: String, apellido: String) {
+        val nameprofile = UserProfileChangeRequest.Builder()
+            .setDisplayName(nombre +" "+ apellido)
+            .build()
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -59,7 +64,13 @@ class AccountActivity : AppCompatActivity(), AccountFragment.OnFragmentInteracti
                         baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT
                     ).show()
-                    
+                    val currentsesion = auth.currentUser
+                    currentsesion?.updateProfile(nameprofile)
+                        ?.addOnCompleteListener { task ->
+                            if(task.isSuccessful){
+                                Log.d("suc", "Usuario actualizado")
+                            }
+                        }
                     updateUI(null)
                 }
             }
