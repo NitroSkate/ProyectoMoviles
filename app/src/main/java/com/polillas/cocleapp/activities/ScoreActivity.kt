@@ -13,7 +13,7 @@ class ScoreActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_score)
         this.apply {
-            finish_bt.setOnClickListener {
+            lL_scoreaceptar.setOnClickListener {
                 val intent = Intent(this@ScoreActivity, com.polillas.cocleapp.MainActivity::class.java)
                 startActivity(intent)
             }
