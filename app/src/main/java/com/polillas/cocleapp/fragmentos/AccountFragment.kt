@@ -3,6 +3,8 @@ package com.polillas.cocleapp.fragmentos
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.text.TextUtils
+
 import android.util.Log
 import android.view.Gravity
 import androidx.fragment.app.Fragment
@@ -12,9 +14,12 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.Toast
+//import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
 
 import com.polillas.cocleapp.R
 import kotlinx.android.synthetic.main.fragment_account.view.*
+import kotlinx.android.synthetic.main.fragment_new_account.view.*
 import kotlinx.android.synthetic.main.login.*
 import kotlinx.android.synthetic.main.login.view.*
 
@@ -36,28 +41,34 @@ class AccountFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_account, container, false)
-        view.login.setOnClickListener {
-            var popup = inflater.inflate(R.layout.login, null).apply {
-                Log.d("cuenta", "Fragmento lanzado")
+        val view = inflater.inflate(R.layout.login, container, false)
+        view.lL_login.setOnClickListener {
+            if(TextUtils.isEmpty(email.text) || TextUtils.isEmpty(password.text)){
+                Toast.makeText(it.context, "No se ha podido iniciar sesion", Toast.LENGTH_SHORT).show()
+            }else {
+                listener?.onLogin(email.text.toString(), password.text.toString())
             }
+        }
+        
+        view.register_tv.setOnClickListener {
+            var popup = inflater.inflate(R.layout.fragment_new_account, null)
             var popupview = PopupWindow(popup, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true)
-
+    
             popupview.showAtLocation(it, Gravity.CENTER,0,0)
             popup.apply {
-                lL_login.setOnClickListener {
+                tv_create.setOnClickListener {
                     popupview.dismiss()
-                    Toast.makeText(it.context, "Cuenta creada", Toast.LENGTH_SHORT).show()
+                    if(TextUtils.isEmpty(et_email.text) || TextUtils.isEmpty(et_password.text)){
+                        Toast.makeText(it.context, "No se ha podido crear la cuenta", Toast.LENGTH_SHORT).show()
+                    }else {
+                        listener?.onRegister(et_email.text.toString(), et_password.text.toString(), nombre.text.toString(), apellido.text.toString())
+                    }
                 }
             }
         }
         return view
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
-    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -76,7 +87,8 @@ class AccountFragment : Fragment() {
 
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
+        fun onRegister(email: String, password: String)
+        fun onLogin(email: String, password: String)
     }
 
     companion object {

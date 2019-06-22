@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:background="#e6e6e6"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_marginTop="20sp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#e6e6e6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/login"
+            />
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center">
+            <EditText
+                android:id="@+id/nombre"
+                android:hint="Nombre"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="20sp"
+                android:inputType="text"/>
+            <EditText
+                android:id="@+id/apellido"
+                android:hint="Apellido"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="20sp"
+                android:inputType="text"/>
+
+
+            <EditText
+                android:id="@+id/et_email"
+                android:hint="E-mail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="20sp"
+                android:inputType="textEmailAddress"/>
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Password"
+                android:layout_margin="20sp"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/conf_password"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Password"
+                android:layout_margin="20sp"
+                android:inputType="textPassword" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/lL_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_margin="15dp"
+            android:background="#006064"
+            >
+
+            <TextView
+                android:id="@+id/tv_create"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Crear"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                />
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</ScrollView>
+

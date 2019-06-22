@@ -84,6 +84,7 @@
     >
 
     <TextView
+        android:id="@+id/register_tv"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:text="¿No tienes cuenta?, Crea una cuenta!"
