@@ -26,13 +26,13 @@ class MenuFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_menu, container, false)
-        view.mode.setOnClickListener {
+        view.lL_Paciente.setOnClickListener {
             listener?.onClickButton("mode")
         }
-        view.config.setOnClickListener {
+        view.iV_conf1.setOnClickListener {
             listener?.onClickButton("config")
         }
-        view.terapista.setOnClickListener {
+        view.lL_Terapista.setOnClickListener {
             listener?.onClickButton("terapista")
         }
         return view
