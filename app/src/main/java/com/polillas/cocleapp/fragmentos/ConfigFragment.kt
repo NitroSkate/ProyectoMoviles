@@ -23,7 +23,7 @@ class ConfigFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_config, container, false)
-        view.guardar.setOnClickListener {
+        view.iV_save.setOnClickListener {
             listener?.onClickButton("menu")
         }
         return view
