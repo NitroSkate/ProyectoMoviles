@@ -22,7 +22,7 @@ class ExerciseActivity : AppCompatActivity(), Preguntas1Fragmento.OnFragmentInte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise)
         preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
-        preguntaViewmodel.retrievePreguntas()
+        //preguntaViewmodel.retrievePreguntas()
         initfragment(1)
     }
 

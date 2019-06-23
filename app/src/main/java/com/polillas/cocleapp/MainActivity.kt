@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.Menu
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.google.firebase.auth.FirebaseAuth
+import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import com.polillas.cocleapp.activities.AccountActivity
 import com.polillas.cocleapp.activities.ExerciseActivity
 import com.polillas.cocleapp.fragmentos.AccountFragment
@@ -25,10 +27,14 @@ class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionList
 
     private var opc = String()
 
+    private lateinit var preguntaViewmodel: PreguntaViewmodel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
+        preguntaViewmodel.retrievePreguntas()
         if(savedInstanceState != null){
             initfragment(opc)
         }

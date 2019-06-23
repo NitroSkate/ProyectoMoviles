@@ -7,9 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 //import com.example.cocleapp.R
 
 import com.polillas.cocleapp.R
+import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_preguntas1_fragmento.view.*
 
@@ -17,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_preguntas1_fragmento.view.*
 class Preguntas1Fragmento : Fragment() {
     private var cont : Int = 0
     private var listener: OnFragmentInteractionListener? = null
+    private lateinit var preguntaViewmodel : PreguntaViewmodel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,13 +31,24 @@ class Preguntas1Fragmento : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
+        /*preguntaViewmodel.getAllSonidos().observe(this, Observer { sounds ->
+            sounds?.let {
+                it[]
+            }
+        })*/
         val view =  inflater.inflate(R.layout.fragment_preguntas1_fragmento, container, false).apply {
             when(cont){
                 1 ->{
+                    preguntaViewmodel.getAllSonidos().observe(this@Preguntas1Fragmento, Observer { sounds ->
+                        sounds?.let {
+                          tv_pregunta.text = it[cont-1].rutaImagen
+                        }
+                    })
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
                         .into(image1)
-                    tv_pregunta.text = "Pregunta 1"
+                    //tv_pregunta.text = "Pregunta 1"
                     one.setOnClickListener {
                         listener?.onNextQuestion("next", 2)
                     }
