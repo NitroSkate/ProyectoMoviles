@@ -26,8 +26,6 @@ class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionList
     private var opc = String()
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

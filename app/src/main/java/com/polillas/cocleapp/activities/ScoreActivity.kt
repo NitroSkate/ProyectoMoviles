@@ -14,10 +14,8 @@ class ScoreActivity : AppCompatActivity() {
         setContentView(R.layout.activity_score)
         this.apply {
             lL_scoreaceptar.setOnClickListener {
-                finish_tv.setOnClickListener {
-                    val intent = Intent(this@ScoreActivity, com.polillas.cocleapp.MainActivity::class.java)
-                    startActivity(intent)
-                }
+                val intent = Intent(this@ScoreActivity, com.polillas.cocleapp.MainActivity::class.java)
+                startActivity(intent)
             }
         }
     }

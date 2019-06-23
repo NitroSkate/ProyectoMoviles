@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.fragment_preguntas1_fragmento.view.*
 
 
 class Preguntas1Fragmento : Fragment() {
+    private var cont : Int = 0
     private var listener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,12 +28,27 @@ class Preguntas1Fragmento : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_preguntas1_fragmento, container, false).apply {
-            Picasso.get()
-                .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
-                .into(image1)
-            one.setOnClickListener {
-                listener?.onNextQuestion("next", 1)
+            when(cont){
+                1 ->{
+                    Picasso.get()
+                        .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
+                        .into(image1)
+                    tv_pregunta.text = "Pregunta 1"
+                    one.setOnClickListener {
+                        listener?.onNextQuestion("next", 2)
+                    }
+                }
+                2->{
+                    Picasso.get()
+                        .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
+                        .into(image1)
+                    tv_pregunta.text = "Pregunta 2"
+                    one.setOnClickListener {
+                        listener?.onNextQuestion("finish", 0)
+                    }
+                }
             }
+
         }
         return view
     }
@@ -60,8 +76,9 @@ class Preguntas1Fragmento : Fragment() {
     companion object {
 
         @JvmStatic
-        fun newInstance(): Preguntas1Fragmento{
+        fun newInstance(num : Int): Preguntas1Fragmento{
             var frag = Preguntas1Fragmento()
+            frag.cont = num
             return frag
         }
     }

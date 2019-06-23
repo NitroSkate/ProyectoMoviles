@@ -17,24 +17,22 @@ class ExerciseActivity : AppCompatActivity(), Preguntas1Fragmento.OnFragmentInte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise)
-        initfragment(0)
+        initfragment(1)
     }
 
     fun initfragment(id: Int){
-        when(id){
+        /*when(id){
             1 -> {
                 var frag = Preguntas2Fragmento.newInstance()
                 changefragment(R.id.ex_content, frag)
-            }
-            else -> {
-                var frag = Preguntas1Fragmento.newInstance()
-                changefragment(R.id.ex_content, frag)
-            }
-        }
+            }*/
+        var frag = Preguntas1Fragmento.newInstance(id)
+        changefragment(R.id.ex_content, frag)
     }
 
     override fun onNextQuestion(string: String, id: Int) {
         if(string == "next") {
+            //Toast.makeText(this, id.toString(), Toast.LENGTH_SHORT).show()
             initfragment(id)
         }
         else{

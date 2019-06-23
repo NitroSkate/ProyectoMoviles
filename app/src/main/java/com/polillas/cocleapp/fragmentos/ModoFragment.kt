@@ -45,9 +45,9 @@ class ModoFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_modo, container, false)
-        /*view.desafio.setOnClickListener{
+        view.lL_Desafio.setOnClickListener{
             listener?.onOpcion()
-        }*/
+        }
 
         //var mediaplayer : MediaPlayer = MediaPlayer.create(this.context, R.raw.pwtb)
         view.lL_Practica.setOnClickListener {
