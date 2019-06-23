@@ -8,6 +8,6 @@ import com.polillas.cocleapp.Room.Entities.Sonido
 interface SonidoDAO {
 
     @Query("SELECT * FROM Sonido WHERE S_id = (:id)")
-    fun getSonido(id : Int) : Sonido
+    fun getSonido(id : String) : Sonido
 
 }

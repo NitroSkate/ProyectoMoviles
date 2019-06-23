@@ -8,14 +8,14 @@ import com.polillas.cocleapp.Room.DAO.*
 import com.polillas.cocleapp.Room.DAO.*
 import com.polillas.cocleapp.Room.Entities.*
 
-@Database(entities = arrayOf(Paciente::class, Pregunta::class, Terapista::class, Sonido::class, Prueba::class), version = 1, exportSchema = false)
+@Database(entities = arrayOf(Pregunta::class/*, Paciente::class, Terapista::class, Sonido::class, Prueba::class*/), version = 1, exportSchema = false)
 public abstract class CoclearDatabase : RoomDatabase(){
 
-    abstract fun pruebaDAO() : PruebaDao
-    abstract fun sonidoDAO() : SonidoDAO
-    abstract fun pacienteDAO() : PacienteDAO
+    //abstract fun pruebaDAO() : PruebaDao
+    //abstract fun sonidoDAO() : SonidoDAO
+    //abstract fun pacienteDAO() : PacienteDAO
     abstract fun preguntaDAO() : PreguntaDAO
-    abstract fun terapistaDAO() : TerapistaDAO
+    //abstract fun terapistaDAO() : TerapistaDAO
 
     companion object{
         @Volatile
@@ -28,7 +28,7 @@ public abstract class CoclearDatabase : RoomDatabase(){
             }
             synchronized(this) {
                 val instance = Room.databaseBuilder(
-                        context.applicationContext,
+                        context,
                         CoclearDatabase::class.java,
                         "CoclearDB"
                 ).build()

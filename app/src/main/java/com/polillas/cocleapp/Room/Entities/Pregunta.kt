@@ -5,25 +5,30 @@ import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.squareup.moshi.Json
 
 @Entity(tableName = "Pregunta")
-class Pregunta (
+data class Pregunta (
     @PrimaryKey
     @ColumnInfo(name = "Q_id")
-    var id : Int,
-    @ColumnInfo(name = "Q_idSonido")
-    var idSonido : Int
+    @field:Json(name = "_id")
+    var id : String,
+    /*@ColumnInfo(name = "Q_idSonido")
+    @field:Json(name = "idSonido")
+    var idSonido : Sonido,*/
+    @ColumnInfo(name = "Q_nivel")
+    @field:Json(name = "nivel")
+    var nivel : String
 
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
-        parcel.readInt()
-    ) {
-    }
+        parcel.readString(),
+        parcel.readString()
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
-        parcel.writeInt(idSonido)
+        parcel.writeString(id)
+        parcel.writeString(nivel)
     }
 
     override fun describeContents(): Int {
@@ -39,6 +44,5 @@ class Pregunta (
             return arrayOfNulls(size)
         }
     }
-
-
 }
+

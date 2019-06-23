@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.polillas.cocleapp.R
+import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import com.polillas.cocleapp.fragmentos_preguntas.Preguntas1Fragmento
 import com.polillas.cocleapp.fragmentos_preguntas.Preguntas2Fragmento
 
@@ -14,9 +16,13 @@ class ExerciseActivity : AppCompatActivity(), Preguntas1Fragmento.OnFragmentInte
 
     //private lateinit var p1 : Preguntas1Fragmento
 
+    private lateinit var preguntaViewmodel: PreguntaViewmodel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise)
+        preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
+        preguntaViewmodel.retrievePreguntas()
         initfragment(1)
     }
 
