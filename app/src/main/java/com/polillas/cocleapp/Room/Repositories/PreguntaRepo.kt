@@ -30,6 +30,11 @@ class PreguntaRepo(private val preguntaDao : PreguntaDAO, private val sonidoDao 
     @WorkerThread
     suspend fun insertSonido(sonido: Sonido?) = sonidoDao.insertSound(sonido)
 
+    @WorkerThread
+    suspend fun nukeQ()= preguntaDao.nukeQ()
+
+    @WorkerThread
+    suspend fun nukeS()= sonidoDao.nukeS()
 
 
 }

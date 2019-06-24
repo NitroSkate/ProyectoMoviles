@@ -18,4 +18,7 @@ interface SonidoDAO {
     @Insert
     suspend fun insertSound(sonido : Sonido?)
 
+    @Query("DELETE FROM Sonido")
+    suspend fun nukeS()
+
 }

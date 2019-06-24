@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.Menu
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.firebase.auth.FirebaseAuth
 import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
@@ -28,6 +29,8 @@ class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionList
     private var opc = String()
 
     private lateinit var preguntaViewmodel: PreguntaViewmodel
+
+    private var constant = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,6 +64,7 @@ class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionList
     }
 
     fun initfragment(clave : String){
+
         when (clave) {
             "mode" -> {
                 modo = ModoFragment.newInstance()

@@ -17,4 +17,8 @@ interface PreguntaDAO {
 
     @Insert
     suspend fun insert(pregunta: Pregunta?)
+
+    @Query("DELETE FROM Pregunta")
+    suspend fun nukeQ()
+
 }

@@ -24,6 +24,8 @@ class PreguntaViewmodel(application: Application):AndroidViewModel(application){
     }
 
     fun retrievePreguntas() = viewModelScope.launch {
+        this@PreguntaViewmodel.nukeQ()
+        this@PreguntaViewmodel.nukeS()
         val response = repoPre!!.responsePregunta().await()
         if(response.isSuccessful) with(response){
             this.body()?.let {
@@ -58,7 +60,13 @@ class PreguntaViewmodel(application: Application):AndroidViewModel(application){
 
     fun getAllSonidos(): LiveData<List<Sonido>> = repoPre!!.getSonidos()
 
+    fun nukeQ() = viewModelScope.launch (Dispatchers.IO){
+        repoPre!!.nukeQ()
+    }
 
+    fun nukeS() = viewModelScope.launch (Dispatchers.IO){
+        repoPre!!.nukeS()
+    }
 
 
 }
