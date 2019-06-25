@@ -58,12 +58,13 @@ class ModoFragment : Fragment() {
         })
         val view =  inflater.inflate(R.layout.fragment_modo, container, false)
         view.lL_Desafio.setOnClickListener{
-            listener?.onOpcion(verifyQ)
+            listener?.onOpcion(verifyQ, "exercise")
         }
 
         //var mediaplayer : MediaPlayer = MediaPlayer.create(this.context, R.raw.pwtb)
         view.lL_Practica.setOnClickListener {
-            try {
+            listener?.onOpcion(verifyQ, "practice")
+            /*try {
 
                 val mediaPlayer: MediaPlayer? = MediaPlayer().apply {
                     setDataSource("https://projecto-moviles.herokuapp.com/upload/sounds/undefined_1561234022587_34.mp3")
@@ -72,7 +73,7 @@ class ModoFragment : Fragment() {
                 }
             } catch (e : IOException){
                 e.printStackTrace()
-            }
+            }*/
 
             /*if(mediaplayer.isPlaying()){
                 mediaplayer.pause()
@@ -112,7 +113,7 @@ class ModoFragment : Fragment() {
      */
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onOpcion(verifyQ : Int)
+        fun onOpcion(verifyQ : Int, string: String)
     }
 
     companion object {

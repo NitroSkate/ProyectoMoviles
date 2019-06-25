@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import com.polillas.cocleapp.activities.AccountActivity
 import com.polillas.cocleapp.activities.ExerciseActivity
+import com.polillas.cocleapp.activities.PracticeActivity
 import com.polillas.cocleapp.fragmentos.AccountFragment
 import com.polillas.cocleapp.fragmentos.ConfigFragment
 import com.polillas.cocleapp.fragmentos.MenuFragment
@@ -54,11 +55,15 @@ class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionList
     }
 
 
-    override fun onOpcion(verify: Int) {
-        if(verify > 0) {
+    override fun onOpcion(verify: Int, string: String) {
+        if(verify > 0 && string == "exercise") {
             var intent = Intent(this@MainActivity, ExerciseActivity::class.java)
             startActivity(intent)
-        } else {
+        }
+        else if (verify > 0 && string == "practice") {
+            var intent = Intent(this@MainActivity, PracticeActivity::class.java)
+            startActivity(intent)
+        }else {
             Toast.makeText(this, "Espere a la conexion", Toast.LENGTH_SHORT).show()
             initfragment("mode")
         }
