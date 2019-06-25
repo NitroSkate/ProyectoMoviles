@@ -1,6 +1,7 @@
 package com.polillas.cocleapp.fragmentos_preguntas
 
 import android.content.Context
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -130,7 +131,11 @@ class Preguntas1Fragmento : Fragment() {
                                         //tv_pregunta.text = "Pregunta 1"
 
                                         bt_play.setOnClickListener {
-
+                                            val mediaPlayer: MediaPlayer? = MediaPlayer().apply {
+                                                setDataSource("https://projecto-moviles.herokuapp.com/"+ respuesta.rutaSonido)
+                                                prepare()
+                                                start()
+                                            }
                                         }
                                         Log.d("PREGUNTAs",pregunta.size.toString())
                                         Log.d("WHUT",cont.toString() + " " +todos.size)
