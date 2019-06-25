@@ -3,10 +3,12 @@ package com.polillas.cocleapp.fragmentos_preguntas
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 //import com.example.cocleapp.R
@@ -33,17 +35,12 @@ class Preguntas1Fragmento : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
-        /*preguntaViewmodel.getAllSonidos().observe(this, Observer { sounds ->
-            sounds?.let {
-                it[]
-            }
-        })*/
         val view =  inflater.inflate(R.layout.fragment_preguntas1_fragmento, container, false).apply {
-            when(cont){
-                1 ->{
+            when (cont) {
+                1 -> {
                     preguntaViewmodel.getAllSonidos().observe(this@Preguntas1Fragmento, Observer { sounds ->
                         sounds?.let {
-                          tv_pregunta.text = it[cont-1].rutaImagen
+                            tv_pregunta.text = it[cont - 1].rutaImagen
                         }
                     })
                     Picasso.get()
@@ -57,16 +54,17 @@ class Preguntas1Fragmento : Fragment() {
                         listener?.onNextQuestion("next", 2)
                     }
                 }
-                2->{
+                2 -> {
                     Picasso.get()
                         .load("https://regmedia.co.uk/2018/10/01/ms-dos_logo.png")
                         .into(image1)
                     tv_pregunta.text = "Pregunta 2"
+
                     one.setOnClickListener {
                         listener?.onNextQuestion("next", 3)
                     }
                 }
-                3->{
+                3 -> {
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
                         .into(image1)
@@ -75,7 +73,7 @@ class Preguntas1Fragmento : Fragment() {
                         listener?.onNextQuestion("next", 4)
                     }
                 }
-                4->{
+                4 -> {
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
                         .into(image1)
@@ -84,7 +82,7 @@ class Preguntas1Fragmento : Fragment() {
                         listener?.onNextQuestion("next", 5)
                     }
                 }
-                5->{
+                5 -> {
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
                         .into(image1)
@@ -93,7 +91,7 @@ class Preguntas1Fragmento : Fragment() {
                         listener?.onNextQuestion("next", 6)
                     }
                 }
-                6->{
+                6 -> {
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
                         .into(image1)
@@ -102,7 +100,7 @@ class Preguntas1Fragmento : Fragment() {
                         listener?.onNextQuestion("next", 7)
                     }
                 }
-                7->{
+                7 -> {
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
                         .into(image1)
@@ -111,7 +109,7 @@ class Preguntas1Fragmento : Fragment() {
                         listener?.onNextQuestion("next", 8)
                     }
                 }
-                8->{
+                8 -> {
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
                         .into(image1)
@@ -120,7 +118,7 @@ class Preguntas1Fragmento : Fragment() {
                         listener?.onNextQuestion("next", 9)
                     }
                 }
-                9->{
+                9 -> {
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
                         .into(image1)
@@ -129,7 +127,7 @@ class Preguntas1Fragmento : Fragment() {
                         listener?.onNextQuestion("next", 10)
                     }
                 }
-                10->{
+                10 -> {
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
                         .into(image1)
@@ -139,7 +137,6 @@ class Preguntas1Fragmento : Fragment() {
                     }
                 }
             }
-
         }
         return view
     }
