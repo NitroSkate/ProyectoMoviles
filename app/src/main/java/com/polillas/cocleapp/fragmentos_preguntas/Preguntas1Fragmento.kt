@@ -27,6 +27,7 @@ class Preguntas1Fragmento : Fragment() {
     private var contPREGUNTA: Int = 1
     private var total : Int =  0
     lateinit var respuesta: Sonido
+     var puntaje: Int = 0
     private var actual: ArrayList<Sonido> = ArrayList()
     private var todos: ArrayList<Sonido> = ArrayList()
     private var pregunta: ArrayList<Sonido> = ArrayList()
@@ -140,7 +141,7 @@ class Preguntas1Fragmento : Fragment() {
                                                 mediaPlayer.prepare()
                                                 mediaPlayer.start()
                                         }
-                                        Log.d("PREGUNTAs",pregunta.size.toString())
+                                        Log.d("PREGUNTAs",pregunta.toString())
                                         Log.d("WHUT",cont.toString() + " " +todos.size)
                                         Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(0).rutaImagen ).into(one)
                                         Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(1).rutaImagen ).into(two)
@@ -149,42 +150,56 @@ class Preguntas1Fragmento : Fragment() {
                                         one.setOnClickListener {
                                             mediaPlayer.stop()
                                             mediaPlayer.release()
-                                            check(asc[0])
+
                                             if(cont >= todos.size){
-                                                listener?.onNextQuestion("finish", cont)
+                                                listener?.onNextQuestion("finish", cont,puntaje)
                                             }
                                             cont++
-                                            listener?.onNextQuestion("next", cont)
+                                            if(check(asc[0])){
+                                                puntaje++
+                                            }
+                                            listener?.onNextQuestion("next", cont,puntaje)
                                         }
                                         two.setOnClickListener {
                                             mediaPlayer.stop()
                                             mediaPlayer.release()
-                                            check(asc[1])
+
                                             if(cont >= todos.size){
-                                                listener?.onNextQuestion("finish", cont)
+                                                listener?.onNextQuestion("finish", cont,puntaje)
+                                            }
+                                            if(check(asc[1])){
+                                                puntaje++
                                             }
                                             cont++
-                                            listener?.onNextQuestion("next", cont)
+                                            listener?.onNextQuestion("next", cont,puntaje)
                                         }
                                         three.setOnClickListener {
                                             mediaPlayer.stop()
                                             mediaPlayer.release()
                                             check(asc[2])
                                             if(cont >= todos.size){
-                                                listener?.onNextQuestion("finish", cont)
+                                                listener?.onNextQuestion("finish", cont,puntaje)
+                                            }
+                                            if (check(asc[2])){
+                                                puntaje++
                                             }
                                             cont++
-                                            listener?.onNextQuestion("next", cont)
+                                            listener?.onNextQuestion("next", cont,puntaje)
                                         }
                                         four.setOnClickListener {
                                             mediaPlayer.stop()
                                             mediaPlayer.release()
-                                            check(asc[3])
+
                                             if(cont >= todos.size){
-                                                listener?.onNextQuestion("finish", cont)
+
+                                                listener?.onNextQuestion("finish", cont,puntaje)
+
+                                            }
+                                            if (check(asc[3])){
+                                                puntaje++
                                             }
                                             cont++
-                                            listener?.onNextQuestion("next", cont)
+                                            listener?.onNextQuestion("next", cont,puntaje)
                                         }
                                     }
 
@@ -220,11 +235,13 @@ class Preguntas1Fragmento : Fragment() {
         super.onDetach()
         listener = null
     }
-    fun check(int: Int){
+    fun check(int: Int):Boolean{
         if (pregunta.get(int) == respuesta){
+            return true
             Log.d("PREGUNTAs",pregunta.size.toString())
             Log.d("RESPUESTA","CORRECTA")
         }else{
+            return false
             Log.d("PREGUNTAs",pregunta.size.toString())
             Log.d("RESPUESTA","INCORRECTA")
         }
@@ -233,14 +250,19 @@ class Preguntas1Fragmento : Fragment() {
 
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onNextQuestion(string: String, id:Int)
+        fun onNextQuestion(
+            string: String,
+            id:Int,
+            puntaje: Int
+        )
     }
 
     companion object {
 
         @JvmStatic
-        fun newInstance(num : Int): Preguntas1Fragmento{
+        fun newInstance(num : Int,puntaje: Int): Preguntas1Fragmento{
             var frag = Preguntas1Fragmento()
+            frag.puntaje = puntaje
             frag.cont = num
             return frag
         }
