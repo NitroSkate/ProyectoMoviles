@@ -15,7 +15,13 @@ class ScoreActivity : AppCompatActivity() {
         setContentView(R.layout.activity_score)
         var d = intent.extras
         puntaje = d.getInt("AMD")
-        puntaje_tv.text = puntaje.toString()
+        if(puntaje != 100) {
+            puntaje_tv.text = puntaje.toString()
+        } else {
+            puntaje_textview.text = "Practica"
+            puntaje_tv.text = "Finalizada"
+            puntajeMax_tv.text = ""
+        }
         this.apply {
             lL_scoreaceptar.setOnClickListener {
                 val intent = Intent(this@ScoreActivity, com.polillas.cocleapp.MainActivity::class.java)

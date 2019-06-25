@@ -1,6 +1,7 @@
 package com.polillas.cocleapp.fragmentos_practica
 
 import android.content.Context
+import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
@@ -16,7 +17,9 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.snackbar.Snackbar.*
 import com.google.common.base.Strings
+import com.polillas.cocleapp.MainActivity
 //import com.example.cocleapp.R
 
 import com.polillas.cocleapp.R
@@ -26,6 +29,7 @@ import com.polillas.cocleapp.constants.AppConstants
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_practica1.*
 import kotlinx.android.synthetic.main.fragment_preguntas1_fragmento.view.*
+import kotlinx.android.synthetic.main.popup_practice.view.*
 
 
 class Practica1Fragment : Fragment()  {
@@ -153,63 +157,82 @@ class Practica1Fragment : Fragment()  {
                                         Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(2).rutaImagen ).into(three_p)
                                         Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(3).rutaImagen ).into(four_p)
                                         one_p.setOnClickListener {
-                                            mediaPlayer.stop()
-                                            mediaPlayer.release()
+                                            //mediaPlayer.stop()
+                                            //mediaPlayer.release()
+                                            if(mediaPlayer.isPlaying){
+                                                mediaPlayer.stop()
+                                            }
 
                                             if(cont >= todos.size){
+                                                mediaPlayer.release()
                                                 popup(this)
-
-                                                listener?.onNextQuestion("finish", cont)
+                                                //listener?.onNextQuestion("finish", cont)
                                             }
                                             if(check(asc[0])){
+                                                mediaPlayer.release()
                                                 cont++
                                                 listener?.onNextQuestion("next", cont)
                                             }else{
-                                                view?.let { it1 -> Snackbar.make(it1,"Intentalo Otra Vez",Snackbar.LENGTH_SHORT).show() }
+                                                view?.let { it1 -> make(it1,"Intentalo Otra Vez", LENGTH_SHORT).show() }
                                             }
 
                                         }
                                         two_p.setOnClickListener {
-                                            mediaPlayer.stop()
-                                            mediaPlayer.release()
+                                            //mediaPlayer.stop()
+                                            //mediaPlayer.release()
+                                            if(mediaPlayer.isPlaying){
+                                                mediaPlayer.stop()
+                                            }
 
                                             if(cont >= todos.size){
+                                                mediaPlayer.release()
                                                 popup(this)
-                                                listener?.onNextQuestion("finish", cont)
+                                                //listener?.onNextQuestion("finish", cont)
                                             }
                                             if(check(asc[1])){
+                                                mediaPlayer.release()
                                                 cont++
                                                 listener?.onNextQuestion("next", cont)
                                             }else{
-                                                view?.let { it1 -> Snackbar.make(it1,"Intentalo Otra Vez",Snackbar.LENGTH_SHORT).show() }
+                                                view?.let { it1 -> make(it1,"Intentalo Otra Vez", LENGTH_SHORT).show() }
                                             }}
                                         three_p.setOnClickListener {
-                                            mediaPlayer.stop()
-                                            mediaPlayer.release()
+                                            //mediaPlayer.stop()
+                                            //mediaPlayer.release()
+                                            if(mediaPlayer.isPlaying){
+                                                mediaPlayer.stop()
+                                            }
 
                                             if(cont >= todos.size){
+                                                mediaPlayer.release()
                                                 popup(this)
-                                                listener?.onNextQuestion("finish", cont)
+                                                //listener?.onNextQuestion("finish", cont)
                                             }
                                             if(check(asc[2])){
-                                            cont++
-                                            listener?.onNextQuestion("next", cont)
+                                                mediaPlayer.release()
+                                                cont++
+                                                listener?.onNextQuestion("next", cont)
                                         }else{
-                                                view?.let { it1 -> Snackbar.make(it1,"Intentalo Otra Vez",Snackbar.LENGTH_SHORT).show() }
+                                                view?.let { it1 -> make(it1,"Intentalo Otra Vez", LENGTH_SHORT).show() }
                                             }}
                                         four_p.setOnClickListener {
-                                            mediaPlayer.stop()
-                                            mediaPlayer.release()
+                                            //mediaPlayer.stop()
+                                            //mediaPlayer.release()
+                                            if(mediaPlayer.isPlaying){
+                                                mediaPlayer.stop()
+                                            }
 
                                             if(cont >= todos.size){
+                                                mediaPlayer.release()
                                                 popup(this)
-                                                listener?.onNextQuestion("finish", cont)
+                                                //listener?.onNextQuestion("finish", cont)
                                             }
                                             if(check(asc[3])){
+                                                mediaPlayer.release()
                                                 cont++
                                                 listener?.onNextQuestion("next", cont)
                                             }else{
-                                                view?.let { it1 -> Snackbar.make(it1,"Intentalo Otra Vez",Snackbar.LENGTH_SHORT).show() }
+                                                view?.let { it1 -> make(it1,"Intentalo Otra Vez", LENGTH_SHORT).show() }
                                             }}
                                     }
 
@@ -248,8 +271,20 @@ class Practica1Fragment : Fragment()  {
 
     fun popup(context:View){
         var popup = LayoutInflater.from(context.context).inflate(R.layout.popup_practice, null)
-        var popupview = PopupWindow(popup, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true)
+        var popupview = PopupWindow(popup, 500, 700, true)
         popupview.showAtLocation(context, Gravity.CENTER,0,0)
+        popup.apply {
+            si.setOnClickListener {
+                popupview.dismiss()
+                listener?.onNextQuestion("si", 0)
+
+            }
+            no.setOnClickListener {
+                popupview.dismiss()
+                listener?.onNextQuestion("no", 0)
+
+            }
+        }
     }
 
     fun check(int: Int):Boolean{
