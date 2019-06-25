@@ -15,6 +15,8 @@ import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.google.android.material.snackbar.Snackbar
+import com.google.common.base.Strings
 //import com.example.cocleapp.R
 
 import com.polillas.cocleapp.R
@@ -26,7 +28,7 @@ import kotlinx.android.synthetic.main.fragment_practica1.*
 import kotlinx.android.synthetic.main.fragment_preguntas1_fragmento.view.*
 
 
-class Practica1Fragment : Fragment() {
+class Practica1Fragment : Fragment()  {
     private var cont : Int = 0
     private var contPREGUNTA: Int = 1
     private var total : Int =  0
@@ -153,47 +155,62 @@ class Practica1Fragment : Fragment() {
                                         one_p.setOnClickListener {
                                             mediaPlayer.stop()
                                             mediaPlayer.release()
-                                            check(asc[0])
+
                                             if(cont >= todos.size){
                                                 popup(this)
+
                                                 listener?.onNextQuestion("finish", cont)
                                             }
-                                            cont++
-                                            listener?.onNextQuestion("next", cont)
+                                            if(check(asc[0])){
+                                                cont++
+                                                listener?.onNextQuestion("next", cont)
+                                            }else{
+                                                view?.let { it1 -> Snackbar.make(it1,"Intentalo Otra Vez",Snackbar.LENGTH_SHORT).show() }
+                                            }
+
                                         }
                                         two_p.setOnClickListener {
                                             mediaPlayer.stop()
                                             mediaPlayer.release()
-                                            check(asc[1])
+
                                             if(cont >= todos.size){
                                                 popup(this)
                                                 listener?.onNextQuestion("finish", cont)
                                             }
-                                            cont++
-                                            listener?.onNextQuestion("next", cont)
-                                        }
+                                            if(check(asc[1])){
+                                                cont++
+                                                listener?.onNextQuestion("next", cont)
+                                            }else{
+                                                view?.let { it1 -> Snackbar.make(it1,"Intentalo Otra Vez",Snackbar.LENGTH_SHORT).show() }
+                                            }}
                                         three_p.setOnClickListener {
                                             mediaPlayer.stop()
                                             mediaPlayer.release()
-                                            check(asc[2])
+
                                             if(cont >= todos.size){
                                                 popup(this)
                                                 listener?.onNextQuestion("finish", cont)
                                             }
+                                            if(check(asc[2])){
                                             cont++
                                             listener?.onNextQuestion("next", cont)
-                                        }
+                                        }else{
+                                                view?.let { it1 -> Snackbar.make(it1,"Intentalo Otra Vez",Snackbar.LENGTH_SHORT).show() }
+                                            }}
                                         four_p.setOnClickListener {
                                             mediaPlayer.stop()
                                             mediaPlayer.release()
-                                            check(asc[3])
+
                                             if(cont >= todos.size){
                                                 popup(this)
                                                 listener?.onNextQuestion("finish", cont)
                                             }
-                                            cont++
-                                            listener?.onNextQuestion("next", cont)
-                                        }
+                                            if(check(asc[3])){
+                                                cont++
+                                                listener?.onNextQuestion("next", cont)
+                                            }else{
+                                                view?.let { it1 -> Snackbar.make(it1,"Intentalo Otra Vez",Snackbar.LENGTH_SHORT).show() }
+                                            }}
                                     }
 
                                 }
@@ -235,11 +252,13 @@ class Practica1Fragment : Fragment() {
         popupview.showAtLocation(context, Gravity.CENTER,0,0)
     }
 
-    fun check(int: Int){
+    fun check(int: Int):Boolean{
         if (pregunta.get(int) == respuesta){
+            return true
             Log.d("PREGUNTAs",pregunta.size.toString())
             Log.d("RESPUESTA","CORRECTA")
         }else{
+            return false
             Log.d("PREGUNTAs",pregunta.size.toString())
             Log.d("RESPUESTA","INCORRECTA")
         }
