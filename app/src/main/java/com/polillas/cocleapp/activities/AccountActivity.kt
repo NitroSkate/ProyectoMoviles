@@ -47,9 +47,6 @@ class AccountActivity : AppCompatActivity(), AccountFragment.OnFragmentInteracti
     }
 
     override fun onRegister(email: String, password: String, nombre: String, apellido: String) {
-        val nameprofile = UserProfileChangeRequest.Builder()
-            .setDisplayName(nombre +" "+ apellido)
-            .build()
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -64,6 +61,9 @@ class AccountActivity : AppCompatActivity(), AccountFragment.OnFragmentInteracti
                         baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT
                     ).show()
+                    val nameprofile = UserProfileChangeRequest.Builder()
+                        .setDisplayName(nombre +" "+ apellido)
+                        .build()
                     val currentsesion = auth.currentUser
                     currentsesion?.updateProfile(nameprofile)
                         ?.addOnCompleteListener { task ->

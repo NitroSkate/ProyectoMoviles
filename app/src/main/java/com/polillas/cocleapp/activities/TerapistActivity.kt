@@ -50,7 +50,12 @@ class TerapistActivity : AppCompatActivity() {
         var popupview =
             PopupWindow(popup, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true)
 
-        terapista_log.text = "Bienvenido/a " + auth.currentUser?.displayName
+        if(auth.currentUser?.displayName == null){
+            terapista_log.text = "Bienvenido/a "+ auth.currentUser?.email
+        } else{
+            terapista_log.text = "Bienvenido/a " + auth.currentUser?.displayName
+        }
+
 
         retrievedocuments()
 
@@ -66,7 +71,7 @@ class TerapistActivity : AppCompatActivity() {
                         val id = UUID.randomUUID().toString()
                         val list = mutableListOf<Puntaje>()
                         list.add(Puntaje("0", "0"))
-                        val paciente = Pacientes(id,name_patient.text.toString(),lname_patient.text.toString(),birth_patient.text.toString(),lvl_patient.value.toString(),list)
+                        val paciente = Pacientes(id,name_patient.text.toString(),lname_patient.text.toString(),birth_patient.text.toString(),lvl_patient.text.toString(),list)
 
                         db.collection("Pacient " + auth.currentUser?.email).document(id)
                             .set(paciente)
