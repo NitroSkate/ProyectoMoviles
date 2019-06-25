@@ -12,8 +12,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 
 import com.polillas.cocleapp.R
+import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import kotlinx.android.synthetic.main.fragment_modo.view.*
 import java.io.IOException
 
@@ -35,6 +38,9 @@ class ModoFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var listener: OnFragmentInteractionListener? = null
 
+    private lateinit var preguntaViewmodel: PreguntaViewmodel
+    private var verifyQ = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -44,9 +50,15 @@ class ModoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
+        preguntaViewmodel.getAllPreguntas().observe(this, Observer { questions ->
+            questions?.let {
+                verifyQ = it.size
+            }
+        })
         val view =  inflater.inflate(R.layout.fragment_modo, container, false)
         view.lL_Desafio.setOnClickListener{
-            listener?.onOpcion()
+            listener?.onOpcion(verifyQ)
         }
 
         //var mediaplayer : MediaPlayer = MediaPlayer.create(this.context, R.raw.pwtb)
@@ -100,7 +112,7 @@ class ModoFragment : Fragment() {
      */
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onOpcion()
+        fun onOpcion(verifyQ : Int)
     }
 
     companion object {
