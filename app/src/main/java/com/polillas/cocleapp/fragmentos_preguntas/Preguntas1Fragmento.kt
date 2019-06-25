@@ -40,7 +40,7 @@ class Preguntas1Fragmento : Fragment() {
                 1 -> {
                     preguntaViewmodel.getAllSonidos().observe(this@Preguntas1Fragmento, Observer { sounds ->
                         sounds?.let {
-                            tv_pregunta.text = it[cont - 1].rutaImagen
+                            //tv_pregunta.text = it[cont - 1].rutaImagen
                         }
                     })
                     Picasso.get()
@@ -58,7 +58,7 @@ class Preguntas1Fragmento : Fragment() {
                     Picasso.get()
                         .load("https://regmedia.co.uk/2018/10/01/ms-dos_logo.png")
                         .into(bt_play)
-                    tv_pregunta.text = "Pregunta 2"
+                    //tv_pregunta.text = "Pregunta 2"
 
                     one.setOnClickListener {
                         listener?.onNextQuestion("next", 3)
@@ -68,7 +68,7 @@ class Preguntas1Fragmento : Fragment() {
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
                         .into(bt_play)
-                    tv_pregunta.text = "Pregunta 3"
+                    //tv_pregunta.text = "Pregunta 3"
                     one.setOnClickListener {
                         listener?.onNextQuestion("next", 4)
                     }
@@ -77,7 +77,7 @@ class Preguntas1Fragmento : Fragment() {
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
                         .into(bt_play)
-                    tv_pregunta.text = "Pregunta 4"
+                    //tv_pregunta.text = "Pregunta 4"
                     one.setOnClickListener {
                         listener?.onNextQuestion("next", 5)
                     }
@@ -86,7 +86,7 @@ class Preguntas1Fragmento : Fragment() {
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
                         .into(bt_play)
-                    tv_pregunta.text = "Pregunta 5"
+                    //tv_pregunta.text = "Pregunta 5"
                     one.setOnClickListener {
                         listener?.onNextQuestion("next", 6)
                     }
@@ -95,7 +95,7 @@ class Preguntas1Fragmento : Fragment() {
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
                         .into(bt_play)
-                    tv_pregunta.text = "Pregunta 6"
+                    //tv_pregunta.text = "Pregunta 6"
                     one.setOnClickListener {
                         listener?.onNextQuestion("next", 7)
                     }
@@ -104,7 +104,7 @@ class Preguntas1Fragmento : Fragment() {
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
                         .into(bt_play)
-                    tv_pregunta.text = "Pregunta 7"
+                    //tv_pregunta.text = "Pregunta 7"
                     one.setOnClickListener {
                         listener?.onNextQuestion("next", 8)
                     }
@@ -113,7 +113,7 @@ class Preguntas1Fragmento : Fragment() {
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
                         .into(bt_play)
-                    tv_pregunta.text = "Pregunta 8"
+                    //tv_pregunta.text = "Pregunta 8"
                     one.setOnClickListener {
                         listener?.onNextQuestion("next", 9)
                     }
@@ -122,7 +122,7 @@ class Preguntas1Fragmento : Fragment() {
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
                         .into(bt_play)
-                    tv_pregunta.text = "Pregunta 9"
+                    //tv_pregunta.text = "Pregunta 9"
                     one.setOnClickListener {
                         listener?.onNextQuestion("next", 10)
                     }
@@ -131,7 +131,7 @@ class Preguntas1Fragmento : Fragment() {
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
                         .into(bt_play)
-                    tv_pregunta.text = "Pregunta 10"
+                    //tv_pregunta.text = "Pregunta 10"
                     one.setOnClickListener {
                         listener?.onNextQuestion("finish", 0)
                     }
