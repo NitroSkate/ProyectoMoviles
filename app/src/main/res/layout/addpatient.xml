@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1B3944">
+    android:background="#1C313A">
 
     <TextView
         android:layout_width="wrap_content"
@@ -88,17 +88,19 @@
 
     <NumberPicker
         android:id="@+id/lvl_patient"
-        android:layout_width="78dp"
-        android:layout_height="81dp"
+        android:layout_width="79dp"
+        android:layout_height="33dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="8dp"
-        android:background="#FF1B3944"
+        android:background="#1C313A"
         android:max="20"
         android:min="1"
-        android:solidColor="#014E42"
+        android:solidColor="#16272E"
+        android:textAlignment="gravity"
+        android:textDirection="inherit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintHorizontal_bias="0.107"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/lname_patient">
 
