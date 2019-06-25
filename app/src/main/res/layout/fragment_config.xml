@@ -56,35 +56,7 @@
 
     </LinearLayout>
 
-    <LinearLayout
-            android:id="@+id/lL_apariencia"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="#880e4f"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.683">
 
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/tema"
-                android:layout_margin="10sp"/>
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20sp"
-                android:text="Apariencia"
-                android:textColor="#FFFFFF"
-                android:textSize="40sp"/>
-
-    </LinearLayout>
 
     <LinearLayout
             android:id="@+id/lL_Cuenta"
@@ -118,34 +90,5 @@
 
     </LinearLayout>
 
-    <LinearLayout
-            android:id="@+id/lL_Sonido"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="#880e4f"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.44">
-
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/sonido"
-                android:layout_margin="10sp"/>
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20sp"
-                android:text="Sonido"
-                android:textColor="#FFFFFF"
-                android:textSize="40sp"/>
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

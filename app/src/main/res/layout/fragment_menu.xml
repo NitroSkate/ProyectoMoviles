@@ -25,11 +25,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.011"
-        app:srcCompat="@drawable/icon" />
+        app:srcCompat="@drawable/conf" />
 
     <LinearLayout
             android:id="@+id/lL_Paciente"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:background="#005b4f"
@@ -40,7 +40,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.346" app:layout_constraintHorizontal_bias="0.0">
+            app:layout_constraintVertical_bias="0.499" app:layout_constraintHorizontal_bias="0.6">
 
         <TextView
                 android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
                 android:layout_gravity="center"
                 android:layout_marginRight="10sp"
                 android:gravity="center"
-                android:text="Paciente"
+                android:text="Iniciar"
                 android:textColor="#FFFFFF"
                 android:textSize="40sp"/>
 
@@ -57,40 +57,38 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10sp"
                 android:layout_marginRight="20sp"
-                android:src="@drawable/paciente"/>
+                android:src="@drawable/iniciar"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/lL_Terapista"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="#003d33"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.698">
+            android:id="@+id/lL_Terapista"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" app:layout_constraintHorizontal_bias="0.4">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="10sp"
-            android:src="@drawable/terapista" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10sp"
+                android:src="@drawable/login"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10sp"
-            android:gravity="center"
-            android:text="Terapista"
-            android:textColor="#FFFFFF"
-            android:textSize="40sp" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Iniciar como terapista."
+                android:textColor="#000000"
+                android:textSize="20sp"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

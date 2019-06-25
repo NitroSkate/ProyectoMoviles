@@ -48,7 +48,7 @@ class Preguntas1Fragmento : Fragment() {
                     })
                     Picasso.get()
                         .load(AppConstants.BASE_URL)
-                        .into(image1)
+                        .into(bt_play)
                     //tv_pregunta.text = "Pregunta 1"
                     bt_play.setOnClickListener {
 
@@ -60,7 +60,7 @@ class Preguntas1Fragmento : Fragment() {
                 2->{
                     Picasso.get()
                         .load("https://regmedia.co.uk/2018/10/01/ms-dos_logo.png")
-                        .into(image1)
+                        .into(bt_play)
                     tv_pregunta.text = "Pregunta 2"
                     one.setOnClickListener {
                         listener?.onNextQuestion("next", 3)
@@ -69,7 +69,7 @@ class Preguntas1Fragmento : Fragment() {
                 3->{
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
-                        .into(image1)
+                        .into(bt_play)
                     tv_pregunta.text = "Pregunta 3"
                     one.setOnClickListener {
                         listener?.onNextQuestion("next", 4)
@@ -78,7 +78,7 @@ class Preguntas1Fragmento : Fragment() {
                 4->{
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
-                        .into(image1)
+                        .into(bt_play)
                     tv_pregunta.text = "Pregunta 4"
                     one.setOnClickListener {
                         listener?.onNextQuestion("next", 5)
@@ -87,7 +87,7 @@ class Preguntas1Fragmento : Fragment() {
                 5->{
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
-                        .into(image1)
+                        .into(bt_play)
                     tv_pregunta.text = "Pregunta 5"
                     one.setOnClickListener {
                         listener?.onNextQuestion("next", 6)
@@ -96,7 +96,7 @@ class Preguntas1Fragmento : Fragment() {
                 6->{
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
-                        .into(image1)
+                        .into(bt_play)
                     tv_pregunta.text = "Pregunta 6"
                     one.setOnClickListener {
                         listener?.onNextQuestion("next", 7)
@@ -105,7 +105,7 @@ class Preguntas1Fragmento : Fragment() {
                 7->{
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
-                        .into(image1)
+                        .into(bt_play)
                     tv_pregunta.text = "Pregunta 7"
                     one.setOnClickListener {
                         listener?.onNextQuestion("next", 8)
@@ -114,7 +114,7 @@ class Preguntas1Fragmento : Fragment() {
                 8->{
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
-                        .into(image1)
+                        .into(bt_play)
                     tv_pregunta.text = "Pregunta 8"
                     one.setOnClickListener {
                         listener?.onNextQuestion("next", 9)
@@ -123,7 +123,7 @@ class Preguntas1Fragmento : Fragment() {
                 9->{
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
-                        .into(image1)
+                        .into(bt_play)
                     tv_pregunta.text = "Pregunta 9"
                     one.setOnClickListener {
                         listener?.onNextQuestion("next", 10)
@@ -132,7 +132,7 @@ class Preguntas1Fragmento : Fragment() {
                 10->{
                     Picasso.get()
                         .load("https://es.wikipedia.org/wiki/Calocitta_colliei#/media/Archivo:Calocitta_collieiPCCA20051227-1964B.jpg")
-                        .into(image1)
+                        .into(bt_play)
                     tv_pregunta.text = "Pregunta 10"
                     one.setOnClickListener {
                         listener?.onNextQuestion("finish", 0)

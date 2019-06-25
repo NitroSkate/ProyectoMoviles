@@ -23,27 +23,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.011"
-        app:srcCompat="@drawable/icon" />
+        app:srcCompat="@drawable/conf" />
 
     <LinearLayout
         android:id="@+id/lL_Practica"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:background="#1b5e20"
+        android:background="#004d40"
         android:gravity="center"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.423">
+        app:layout_constraintVertical_bias="0.542">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginRight="20sp"
+            android:layout_margin="10sp"
             android:text="Practica"
             android:textColor="#FFFFFF"
             android:textSize="40sp" />
@@ -51,36 +51,37 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/practica"
             android:layout_margin="10sp"
-            android:layout_marginRight="20sp"/>
+            android:layout_marginRight="20sp"
+            android:src="@drawable/practica" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/lL_Desafio"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:background="#e6e600"
+        android:background="#006064"
         android:gravity="center"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.548">
+        app:layout_constraintVertical_bias="0.545">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/desafio"
-            android:layout_margin="10sp"/>
+            android:layout_margin="10sp"
+            android:src="@drawable/desafio" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20sp"
+            android:layout_margin="10sp"
             android:text="Desafio"
             android:textColor="#FFFFFF"
             android:textSize="40sp" />
