@@ -42,6 +42,7 @@ class Preguntas1Fragmento : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
         /*preguntaViewmodel.getAllSonidos().observe(this, Observer { sounds ->
             sounds?.let {
@@ -49,6 +50,7 @@ class Preguntas1Fragmento : Fragment() {
             }
         })*/
         val view =  inflater.inflate(R.layout.fragment_preguntas1_fragmento, container, false).apply {
+            var mediaPlayer: MediaPlayer = MediaPlayer()
             when(cont){
                 cont ->{
                     Log.d("TODOS#",todos.size.toString())
@@ -131,19 +133,22 @@ class Preguntas1Fragmento : Fragment() {
                                         //tv_pregunta.text = "Pregunta 1"
 
                                         bt_play.setOnClickListener {
-                                            val mediaPlayer: MediaPlayer? = MediaPlayer().apply {
-                                                setDataSource("https://projecto-moviles.herokuapp.com/"+ respuesta.rutaSonido)
-                                                prepare()
-                                                start()
+                                            if(mediaPlayer.isPlaying){
+                                                mediaPlayer.reset()
                                             }
+                                                mediaPlayer.setDataSource("https://projecto-moviles.herokuapp.com/api/preguntadown/"+  respuesta.rutaSonido)
+                                                mediaPlayer.prepare()
+                                                mediaPlayer.start()
                                         }
                                         Log.d("PREGUNTAs",pregunta.size.toString())
                                         Log.d("WHUT",cont.toString() + " " +todos.size)
-                                        Picasso.get().load(AppConstants.BASE_URL + pregunta.get(0).rutaImagen ).into(one)
-                                        Picasso.get().load(AppConstants.BASE_URL + pregunta.get(1).rutaImagen ).into(two)
-                                        Picasso.get().load(AppConstants.BASE_URL + pregunta.get(2).rutaImagen ).into(three)
-                                        Picasso.get().load(AppConstants.BASE_URL + pregunta.get(3).rutaImagen ).into(four)
+                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(0).rutaImagen ).into(one)
+                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(1).rutaImagen ).into(two)
+                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(2).rutaImagen ).into(three)
+                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(3).rutaImagen ).into(four)
                                         one.setOnClickListener {
+                                            mediaPlayer.stop()
+                                            mediaPlayer.release()
                                             check(asc[0])
                                             if(cont >= todos.size){
                                                 listener?.onNextQuestion("finish", cont)
@@ -152,6 +157,8 @@ class Preguntas1Fragmento : Fragment() {
                                             listener?.onNextQuestion("next", cont)
                                         }
                                         two.setOnClickListener {
+                                            mediaPlayer.stop()
+                                            mediaPlayer.release()
                                             check(asc[1])
                                             if(cont >= todos.size){
                                                 listener?.onNextQuestion("finish", cont)
@@ -160,6 +167,8 @@ class Preguntas1Fragmento : Fragment() {
                                             listener?.onNextQuestion("next", cont)
                                         }
                                         three.setOnClickListener {
+                                            mediaPlayer.stop()
+                                            mediaPlayer.release()
                                             check(asc[2])
                                             if(cont >= todos.size){
                                                 listener?.onNextQuestion("finish", cont)
@@ -168,6 +177,8 @@ class Preguntas1Fragmento : Fragment() {
                                             listener?.onNextQuestion("next", cont)
                                         }
                                         four.setOnClickListener {
+                                            mediaPlayer.stop()
+                                            mediaPlayer.release()
                                             check(asc[3])
                                             if(cont >= todos.size){
                                                 listener?.onNextQuestion("finish", cont)
