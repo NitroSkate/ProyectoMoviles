@@ -65,13 +65,14 @@ class TerapistActivity : AppCompatActivity() {
             popup.apply {
                 add_patient.setOnClickListener {
                     popupview.dismiss()
-                    if(TextUtils.isEmpty(name_patient.text) || TextUtils.isEmpty(lname_patient.text) || TextUtils.isEmpty(birth_patient.text)){
+                    if(TextUtils.isEmpty(name_patient.text) || TextUtils.isEmpty(lname_patient.text)){
                         Toast.makeText(it.context, "No se ha podido iniciar sesion", Toast.LENGTH_SHORT).show()
                     }else {
                         val id = UUID.randomUUID().toString()
                         val list = mutableListOf<Puntaje>()
                         list.add(Puntaje("0", "0"))
-                        val paciente = Pacientes(id,name_patient.text.toString(),lname_patient.text.toString(),birth_patient.text.toString(),lvl_patient.text.toString(),list)
+                        val paciente = Pacientes(id,name_patient.text.toString(),lname_patient.text.toString(),birth_patient.dayOfMonth.toString()
+                            + "/" + birth_patient.month.toString() + "/" + birth_patient.year.toString(),lvl_patient.value.toString(),list)
 
                         db.collection("Pacient " + auth.currentUser?.email).document(id)
                             .set(paciente)
@@ -120,7 +121,7 @@ class TerapistActivity : AppCompatActivity() {
         listPatientAdapter = ListPatientAdapter(lista, {item: Pacientes -> onClickPatient(item)})
 
         recycler.adapter = listPatientAdapter
-
+        listPatientAdapter.notifyDataSetChanged()
         recycler.apply{
             setHasFixedSize(true)
             layoutManager = linearlayoutmanager
