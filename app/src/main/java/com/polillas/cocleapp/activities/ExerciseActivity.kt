@@ -26,7 +26,9 @@ class ExerciseActivity : AppCompatActivity(), Preguntas1Fragmento.OnFragmentInte
         //preguntaViewmodel.retrievePreguntas()
 
         if (savedInstanceState == null) {
-            initfragment(1,0,true,2)
+            var intent = intent.extras
+            var lvl = intent.getInt("dificultad")
+            initfragment(1,0,true,lvl)
         }
     }
 

@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.google.firebase.auth.FirebaseAuth
 import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import com.polillas.cocleapp.activities.AccountActivity
+import com.polillas.cocleapp.activities.DificultyActivity
 import com.polillas.cocleapp.activities.ExerciseActivity
 import com.polillas.cocleapp.activities.PracticeActivity
 import com.polillas.cocleapp.fragmentos.AccountFragment
@@ -62,7 +63,7 @@ class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionList
 
     override fun onOpcion(verify: Int, string: String) {
         if(verify > 0 && string == "exercise") {
-            var intent = Intent(this@MainActivity, ExerciseActivity::class.java)
+            var intent = Intent(this@MainActivity, DificultyActivity::class.java)
             startActivity(intent)
         }
         else if (verify > 0 && string == "practice") {
