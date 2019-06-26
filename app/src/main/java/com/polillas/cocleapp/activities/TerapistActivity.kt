@@ -77,7 +77,7 @@ class TerapistActivity : AppCompatActivity() {
                         val list = mutableListOf<Puntaje>()
                         list.add(Puntaje("0", "0"))
                         val paciente = Pacientes(id,name_patient.text.toString(),lname_patient.text.toString(),birth_patient.dayOfMonth.toString()
-                            + "/" + birth_patient.month.toString() + "/" + birth_patient.year.toString(),lvl_patient.value.toString(),list)
+                            + "/" + birth_patient.month.toString() + "/" + birth_patient.year.toString(),nivel_patient.text.toString(),list)
 
                         db.collection("Pacient " + auth.currentUser?.email).document(id)
                             .set(paciente)

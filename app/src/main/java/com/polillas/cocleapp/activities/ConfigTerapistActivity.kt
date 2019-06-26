@@ -1,5 +1,6 @@
 package com.polillas.cocleapp.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -57,6 +58,10 @@ class ConfigTerapistActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+
+        return_act.setOnClickListener {
+            startActivity(Intent(this@ConfigTerapistActivity, AccountActivity::class.java))
         }
 
     }
