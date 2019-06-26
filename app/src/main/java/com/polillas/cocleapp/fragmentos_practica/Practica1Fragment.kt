@@ -177,87 +177,19 @@ class Practica1Fragment : Fragment()  {
                                         Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[2]).rutaImagen ).into(three_p)
                                         Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[3]).rutaImagen ).into(four_p)
                                         one_p.setOnClickListener {
-                                            //mediaPlayer.stop()
-                                            //mediaPlayer.release()
-                                            if(mediaPlayer.isPlaying){
-                                                mediaPlayer.stop()
-                                            }
 
-                                            if(cont >= gameViewModel.getTodos().size){
-                                                mediaPlayer.release()
-                                                popup(this)
-                                                //listener?.onNextQuestion("finish", cont)
-                                            }
-                                            if(check(gameViewModel.getasc()[0])){
-                                                mediaPlayer.release()
-                                                cont++
-                                                gameViewModel.seton(false)
-                                                listener?.onNextQuestion("next", cont)
-                                            }else{
-                                                view?.let { it1 -> make(it1,"Intentalo Otra Vez", LENGTH_SHORT).show() }
-                                            }
+                                            click(mediaPlayer,this,0)
 
                                         }
                                         two_p.setOnClickListener {
-                                            //mediaPlayer.stop()
-                                            //mediaPlayer.release()
-                                            if(mediaPlayer.isPlaying){
-                                                mediaPlayer.stop()
-                                            }
-
-                                            if(cont >= gameViewModel.getTodos().size){
-                                                mediaPlayer.release()
-                                                popup(this)
-                                                //listener?.onNextQuestion("finish", cont)
-                                            }
-                                            if(check(gameViewModel.getasc()[1])){
-                                                mediaPlayer.release()
-                                                cont++
-                                                gameViewModel.seton(false)
-                                                listener?.onNextQuestion("next", cont)
-                                            }else{
-                                                view?.let { it1 -> make(it1,"Intentalo Otra Vez", LENGTH_SHORT).show() }
-                                            }}
+                                            click(mediaPlayer,this,1)
+                                        }
                                         three_p.setOnClickListener {
-                                            //mediaPlayer.stop()
-                                            //mediaPlayer.release()
-                                            if(mediaPlayer.isPlaying){
-                                                mediaPlayer.stop()
-                                            }
-
-                                            if(cont >= gameViewModel.getTodos().size){
-                                                mediaPlayer.release()
-                                                popup(this)
-                                                //listener?.onNextQuestion("finish", cont)
-                                            }
-                                            if(check(gameViewModel.getasc()[2])){
-                                                mediaPlayer.release()
-                                                cont++
-                                                gameViewModel.seton(false)
-                                                listener?.onNextQuestion("next", cont)
-                                        }else{
-                                                view?.let { it1 -> make(it1,"Intentalo Otra Vez", LENGTH_SHORT).show() }
-                                            }}
+                                            click(mediaPlayer,this,2)
+                                        }
                                         four_p.setOnClickListener {
-                                            //mediaPlayer.stop()
-                                            //mediaPlayer.release()
-                                            if(mediaPlayer.isPlaying){
-                                                mediaPlayer.stop()
-                                            }
-
-                                            if(cont >= gameViewModel.getTodos().size){
-                                                mediaPlayer.release()
-                                                popup(this)
-                                                //listener?.onNextQuestion("finish", cont)
-                                            }
-                                            if(check(gameViewModel.getasc()[3])){
-                                                mediaPlayer.release()
-                                                cont++
-                                                gameViewModel.seton(false)
-                                                listener?.onNextQuestion("next", cont)
-                                            }else{
-                                                view?.let { it1 -> make(it1,"Intentalo Otra Vez", LENGTH_SHORT).show() }
-                                            }}
+                                            click(mediaPlayer,this,3)
+                                        }
                                     }
 
                                 }
@@ -328,6 +260,27 @@ class Practica1Fragment : Fragment()  {
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         fun onNextQuestion(string: String, id:Int)
+    }
+    fun click(mediaPlayer: MediaPlayer,view: View,pos : Int){
+        //mediaPlayer.stop()
+        //mediaPlayer.release()
+        if(mediaPlayer.isPlaying){
+            mediaPlayer.stop()
+        }
+
+        if(cont >= gameViewModel.getTodos().size){
+            mediaPlayer.release()
+            popup(view)
+            //listener?.onNextQuestion("finish", cont)
+        }
+        if(check(gameViewModel.getasc()[pos])){
+            mediaPlayer.release()
+            cont++
+            gameViewModel.seton(false)
+            listener?.onNextQuestion("next", cont)
+        }else{
+            view?.let { it1 -> make(it1,"Intentalo Otra Vez", LENGTH_SHORT).show() }
+        }
     }
 
     companion object {
