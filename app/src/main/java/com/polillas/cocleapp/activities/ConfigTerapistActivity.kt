@@ -31,24 +31,29 @@ class ConfigTerapistActivity : AppCompatActivity() {
             popupview.showAtLocation(it, Gravity.CENTER,0,0)
             popup.apply {
                 lL_new_edit.setOnClickListener {
-                    val profileUpdates = UserProfileChangeRequest.Builder()
-                        .setDisplayName(nombre_et_edit.text.toString()+ " " + apellido_et_edit.text.toString())
-                        .build()
+                    if(et_password_edit.text.toString() == conf_password_edit.text.toString() || !TextUtils.isEmpty(nombre_et_edit.text)
+                        || !TextUtils.isEmpty(apellido_et_edit.text) || !TextUtils.isEmpty(et_password_edit.text) || !TextUtils.isEmpty(conf_password_edit.text)){
 
-                    user?.updateProfile(profileUpdates)
-                        ?.addOnCompleteListener { task ->
-                            if(task.isSuccessful) {
-                                Log.d("Perfil", "Nombre actualizado")
+                        val profileUpdates = UserProfileChangeRequest.Builder()
+                            .setDisplayName(nombre_et_edit.text.toString()+ " " + apellido_et_edit.text.toString())
+                            .build()
+
+
+                        user?.updateProfile(profileUpdates)
+                            ?.addOnCompleteListener { task ->
+                                if(task.isSuccessful) {
+                                    Log.d("Perfil", "Nombre actualizado")
+                                }
                             }
-                        }
 
-                    if(et_password_edit.text.toString() == conf_password_edit.text.toString()){
                         user?.updatePassword(et_password_edit.text.toString())
                             ?.addOnCompleteListener { task ->
                                 if(task.isSuccessful) {
                                     Log.d("Perfil", "Contraseña actualizado")
                                 }
                             }
+
+                        popupview.dismiss()
                     }
                 }
             }
