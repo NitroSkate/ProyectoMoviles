@@ -94,7 +94,26 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.793"></DatePicker>
 
-    <NumberPicker
+    <EditText android:id="@+id/nivel_patient"
+             android:layout_width="79dp"
+             android:layout_height="33dp"
+             android:layout_marginStart="8dp"
+             android:layout_marginTop="8dp"
+             android:layout_marginEnd="8dp"
+             android:layout_marginBottom="8dp"
+             android:solidColor="#16272E"
+             android:textAlignment="gravity"
+             android:textDirection="inherit"
+              android:hint="1-10"
+              android:inputType="numberDecimal"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="0.86"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent"
+             app:layout_constraintVertical_bias="0.293"></EditText>
+
+   <!-- <NumberPicker
         android:id="@+id/lvl_patient"
         android:layout_width="79dp"
         android:layout_height="33dp"
@@ -115,7 +134,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.293">
 
-    </NumberPicker>
+    </NumberPicker>-->
 
     <Button
         android:id="@+id/add_patient"

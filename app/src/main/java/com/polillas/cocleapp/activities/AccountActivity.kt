@@ -94,7 +94,7 @@ class AccountActivity : AppCompatActivity(), AccountFragment.OnFragmentInteracti
 
     private fun updateUI(user: FirebaseUser?){
         if(user != null){
-            Toast.makeText(this, "Logeado", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Logeado", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this@AccountActivity, TerapistActivity::class.java))
         }
     }

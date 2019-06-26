@@ -54,6 +54,11 @@ class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionList
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        initfragment("menu")
+    }
+
 
     override fun onOpcion(verify: Int, string: String) {
         if(verify > 0 && string == "exercise") {
