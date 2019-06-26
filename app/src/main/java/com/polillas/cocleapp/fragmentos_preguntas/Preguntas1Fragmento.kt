@@ -143,10 +143,10 @@ class Preguntas1Fragmento : Fragment() {
                                         }
                                         Log.d("PREGUNTAs",pregunta.toString())
                                         Log.d("WHUT",cont.toString() + " " +todos.size)
-                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(0).rutaImagen ).into(one)
-                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(1).rutaImagen ).into(two)
-                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(2).rutaImagen ).into(three)
-                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(3).rutaImagen ).into(four)
+                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(asc[0]).rutaImagen ).into(one)
+                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(asc[1]).rutaImagen ).into(two)
+                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(asc[2]).rutaImagen ).into(three)
+                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(asc[3]).rutaImagen ).into(four)
                                         one.setOnClickListener {
                                             mediaPlayer.stop()
                                             mediaPlayer.release()
