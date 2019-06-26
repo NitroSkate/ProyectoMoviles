@@ -69,6 +69,7 @@ class Practica1Fragment : Fragment()  {
                     Log.d("GH",gameViewModel.getPregunta().toString())
                     Log.d("GH",gameViewModel.geton().toString())
                     Log.d("TODOS#",todos.size.toString())
+                    Log.d("ONNNNNN",gameViewModel.geton().toString())
                     preguntaViewmodel.getAllSonidos().observe(this@Practica1Fragment, Observer { sounds ->
                         sounds?.let {
                             total = sounds.size

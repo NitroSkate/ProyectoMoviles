@@ -24,26 +24,29 @@ class ExerciseActivity : AppCompatActivity(), Preguntas1Fragmento.OnFragmentInte
         setContentView(R.layout.activity_exercise)
         preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
         //preguntaViewmodel.retrievePreguntas()
-        initfragment(1,0)
+
+        if (savedInstanceState == null) {
+            initfragment(1,0,true)
+        }
     }
 
-    fun initfragment(id: Int,puntaje: Int){
+    fun initfragment(id: Int,puntaje: Int,start: Boolean){
         /*when(id){
             1 -> {
                 var frag = Preguntas2Fragmento.newInstance()
                 changefragment(R.id.ex_content, frag)
             }*/
 
-        var frag = Preguntas1Fragmento.newInstance(id,puntaje)
+        var frag = Preguntas1Fragmento.newInstance(id,puntaje,start)
         changefragment(R.id.ex_content, frag)
     }
 
 
-    override fun onNextQuestion(string: String, id: Int,puntaje: Int) {
+    override fun onNextQuestion(string: String, id: Int,puntaje: Int,start: Boolean) {
         Toast.makeText(this,puntaje.toString(),Toast.LENGTH_SHORT).show()
         if(string == "next") {
             //Toast.makeText(this, id.toString(), Toast.LENGTH_SHORT).show()
-            initfragment(id,puntaje)
+            initfragment(id,puntaje,start)
         }
         else{
             val intent = Intent(this@ExerciseActivity, ScoreActivity::class.java)

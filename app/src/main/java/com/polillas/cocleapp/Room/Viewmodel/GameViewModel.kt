@@ -20,7 +20,21 @@ class GameViewModel(application: Application): AndroidViewModel(application){
     private var todos: ArrayList<Sonido> = ArrayList()
     private var pregunta: ArrayList<Sonido> = ArrayList()
     private var on: Boolean = false
-    lateinit var asc: Array<Int>
+    private lateinit var asc: Array<Int>
+     private var cont : Int = 1
+    private  var puntaje: Int = 0
+
+
+    fun setCONT(c:Int ) {
+        cont = c
+    }
+    fun getCont() = cont
+    fun getPunta() = puntaje
+    fun setPunta(c:Int ) {
+        puntaje = c
+    }
+
+
 
     fun seton(respuestaSonido: Boolean) {
         on=respuestaSonido
