@@ -8,6 +8,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.PopupWindow
@@ -22,6 +23,7 @@ import com.polillas.cocleapp.Room.Entities.Puntaje
 import com.polillas.cocleapp.recycler.ListPatientAdapter
 import kotlinx.android.synthetic.main.activity_terapist.*
 import kotlinx.android.synthetic.main.addpatient.view.*
+import kotlinx.android.synthetic.main.fragment_new_account.view.*
 import kotlinx.android.synthetic.main.login.view.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -118,7 +120,7 @@ class TerapistActivity : AppCompatActivity() {
 
     fun initrecycler(lista : List<Pacientes>){
         val linearlayoutmanager = LinearLayoutManager(this)
-        listPatientAdapter = ListPatientAdapter(lista, {item: Pacientes -> onClickPatient(item)})
+        listPatientAdapter = ListPatientAdapter(lista, {item: Pacientes -> onClickPatient(item)}, auth, db)
 
         recycler.adapter = listPatientAdapter
         listPatientAdapter.notifyDataSetChanged()
@@ -130,5 +132,10 @@ class TerapistActivity : AppCompatActivity() {
 
     private fun onClickPatient(item: Pacientes){
         Log.d("objeto", item.nombre)
+        /*var popup = inflater.inflate(R.layout.fragment_new_account, null)
+        var popupview = PopupWindow(popup, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true)
+
+        popupview.showAtLocation(, Gravity.CENTER,0,0)
+        popup.apply {*/
     }
 }
