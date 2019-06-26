@@ -8,16 +8,24 @@ import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.TextUtils
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.PopupWindow
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 
 import com.polillas.cocleapp.R
 import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import kotlinx.android.synthetic.main.fragment_modo.view.*
+import kotlinx.android.synthetic.main.fragment_new_account.view.*
+import kotlinx.android.synthetic.main.multiple_info_windows.*
+import kotlinx.android.synthetic.main.multiple_info_windows.view.*
 import java.io.IOException
 
 // TODO: Rename parameter arguments, choose names that match
@@ -57,6 +65,19 @@ class ModoFragment : Fragment() {
             }
         })
         val view =  inflater.inflate(R.layout.fragment_modo, container, false)
+        view.iV_help_modo.setOnClickListener {
+            var popup = inflater.inflate(R.layout.multiple_info_windows, null)
+            var popupview = PopupWindow(popup, 500, 700, true)
+
+            popupview.showAtLocation(it, Gravity.CENTER,0,0)
+            popup.apply {
+                Text_info.text = "Seleccionar el modo desafio mostrara 3 dificultades para poder realizar el cuestionario. Seleccionar modo practica para realizar ejercicios de audición"
+                this.setOnClickListener {
+                    popupview.dismiss()
+                }
+            }
+        }
+
         view.lL_Desafio.setOnClickListener{
             listener?.onOpcion(verifyQ, "exercise")
         }

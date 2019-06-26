@@ -3,13 +3,21 @@ package com.polillas.cocleapp.fragmentos
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.text.TextUtils
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.PopupWindow
+import android.widget.Toast
 
 import com.polillas.cocleapp.R
 import kotlinx.android.synthetic.main.fragment_menu.view.*
+import kotlinx.android.synthetic.main.fragment_new_account.view.*
+import kotlinx.android.synthetic.main.multiple_info_windows.*
+import kotlinx.android.synthetic.main.multiple_info_windows.view.*
 
 
 class MenuFragment : Fragment() {
@@ -29,8 +37,18 @@ class MenuFragment : Fragment() {
         view.lL_Paciente.setOnClickListener {
             listener?.onClickButton("mode")
         }
-        view.iV_help.setOnClickListener {
-            listener?.onClickButton("config")
+        view.iV_help_menu.setOnClickListener {
+            var popup = inflater.inflate(R.layout.multiple_info_windows, null)
+            var popupview = PopupWindow(popup, 500, 800, true)
+
+
+            popupview.showAtLocation(it, Gravity.CENTER,0,0)
+            popup.apply {
+                Text_info.text = "Seleccionar iniciar para elegir entre la modalidad desafio o practica. Seleccionar la opcion de terapista para logear o crear una cuenta.(Uso exclusivo de terapeutas)"
+                this.setOnClickListener {
+                    popupview.dismiss()
+                }
+            }
         }
         view.lL_Terapista.setOnClickListener {
             listener?.onClickButton("terapista")
