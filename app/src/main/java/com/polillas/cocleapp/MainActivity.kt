@@ -108,7 +108,7 @@ class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionList
     }
 
     fun changefragment(id: Int, frag: Fragment){
-        supportFragmentManager.beginTransaction().replace(id,frag).commit()
+        supportFragmentManager.beginTransaction().replace(id,frag).addToBackStack("f_main").commit()
     }
 
     private fun checkNetworkStatus(): Boolean {

@@ -3,9 +3,14 @@ package com.polillas.cocleapp.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.PopupWindow
 import com.polillas.cocleapp.MainActivity
 import com.polillas.cocleapp.R
 import kotlinx.android.synthetic.main.activity_score.*
+import kotlinx.android.synthetic.main.popup_practice.view.*
 
 class ScoreActivity : AppCompatActivity() {
     var puntaje: Int = 0
@@ -27,6 +32,15 @@ class ScoreActivity : AppCompatActivity() {
                 val intent = Intent(this@ScoreActivity, com.polillas.cocleapp.MainActivity::class.java)
                 startActivity(intent)
             }
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if(puntaje != 100) {
+            startActivity(Intent(this@ScoreActivity, ExerciseActivity::class.java))
+        } else {
+            startActivity(Intent(this@ScoreActivity, PracticeActivity::class.java))
         }
     }
 }

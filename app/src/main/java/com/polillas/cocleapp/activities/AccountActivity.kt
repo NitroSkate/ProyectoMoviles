@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.polillas.cocleapp.MainActivity
 import com.polillas.cocleapp.R
 import com.polillas.cocleapp.fragmentos.AccountFragment
 
@@ -90,6 +91,11 @@ class AccountActivity : AppCompatActivity(), AccountFragment.OnFragmentInteracti
         super.onStart()
         val currentUser = auth.currentUser
         updateUI(currentUser)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this@AccountActivity, MainActivity::class.java))
     }
 
     private fun updateUI(user: FirebaseUser?){
