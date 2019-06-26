@@ -23,6 +23,12 @@ class GameViewModel(application: Application): AndroidViewModel(application){
     private lateinit var asc: Array<Int>
      private var cont : Int = 1
     private  var puntaje: Int = 0
+    private var dificulty: Int = 1
+
+    fun setDificulty(intd: Int){
+        dificulty = intd
+    }
+    fun getDificulty(): Int = dificulty
 
 
     fun setCONT(c:Int ) {

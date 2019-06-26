@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -22,6 +23,7 @@ import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import com.polillas.cocleapp.constants.AppConstants
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_practica1.*
+import kotlinx.android.synthetic.main.fragment_preguntas1_fragmento.*
 import kotlinx.android.synthetic.main.fragment_preguntas1_fragmento.view.*
 
 
@@ -31,27 +33,34 @@ class Preguntas1Fragmento : Fragment() {
     private var total : Int =  0
     lateinit var respuesta: Sonido
      var puntaje: Int = 0
+    private var dificultad: Int= 0
     private var start: Boolean = false
     private var actual: ArrayList<Sonido> = ArrayList()
     private var todos: ArrayList<Sonido> = ArrayList()
     private var pregunta: ArrayList<Sonido> = ArrayList()
     private var listener: OnFragmentInteractionListener? = null
+    private var arrayImageVe: ArrayList<ImageView> = ArrayList()
+    private var imageViewDisponibles: ArrayList<ImageView> = ArrayList()
     private lateinit var preguntaViewmodel : PreguntaViewmodel
     private lateinit var gameViewModel: GameViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("HELLO","HELLO")
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
         // Inflate the layout for this fragment
 
+//        Log.d("OMG2",one.toString())
         preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
 
         gameViewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
         if (start){
+            gameViewModel.setDificulty(dificultad)
             gameViewModel.setPunta(puntaje)
             gameViewModel.setCONT(cont)
         }
@@ -63,6 +72,11 @@ class Preguntas1Fragmento : Fragment() {
         })*/
         val view =  inflater.inflate(R.layout.fragment_preguntas1_fragmento, container, false).apply {
             var mediaPlayer: MediaPlayer = MediaPlayer()
+            arrayImageVe.add(one)
+            arrayImageVe.add(two)
+            arrayImageVe.add(three)
+            arrayImageVe.add(four)
+            Log.d("MANGO",arrayImageVe.toString())
             when(gameViewModel.getCont()){
                 gameViewModel.getCont() ->{
                     Log.d("OUNTAE",gameViewModel.getCont().toString()+1)
@@ -88,10 +102,10 @@ class Preguntas1Fragmento : Fragment() {
                             }
 
 
-                            if(gameViewModel.getTodos().size > 4 ){
+                            if(gameViewModel.getTodos().size >= 4 ){
                                 var whileint = 1
 
-                                while (whileint <= 4){
+                                while (whileint <= gameViewModel.getDificulty()){
                                     //   Log.d("ONNNNNN",gameViewModel.geton().toString())
                                     if (!gameViewModel.geton()){
                                         if (whileint == 1){
@@ -126,19 +140,19 @@ class Preguntas1Fragmento : Fragment() {
                                         whileint++
                                     }
 
-
-                                    if(whileint ==5){
+                                    Log.d("TEST1",gameViewModel.getDificulty().toString() + whileint.toString())
+                                    if(whileint > gameViewModel.getDificulty()){
                                         Log.d("ONNNNNN",gameViewModel.geton().toString())
                                         if (!gameViewModel.geton()){
                                             Log.d("GAMEON","HOLA")
                                             gameViewModel.setPregunta(pregunta)
-                                            val asc = Array(4) { i -> (5) }
+                                            val asc = Array(gameViewModel.getDificulty()) { i -> (5) }
 
                                             var whileint = 1
 
 
-                                            while(whileint <=4){
-                                                val rnds = (0..3).random()
+                                            while(whileint <=gameViewModel.getDificulty()){
+                                                val rnds = (0..gameViewModel.getDificulty()-1).random()
                                                 if(!asc.contains(rnds)){
                                                     asc[whileint-1] = rnds
 
@@ -162,6 +176,40 @@ class Preguntas1Fragmento : Fragment() {
 
 
                                         //tv_pregunta.text = "Pregunta 1"
+                                       var conta = 1
+                                        var g = 0
+                                        Log.d("GAMEON",gameViewModel.getPregunta().toString())
+                                        Log.d("RESSS",gameViewModel.getRespuesta().toString())
+                                        Log.d("TEST5",gameViewModel.getasc().toString())
+                                        while(conta <= gameViewModel.getDificulty()){
+                                            Log.d("OMG2",arrayImageVe.get(conta-1).toString())
+                                            Log.d("TEST5",gameViewModel.getDificulty().toString() + " " +(conta-1))
+
+                                            arrayImageVe.get(conta-1).setOnClickListener {
+                                                g = conta
+                                                Log.d("CONNTA",it.id.toString())
+                                                if (it.id== R.id.one){
+                                                    click(mediaPlayer,0,gameViewModel.getDificulty())
+                                                }
+                                                if (it.id== R.id.two){
+                                                    click(mediaPlayer,1,gameViewModel.getDificulty())
+                                                }
+                                                if (it.id== R.id.three){
+                                                    click(mediaPlayer,2,gameViewModel.getDificulty())
+                                                }
+                                                if (it.id== R.id.four){
+                                                    click(mediaPlayer,3,gameViewModel.getDificulty())
+                                                }
+                                                Log.d("CONNTA",conta.toString()+ "HERE")
+
+
+                                            }
+                                            Log.d("CONNTA",conta.toString())
+                                            Log.d("HELLOS","HOOOLA")
+                                            Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[conta-1]).rutaImagen ).into(arrayImageVe.get(conta-1))
+                                            conta++
+
+                                        }
 
                                         bt_play.setOnClickListener {
                                             if(mediaPlayer.isPlaying){
@@ -175,6 +223,7 @@ class Preguntas1Fragmento : Fragment() {
                                         }
                                         Log.d("PREGUNTAs",gameViewModel.getPregunta().size.toString())
                                         Log.d("WHUT",cont.toString() + " " +todos.size)
+                                        /*
                                         Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[0]).rutaImagen ).into(one)
                                         Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[1]).rutaImagen ).into(two)
                                         Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[2]).rutaImagen ).into(three)
@@ -195,6 +244,9 @@ class Preguntas1Fragmento : Fragment() {
                                             click(mediaPlayer,3)
 
                                         }
+
+                                        */
+
                                     }
 
                                 }
@@ -245,33 +297,36 @@ class Preguntas1Fragmento : Fragment() {
             string: String,
             id:Int,
             puntaje: Int,
-            start: Boolean
+            start: Boolean,
+            dificultad: Int
         )
     }
-    fun click(mediaPlayer: MediaPlayer,pos: Int){
+    fun click(mediaPlayer: MediaPlayer,pos: Int,dificultad: Int){
         mediaPlayer.stop()
         mediaPlayer.release()
+        Log.d("TEST5",pos.toString() + "dificultas "+dificultad)
         if (check(gameViewModel.getasc()[pos])){
             gameViewModel.setPunta(gameViewModel.getPunta()+1)
         }
         if(gameViewModel.getCont() >= gameViewModel.getTodos().size){
             gameViewModel.seton(false)
-            listener?.onNextQuestion("finish", gameViewModel.getCont(),gameViewModel.getPunta(),true)
+            listener?.onNextQuestion("finish", gameViewModel.getCont(),gameViewModel.getPunta(),true,dificultad)
 
         }
 
         gameViewModel.seton(false)
         gameViewModel.setCONT(gameViewModel.getCont() + 1)
-        listener?.onNextQuestion("next", gameViewModel.getCont(),gameViewModel.getPunta(),true)
+        listener?.onNextQuestion("next", gameViewModel.getCont(),gameViewModel.getPunta(),true,dificultad)
     }
 
     companion object {
 
         @JvmStatic
-        fun newInstance(num : Int,puntaje: Int,start:Boolean): Preguntas1Fragmento{
+        fun newInstance(num : Int,puntaje: Int,start:Boolean,dificultad: Int): Preguntas1Fragmento{
             var frag = Preguntas1Fragmento()
             frag.puntaje = puntaje
             frag.start = start
+            frag.dificultad = dificultad
 
 
             frag.cont = num
