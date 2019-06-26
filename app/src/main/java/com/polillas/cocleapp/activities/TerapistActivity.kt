@@ -8,6 +8,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.PopupWindow
@@ -22,6 +23,7 @@ import com.polillas.cocleapp.Room.Entities.Puntaje
 import com.polillas.cocleapp.recycler.ListPatientAdapter
 import kotlinx.android.synthetic.main.activity_terapist.*
 import kotlinx.android.synthetic.main.addpatient.view.*
+import kotlinx.android.synthetic.main.fragment_new_account.view.*
 import kotlinx.android.synthetic.main.login.view.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -50,7 +52,12 @@ class TerapistActivity : AppCompatActivity() {
         var popupview =
             PopupWindow(popup, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true)
 
-        terapista_log.text = "Bienvenido/a " + auth.currentUser?.displayName
+        if(auth.currentUser?.displayName == null){
+            terapista_log.text = "Bienvenido/a "+ auth.currentUser?.email
+        } else{
+            terapista_log.text = "Bienvenido/a " + auth.currentUser?.displayName
+        }
+
 
         retrievedocuments()
 
@@ -60,13 +67,14 @@ class TerapistActivity : AppCompatActivity() {
             popup.apply {
                 add_patient.setOnClickListener {
                     popupview.dismiss()
-                    if(TextUtils.isEmpty(name_patient.text) || TextUtils.isEmpty(lname_patient.text) || TextUtils.isEmpty(birth_patient.text)){
+                    if(TextUtils.isEmpty(name_patient.text) || TextUtils.isEmpty(lname_patient.text)){
                         Toast.makeText(it.context, "No se ha podido iniciar sesion", Toast.LENGTH_SHORT).show()
                     }else {
                         val id = UUID.randomUUID().toString()
                         val list = mutableListOf<Puntaje>()
                         list.add(Puntaje("0", "0"))
-                        val paciente = Pacientes(id,name_patient.text.toString(),lname_patient.text.toString(),birth_patient.text.toString(),lvl_patient.value.toString(),list)
+                        val paciente = Pacientes(id,name_patient.text.toString(),lname_patient.text.toString(),birth_patient.dayOfMonth.toString()
+                            + "/" + birth_patient.month.toString() + "/" + birth_patient.year.toString(),lvl_patient.value.toString(),list)
 
                         db.collection("Pacient " + auth.currentUser?.email).document(id)
                             .set(paciente)
@@ -112,10 +120,10 @@ class TerapistActivity : AppCompatActivity() {
 
     fun initrecycler(lista : List<Pacientes>){
         val linearlayoutmanager = LinearLayoutManager(this)
-        listPatientAdapter = ListPatientAdapter(lista, {item: Pacientes -> onClickPatient(item)})
+        listPatientAdapter = ListPatientAdapter(lista, {item: Pacientes -> onClickPatient(item)}, auth, db)
 
         recycler.adapter = listPatientAdapter
-
+        listPatientAdapter.notifyDataSetChanged()
         recycler.apply{
             setHasFixedSize(true)
             layoutManager = linearlayoutmanager
@@ -124,5 +132,10 @@ class TerapistActivity : AppCompatActivity() {
 
     private fun onClickPatient(item: Pacientes){
         Log.d("objeto", item.nombre)
+        /*var popup = inflater.inflate(R.layout.fragment_new_account, null)
+        var popupview = PopupWindow(popup, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true)
+
+        popupview.showAtLocation(, Gravity.CENTER,0,0)
+        popup.apply {*/
     }
 }

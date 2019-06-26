@@ -24,16 +24,24 @@
             android:orientation="vertical"
             android:gravity="center"
             android:layout_gravity="center">
-
             <EditText
-                android:id="@+id/et_email"
-                android:hint="E-mail"
+                android:id="@+id/nombre_et"
+                android:hint="Nombre"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="20sp"
-                android:inputType="textEmailAddress"/>
+                android:inputType="text"/>
+            <EditText
+                android:id="@+id/apellido_et"
+                android:hint="Apellido"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="20sp"
+                android:inputType="text"/>
 
             <EditText
                 android:id="@+id/et_password"
@@ -76,7 +84,7 @@
                 android:id="@+id/tv_create"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Crear"
+                android:text="Guardar"
                 android:textSize="20sp"
                 android:textColor="#FFFFFF"
                 />
@@ -88,4 +96,3 @@
 
 
 </ScrollView>
-

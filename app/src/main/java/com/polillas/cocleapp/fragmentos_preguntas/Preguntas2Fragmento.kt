@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.polillas.cocleapp.R
+import com.polillas.cocleapp.Room.Entities.Puntaje
 import kotlinx.android.synthetic.main.fragment_preguntas2_fragmento.view.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -40,7 +41,7 @@ class Preguntas2Fragmento : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_preguntas2_fragmento, container, false).apply {
             one2.setOnClickListener {
-                listener?.onNextQuestion("finish", 0)
+                listener?.onNextQuestion("finish", 0,0)
             }
         }
         return view
@@ -63,7 +64,7 @@ class Preguntas2Fragmento : Fragment() {
 
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onNextQuestion(string: String, id:Int)
+        fun onNextQuestion(string: String, id:Int,puntaje: Int)
     }
 
     companion object {

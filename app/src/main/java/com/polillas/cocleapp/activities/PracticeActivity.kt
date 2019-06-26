@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.polillas.cocleapp.MainActivity
 import com.polillas.cocleapp.R
 import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import com.polillas.cocleapp.fragmentos_practica.Practica1Fragment
@@ -37,8 +38,11 @@ class PracticeActivity : AppCompatActivity(), Practica1Fragment.OnFragmentIntera
             //Toast.makeText(this, id.toString(), Toast.LENGTH_SHORT).show()
             initfragment(id)
         }
-        else{
+        else if(string == "si"){
+            initfragment(1)
+        } else if (string == "no"){
             val intent = Intent(this@PracticeActivity, ScoreActivity::class.java)
+            intent.putExtra("AMD", 100)
             startActivity(intent)
         }
     }
