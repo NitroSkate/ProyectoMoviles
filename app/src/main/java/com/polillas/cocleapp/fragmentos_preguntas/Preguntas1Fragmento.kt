@@ -179,69 +179,20 @@ class Preguntas1Fragmento : Fragment() {
                                         Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[2]).rutaImagen ).into(three)
                                         Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[3]).rutaImagen ).into(four)
                                         one.setOnClickListener {
-                                            mediaPlayer.stop()
-                                            mediaPlayer.release()
+                                        click(mediaPlayer,0)
 
-                                            if(gameViewModel.getCont() >= gameViewModel.getTodos().size){
-                                                gameViewModel.seton(false)
-                                                listener?.onNextQuestion("finish", gameViewModel.getCont(),gameViewModel.getPunta(),true)
-                                            }
-                                          //  gameViewModel.cont++
-                                            if(check(gameViewModel.getasc()[0])){
-                                                gameViewModel.setPunta(gameViewModel.getPunta()+1)
-                                            }
-                                            gameViewModel.seton(false)
-                                            Log.d("OUNTAE",gameViewModel.getCont().toString())
-                                            gameViewModel.setCONT(gameViewModel.getCont() + 1)
-                                            Log.d("OUNTAE",gameViewModel.getCont().toString())
-                                            //Log.d("OUNTAE",gameViewModel.getTodos().size.toString())
-                                            listener?.onNextQuestion("next", gameViewModel.getCont(),gameViewModel.getPunta(),true)
                                         }
                                         two.setOnClickListener {
-                                            mediaPlayer.stop()
-                                            mediaPlayer.release()
+                                            click(mediaPlayer,1)
 
-                                            if(gameViewModel.getCont() >= gameViewModel.getTodos().size){
-                                                gameViewModel.seton(false)
-                                                listener?.onNextQuestion("finish", gameViewModel.getCont(),gameViewModel.getPunta(),true)
-                                            }
-                                            if(check(gameViewModel.getasc()[1])){
-                                                gameViewModel.setPunta(gameViewModel.getPunta()+1)
-                                            }
-                                            gameViewModel.seton(false)
-                                            gameViewModel.setCONT(gameViewModel.getCont() + 1)
-                                            listener?.onNextQuestion("next", gameViewModel.getCont(),gameViewModel.getPunta(),true)
                                         }
                                         three.setOnClickListener {
-                                            mediaPlayer.stop()
-                                            mediaPlayer.release()
-                                            //   check(asc[2])
-                                            if(gameViewModel.getCont() >= gameViewModel.getTodos().size){
-                                                gameViewModel.seton(false)
-                                                listener?.onNextQuestion("finish", gameViewModel.getCont(),gameViewModel.getPunta(),true)
-                                            }
-                                            if (check(gameViewModel.getasc()[2])){
-                                                gameViewModel.setPunta(gameViewModel.getPunta()+1)
-                                            }
-                                            gameViewModel.setCONT(gameViewModel.getCont() + 1)
-                                            gameViewModel.seton(false)
-                                            listener?.onNextQuestion("next", gameViewModel.getCont(),gameViewModel.getPunta(),true)
+                                            click(mediaPlayer,2)
+
                                         }
                                         four.setOnClickListener {
-                                            mediaPlayer.stop()
-                                            mediaPlayer.release()
+                                            click(mediaPlayer,3)
 
-                                            if(gameViewModel.getCont() >= gameViewModel.getTodos().size){
-                                                gameViewModel.seton(false)
-                                                listener?.onNextQuestion("finish", gameViewModel.getCont(),gameViewModel.getPunta(),true)
-
-                                            }
-                                            if (check(gameViewModel.getasc()[3])){
-                                                gameViewModel.setPunta(gameViewModel.getPunta()+1)
-                                            }
-                                            gameViewModel.seton(false)
-                                            gameViewModel.setCONT(gameViewModel.getCont() + 1)
-                                            listener?.onNextQuestion("next", gameViewModel.getCont(),gameViewModel.getPunta(),true)
                                         }
                                     }
 
@@ -295,6 +246,22 @@ class Preguntas1Fragmento : Fragment() {
             puntaje: Int,
             start: Boolean
         )
+    }
+    fun click(mediaPlayer: MediaPlayer,pos: Int){
+        mediaPlayer.stop()
+        mediaPlayer.release()
+        if (check(gameViewModel.getasc()[pos])){
+            gameViewModel.setPunta(gameViewModel.getPunta()+1)
+        }
+        if(gameViewModel.getCont() >= gameViewModel.getTodos().size){
+            gameViewModel.seton(false)
+            listener?.onNextQuestion("finish", gameViewModel.getCont(),gameViewModel.getPunta(),true)
+
+        }
+
+        gameViewModel.seton(false)
+        gameViewModel.setCONT(gameViewModel.getCont() + 1)
+        listener?.onNextQuestion("next", gameViewModel.getCont(),gameViewModel.getPunta(),true)
     }
 
     companion object {
