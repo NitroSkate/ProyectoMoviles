@@ -14,17 +14,95 @@
             android:textSize="30sp"
             android:textColor="#000"
             android:layout_marginBottom="10dp"
-            android:text="Seleccione una opcion"/>
+            android:text="Seleccione una dificultad"/>
 
-    <Button android:id="@+id/login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="Logearse" />
+    <LinearLayout
+        android:id="@+id/lL_principiante"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="#005b4f"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10sp"
+        >
 
-    <Button android:id="@+id/register"
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Crear cuenta"/>
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginRight="10sp"
+            android:gravity="center"
+            android:text="Principiante"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10sp"
+            android:layout_marginRight="20sp"
+            android:src="@drawable/iniciar"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/lL_intermedio"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="#005b4f"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10sp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginRight="10sp"
+            android:gravity="center"
+            android:text="Intermedio"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10sp"
+            android:layout_marginRight="20sp"
+            android:src="@drawable/iniciar"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lL_avanzado"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="#005b4f"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10sp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginRight="10sp"
+            android:gravity="center"
+            android:text="Avanzado"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10sp"
+            android:layout_marginRight="20sp"
+            android:src="@drawable/iniciar"/>
+
+    </LinearLayout>
 
 </LinearLayout>

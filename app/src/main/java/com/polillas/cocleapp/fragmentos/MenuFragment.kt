@@ -29,7 +29,7 @@ class MenuFragment : Fragment() {
         view.lL_Paciente.setOnClickListener {
             listener?.onClickButton("mode")
         }
-        view.iV_conf1.setOnClickListener {
+        view.iV_help.setOnClickListener {
             listener?.onClickButton("config")
         }
         view.lL_Terapista.setOnClickListener {

@@ -25,38 +25,6 @@
             app:layout_constraintVertical_bias="0.011"
             app:srcCompat="@drawable/save"/>
 
-    <LinearLayout
-        android:id="@+id/lL_Notificaciones"
-        android:layout_width="325sp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="#FF1D484D"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.396">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginRight="20sp"
-            android:gravity="center"
-            android:text="Notificaciones"
-            android:textColor="#FFFFFF"
-            android:textSize="30sp" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="10sp"
-            android:layout_marginRight="20sp"
-            android:src="@drawable/notificacion" />
-
-    </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/lL_Cuenta"

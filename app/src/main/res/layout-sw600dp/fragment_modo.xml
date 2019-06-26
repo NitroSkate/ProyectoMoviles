@@ -10,7 +10,7 @@
 
 
     <ImageView
-        android:id="@+id/iV_conf"
+        android:id="@+id/iV_help"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.011"
-        app:srcCompat="@drawable/conf" />
+        app:srcCompat="@drawable/help" />
 
     <LinearLayout
         android:id="@+id/lL_Practica"
