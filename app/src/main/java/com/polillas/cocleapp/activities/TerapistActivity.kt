@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.polillas.cocleapp.MainActivity
 import com.polillas.cocleapp.R
 import com.polillas.cocleapp.Room.Entities.Paciente
 import com.polillas.cocleapp.Room.Entities.Pacientes
@@ -82,7 +83,6 @@ class TerapistActivity : AppCompatActivity() {
                             .set(paciente)
                             .addOnSuccessListener { Log.d("success", "DocumentSnapshot successfully written!") }
                             .addOnFailureListener { e -> Log.w("fail", "Error writing document", e) }
-                        Snackbar.make(this, "Paciente agregado", Snackbar.LENGTH_SHORT).show()
                     }
                     retrievedocuments()
                 }
@@ -147,5 +147,10 @@ class TerapistActivity : AppCompatActivity() {
 
         popupview.showAtLocation(, Gravity.CENTER,0,0)
         popup.apply {*/
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this@TerapistActivity, MainActivity::class.java))
     }
 }

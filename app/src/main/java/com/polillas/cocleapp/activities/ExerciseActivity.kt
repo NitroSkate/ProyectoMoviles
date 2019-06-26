@@ -38,6 +38,7 @@ class ExerciseActivity : AppCompatActivity(), Preguntas1Fragmento.OnFragmentInte
         changefragment(R.id.ex_content, frag)
     }
 
+
     override fun onNextQuestion(string: String, id: Int,puntaje: Int) {
         Toast.makeText(this,puntaje.toString(),Toast.LENGTH_SHORT).show()
         if(string == "next") {

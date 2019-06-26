@@ -56,6 +56,9 @@ class AccountFragment : Fragment() {
     
             popupview.showAtLocation(it, Gravity.CENTER,0,0)
             popup.apply {
+                close_popup.setOnClickListener {
+                    popupview.dismiss()
+                }
                 lL_new.setOnClickListener {
                     popupview.dismiss()
                     if(TextUtils.isEmpty(et_email.text) || TextUtils.isEmpty(et_password.text) || et_password.text.toString() != conf_password.text.toString()){

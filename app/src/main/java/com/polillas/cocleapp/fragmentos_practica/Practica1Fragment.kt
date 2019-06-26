@@ -144,6 +144,7 @@ class Practica1Fragment : Fragment()  {
 
                                         bt_play_p.setOnClickListener {
                                             if(mediaPlayer.isPlaying){
+                                                mediaPlayer.stop()
                                                 mediaPlayer.reset()
                                             }
                                             mediaPlayer.setDataSource("https://projecto-moviles.herokuapp.com/api/preguntadown/"+  respuesta.rutaSonido)
@@ -253,6 +254,7 @@ class Practica1Fragment : Fragment()  {
         }
         return view
     }
+
 
 
     override fun onAttach(context: Context) {
