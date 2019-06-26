@@ -14,6 +14,7 @@ import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polillas.cocleapp.R
@@ -52,7 +53,8 @@ class TerapistActivity : AppCompatActivity() {
         var popupview =
             PopupWindow(popup, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true)
 
-        if(auth.currentUser?.displayName == null){
+        if(auth.currentUser?.displayName == null || auth.currentUser?.displayName == "" || auth
+                .currentUser?.displayName == " "){
             terapista_log.text = "Bienvenido/a "+ auth.currentUser?.email
         } else{
             terapista_log.text = "Bienvenido/a " + auth.currentUser?.displayName
@@ -68,7 +70,7 @@ class TerapistActivity : AppCompatActivity() {
                 add_patient.setOnClickListener {
                     popupview.dismiss()
                     if(TextUtils.isEmpty(name_patient.text) || TextUtils.isEmpty(lname_patient.text)){
-                        Toast.makeText(it.context, "No se ha podido iniciar sesion", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(it.context, "No se ha podido ingresar al paciente", Toast.LENGTH_SHORT).show()
                     }else {
                         val id = UUID.randomUUID().toString()
                         val list = mutableListOf<Puntaje>()
@@ -80,10 +82,16 @@ class TerapistActivity : AppCompatActivity() {
                             .set(paciente)
                             .addOnSuccessListener { Log.d("success", "DocumentSnapshot successfully written!") }
                             .addOnFailureListener { e -> Log.w("fail", "Error writing document", e) }
+                        Snackbar.make(this, "Paciente agregado", Snackbar.LENGTH_SHORT).show()
                     }
+                    retrievedocuments()
                 }
             }
-            retrievedocuments()
+
+        }
+
+        tp_conf1.setOnClickListener {
+            startActivity(Intent(this@TerapistActivity, ConfigTerapistActivity::class.java))
         }
 
         logout.setOnClickListener {
@@ -105,7 +113,8 @@ class TerapistActivity : AppCompatActivity() {
                     val paciente = Pacientes(document.id, document.getString("nombre"), document.getString("apellido"), document.getString("fechaIngreso"), document.getString("nivel"), listp)
                     //lista.add(document.getString("nombre"))
                     list.add(paciente)
-                    Toast.makeText(this, document.id, Toast.LENGTH_SHORT).show()
+                    //Snackbar.make(this, "Paciente agregado", Snackbar.LENGTH_SHORT).show()
+                    //Toast.makeText(this, document.id, Toast.LENGTH_SHORT).show()
                 }
                 initrecycler(list)
                 //val listadap = ArrayAdapter(this, R.layout.listapp, lista)
@@ -132,6 +141,7 @@ class TerapistActivity : AppCompatActivity() {
 
     private fun onClickPatient(item: Pacientes){
         Log.d("objeto", item.nombre)
+        retrievedocuments()
         /*var popup = inflater.inflate(R.layout.fragment_new_account, null)
         var popupview = PopupWindow(popup, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true)
 

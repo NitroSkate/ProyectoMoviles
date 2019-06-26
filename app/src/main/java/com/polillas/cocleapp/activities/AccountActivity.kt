@@ -46,7 +46,7 @@ class AccountActivity : AppCompatActivity(), AccountFragment.OnFragmentInteracti
             }
     }
 
-    override fun onRegister(email: String, password: String, nombre: String, apellido: String) {
+    override fun onRegister(email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -58,10 +58,10 @@ class AccountActivity : AppCompatActivity(), AccountFragment.OnFragmentInteracti
                     // If sign in fails, display a message to the user.
                     Log.w("fail", "createUserWithEmail:failure", task.exception)
                     Toast.makeText(
-                        baseContext, "Authentication failed.",
+                        baseContext, "Error. No se pudo crear al usuario",
                         Toast.LENGTH_SHORT
                     ).show()
-                    val nameprofile = UserProfileChangeRequest.Builder()
+                    /*val nameprofile = UserProfileChangeRequest.Builder()
                         .setDisplayName(nombre +" "+ apellido)
                         .build()
                     val currentsesion = auth.currentUser
@@ -70,7 +70,7 @@ class AccountActivity : AppCompatActivity(), AccountFragment.OnFragmentInteracti
                             if(task.isSuccessful){
                                 Log.d("suc", "Usuario actualizado")
                             }
-                        }
+                        }*/
                     updateUI(null)
                 }
             }

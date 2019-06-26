@@ -11,6 +11,8 @@
             android:roundIcon="@mipmap/icon"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".activities.ConfigTerapistActivity">
+        </activity>
         <activity android:name=".activities.TerapistActivity">
         </activity>
         <activity android:name=".activities.AccountActivity">

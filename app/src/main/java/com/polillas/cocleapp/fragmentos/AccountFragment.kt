@@ -56,12 +56,12 @@ class AccountFragment : Fragment() {
     
             popupview.showAtLocation(it, Gravity.CENTER,0,0)
             popup.apply {
-                tv_create.setOnClickListener {
+                lL_new.setOnClickListener {
                     popupview.dismiss()
-                    if(TextUtils.isEmpty(et_email.text) || TextUtils.isEmpty(et_password.text)){
+                    if(TextUtils.isEmpty(et_email.text) || TextUtils.isEmpty(et_password.text) || et_password.text.toString() != conf_password.text.toString()){
                         Toast.makeText(it.context, "No se ha podido crear la cuenta", Toast.LENGTH_SHORT).show()
                     }else {
-                        listener?.onRegister(et_email.text.toString(), et_password.text.toString(), nombre_et.text.toString(), apellido_et.text.toString())
+                        listener?.onRegister(et_email.text.toString(), et_password.text.toString())
                     }
                 }
             }
@@ -87,7 +87,7 @@ class AccountFragment : Fragment() {
 
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onRegister(email: String, password: String, nombre: String, apellido: String)
+        fun onRegister(email: String, password: String)
         fun onLogin(email: String, password: String)
     }
 

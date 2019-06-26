@@ -31,18 +31,18 @@ class ListPatientAdapter (var patients : List<Pacientes>,val click: (Pacientes) 
             birth_patient_info.text = pacientes.fechaIngreso
             info_pat_bt.setOnClickListener {
                 popup(1, it, pacientes, auth, db)
+                click(pacientes)
             }
             edit_pat_bt.setOnClickListener {
                 popup(2,it,pacientes,auth,db)
+                click(pacientes)
             }
             del_pat_bt.setOnClickListener {
                 db.collection("Pacient " + auth.currentUser?.email).document(pacientes.id.toString())
                     .delete()
-            }
-
-            this.setOnClickListener {
                 click(pacientes)
             }
+
         }
         private fun popup(int: Int,context: View, item: Pacientes, auth: FirebaseAuth, db: FirebaseFirestore){
             when(int) {
@@ -80,6 +80,7 @@ class ListPatientAdapter (var patients : List<Pacientes>,val click: (Pacientes) 
                     popupview.showAtLocation(context, Gravity.CENTER, 0, 0)
                     popup.apply {
                         editthis.text = "Edite la informacion del paciente"
+                        add_patient.text = "Confirmar cambios"
                         add_patient.setOnClickListener {
                             val id = item.id.toString()
                             val list = mutableListOf<Puntaje>()

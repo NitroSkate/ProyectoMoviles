@@ -25,7 +25,7 @@
             android:gravity="center"
             android:layout_gravity="center">
             <EditText
-                android:id="@+id/nombre_et"
+                android:id="@+id/nombre_et_edit"
                 android:hint="Nombre"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -34,7 +34,7 @@
                 android:layout_margin="20sp"
                 android:inputType="text"/>
             <EditText
-                android:id="@+id/apellido_et"
+                android:id="@+id/apellido_et_edit"
                 android:hint="Apellido"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -44,7 +44,7 @@
                 android:inputType="text"/>
 
             <EditText
-                android:id="@+id/et_password"
+                android:id="@+id/et_password_edit"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/email"
@@ -55,7 +55,7 @@
                 android:inputType="textPassword" />
 
             <EditText
-                android:id="@+id/conf_password"
+                android:id="@+id/conf_password_edit"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/email"
@@ -70,7 +70,7 @@
 
 
         <LinearLayout
-            android:id="@+id/lL_new"
+            android:id="@+id/lL_new_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -81,7 +81,7 @@
             >
 
             <TextView
-                android:id="@+id/tv_create"
+                android:id="@+id/tv_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Guardar"
