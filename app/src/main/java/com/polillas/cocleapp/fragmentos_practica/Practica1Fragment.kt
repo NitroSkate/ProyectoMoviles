@@ -24,6 +24,7 @@ import com.polillas.cocleapp.MainActivity
 
 import com.polillas.cocleapp.R
 import com.polillas.cocleapp.Room.Entities.Sonido
+import com.polillas.cocleapp.Room.Viewmodel.GameViewModel
 import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import com.polillas.cocleapp.constants.AppConstants
 import com.squareup.picasso.Picasso
@@ -42,7 +43,7 @@ class Practica1Fragment : Fragment()  {
     private var pregunta: ArrayList<Sonido> = ArrayList()
     private var listener: OnFragmentInteractionListener? = null
     private lateinit var preguntaViewmodel : PreguntaViewmodel
-
+    private lateinit var gameViewModel: GameViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -54,6 +55,7 @@ class Practica1Fragment : Fragment()  {
         // Inflate the layout for this fragment
 
         preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
+        gameViewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
         /*preguntaViewmodel.getAllSonidos().observe(this, Observer { sounds ->
             sounds?.let {
                 it[]
@@ -63,80 +65,96 @@ class Practica1Fragment : Fragment()  {
             var mediaPlayer: MediaPlayer = MediaPlayer()
             when(cont){
                 cont ->{
+                    Log.d("GH",gameViewModel.getRespuesta().toString())
+                    Log.d("GH",gameViewModel.getPregunta().toString())
+                    Log.d("GH",gameViewModel.geton().toString())
                     Log.d("TODOS#",todos.size.toString())
                     preguntaViewmodel.getAllSonidos().observe(this@Practica1Fragment, Observer { sounds ->
                         sounds?.let {
                             total = sounds.size
                             Log.i("osunds",sounds.toString())
-                            sounds.forEach { sound->
-                                actual.add(sound)
-                                todos.add(sound)
-                                Log.d("TODOS",todos.size.toString())
+                            if (gameViewModel.getRespuesta() == null){
+                                Log.d("GER","GG")
+                                sounds.forEach { sound->
+                                    actual.add(sound)
+                                    todos.add(sound)
+                                    Log.d("TODOS",todos.size.toString())
 
-                            }
-                            if(cont < todos.size){
-                                //     tv_pregunta.text = it[cont-1].rutaImagen
+                                }
+                                gameViewModel.setActual(actual)
+                                gameViewModel.setTodos(todos)
                             }
 
-                            if(todos.size > 4 ){
+
+                            if(gameViewModel.getTodos().size > 4 ){
                                 var whileint = 1
 
                                 while (whileint <= 4){
-                                    if (whileint == 1){
+                                    Log.d("HELLOS","HEERE")
+                                    if (!gameViewModel.geton()){
+                                        if (whileint == 1){
 
-                                        val rnds = (0..todos.size-1).random()
-                                        if (actual.contains(todos.get(rnds))){
+                                            val rnds = (0..gameViewModel.getTodos().size-1).random()
+                                            if (gameViewModel.getActual().contains(gameViewModel.getTodos().get(rnds))){
 
-                                            pregunta.add(todos.get(rnds))
-                                            respuesta = todos.get(rnds)
-                                            actual.remove(todos.get(rnds))
-                                            whileint++
-                                        }else{
-                                            Log.d("NO HAY","PENAL")
-                                        }
-
-
-                                    }else{
-
-                                        val rnds = (0..todos.size-1).random()
-                                        Log.d("BREAKPOINT1",todos.size.toString() +" "+ rnds.toString())
-                                        if(todos.get(rnds)==respuesta || pregunta.contains(todos.get(rnds))){
-                                            Log.d("NO HAY","PENAL")
-                                        }else{
-                                            pregunta.add(todos.get(rnds))
-
-
-                                            whileint++
-                                        }
-
-                                    }
-                                    if(whileint ==5){
-                                        Log.d("TODOS",todos.size.toString())
-
-
-
-
-
-
-
-                                        val asc = Array(4) { i -> (5) }
-
-                                        var whileint = 1
-
-
-                                        while(whileint <=4){
-                                            val rnds = (0..3).random()
-                                            if(!asc.contains(rnds)){
-                                                asc[whileint-1] = rnds
-
-                                                Log.d("ANS",whileint.toString()+" " + rnds)
+                                                pregunta.add(gameViewModel.getTodos().get(rnds))
+                                                gameViewModel.setRespuesta(gameViewModel.getTodos().get(rnds))
+                                                gameViewModel.getActual().remove(gameViewModel.getTodos().get(rnds))
                                                 whileint++
-
                                             }else{
+                                                Log.d("NO HAY","PENAL")
+                                            }
 
+
+                                        }else{
+
+                                            val rnds = (0..gameViewModel.getTodos().size-1).random()
+                                            Log.d("BREAKPOINT1",gameViewModel.getTodos().size.toString() +" "+ rnds.toString())
+                                            if(gameViewModel.getTodos().get(rnds)==gameViewModel.getRespuesta()|| pregunta.contains(gameViewModel.getTodos().get(rnds))){
+                                                Log.d("NO HAY","PENAL")
+                                            }else{
+                                                pregunta.add(gameViewModel.getTodos().get(rnds))
+
+
+                                                whileint++
                                             }
 
                                         }
+                                    }else{
+                                        whileint++
+                                    }
+
+
+                                    if(whileint ==5){
+                                        if (!gameViewModel.geton()){
+                                            Log.d("GAMEON","HOLA")
+                                            gameViewModel.setPregunta(pregunta)
+                                            val asc = Array(4) { i -> (5) }
+
+                                            var whileint = 1
+
+
+                                            while(whileint <=4){
+                                                val rnds = (0..3).random()
+                                                if(!asc.contains(rnds)){
+                                                    asc[whileint-1] = rnds
+
+                                                    Log.d("ANS",whileint.toString()+" " + rnds)
+                                                    whileint++
+
+                                                }
+
+                                            }
+                                            gameViewModel.setasc(asc)
+                                            gameViewModel.seton(true)
+                                        }
+                                        Log.d("ONNNNNN",gameViewModel.geton().toString())
+
+                                        Log.d("TODOS",gameViewModel.getTodos().size.toString())
+
+
+
+
 
 
 
@@ -146,16 +164,16 @@ class Practica1Fragment : Fragment()  {
                                             if(mediaPlayer.isPlaying){
                                                 mediaPlayer.reset()
                                             }
-                                            mediaPlayer.setDataSource("https://projecto-moviles.herokuapp.com/api/preguntadown/"+  respuesta.rutaSonido)
+                                            mediaPlayer.setDataSource("https://projecto-moviles.herokuapp.com/api/preguntadown/"+  gameViewModel.getRespuesta()!!.rutaSonido)
                                             mediaPlayer.prepare()
                                             mediaPlayer.start()
                                         }
-                                        Log.d("PREGUNTAs",pregunta.size.toString())
+                                        Log.d("PREGUNTAs",gameViewModel.getPregunta().size.toString())
                                         Log.d("WHUT",cont.toString() + " " +todos.size)
-                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(0).rutaImagen ).into(one_p)
-                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(1).rutaImagen ).into(two_p)
-                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(2).rutaImagen ).into(three_p)
-                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + pregunta.get(3).rutaImagen ).into(four_p)
+                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[0]).rutaImagen ).into(one_p)
+                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[1]).rutaImagen ).into(two_p)
+                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[2]).rutaImagen ).into(three_p)
+                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[3]).rutaImagen ).into(four_p)
                                         one_p.setOnClickListener {
                                             //mediaPlayer.stop()
                                             //mediaPlayer.release()
@@ -163,14 +181,15 @@ class Practica1Fragment : Fragment()  {
                                                 mediaPlayer.stop()
                                             }
 
-                                            if(cont >= todos.size){
+                                            if(cont >= gameViewModel.getTodos().size){
                                                 mediaPlayer.release()
                                                 popup(this)
                                                 //listener?.onNextQuestion("finish", cont)
                                             }
-                                            if(check(asc[0])){
+                                            if(check(gameViewModel.getasc()[0])){
                                                 mediaPlayer.release()
                                                 cont++
+                                                gameViewModel.seton(false)
                                                 listener?.onNextQuestion("next", cont)
                                             }else{
                                                 view?.let { it1 -> make(it1,"Intentalo Otra Vez", LENGTH_SHORT).show() }
@@ -184,14 +203,15 @@ class Practica1Fragment : Fragment()  {
                                                 mediaPlayer.stop()
                                             }
 
-                                            if(cont >= todos.size){
+                                            if(cont >= gameViewModel.getTodos().size){
                                                 mediaPlayer.release()
                                                 popup(this)
                                                 //listener?.onNextQuestion("finish", cont)
                                             }
-                                            if(check(asc[1])){
+                                            if(check(gameViewModel.getasc()[1])){
                                                 mediaPlayer.release()
                                                 cont++
+                                                gameViewModel.seton(false)
                                                 listener?.onNextQuestion("next", cont)
                                             }else{
                                                 view?.let { it1 -> make(it1,"Intentalo Otra Vez", LENGTH_SHORT).show() }
@@ -203,14 +223,15 @@ class Practica1Fragment : Fragment()  {
                                                 mediaPlayer.stop()
                                             }
 
-                                            if(cont >= todos.size){
+                                            if(cont >= gameViewModel.getTodos().size){
                                                 mediaPlayer.release()
                                                 popup(this)
                                                 //listener?.onNextQuestion("finish", cont)
                                             }
-                                            if(check(asc[2])){
+                                            if(check(gameViewModel.getasc()[2])){
                                                 mediaPlayer.release()
                                                 cont++
+                                                gameViewModel.seton(false)
                                                 listener?.onNextQuestion("next", cont)
                                         }else{
                                                 view?.let { it1 -> make(it1,"Intentalo Otra Vez", LENGTH_SHORT).show() }
@@ -222,14 +243,15 @@ class Practica1Fragment : Fragment()  {
                                                 mediaPlayer.stop()
                                             }
 
-                                            if(cont >= todos.size){
+                                            if(cont >= gameViewModel.getTodos().size){
                                                 mediaPlayer.release()
                                                 popup(this)
                                                 //listener?.onNextQuestion("finish", cont)
                                             }
-                                            if(check(asc[3])){
+                                            if(check(gameViewModel.getasc()[3])){
                                                 mediaPlayer.release()
                                                 cont++
+                                                gameViewModel.seton(false)
                                                 listener?.onNextQuestion("next", cont)
                                             }else{
                                                 view?.let { it1 -> make(it1,"Intentalo Otra Vez", LENGTH_SHORT).show() }
@@ -239,7 +261,7 @@ class Practica1Fragment : Fragment()  {
                                 }
                                 Log.d("PreguntaSIZE",pregunta.size.toString())
                             }
-                            if(cont< todos.size ){
+                            if(cont< gameViewModel.getTodos().size ){
 
                             }
                             // tv_pregunta.text = it[cont-1].rutaImagen
@@ -288,7 +310,7 @@ class Practica1Fragment : Fragment()  {
     }
 
     fun check(int: Int):Boolean{
-        if (pregunta.get(int) == respuesta){
+        if (gameViewModel.getPregunta().get(int) == gameViewModel.getRespuesta()){
             return true
             Log.d("PREGUNTAs",pregunta.size.toString())
             Log.d("RESPUESTA","CORRECTA")

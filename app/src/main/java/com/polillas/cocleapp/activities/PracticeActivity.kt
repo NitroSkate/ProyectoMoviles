@@ -25,7 +25,10 @@ class PracticeActivity : AppCompatActivity(), Practica1Fragment.OnFragmentIntera
         setContentView(R.layout.activity_practice)
         preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
         //preguntaViewmodel.retrievePreguntas()
-        initfragment(1)
+        if (savedInstanceState == null) {
+            initfragment(1)
+        }
+
     }
 
     fun initfragment(id: Int){
