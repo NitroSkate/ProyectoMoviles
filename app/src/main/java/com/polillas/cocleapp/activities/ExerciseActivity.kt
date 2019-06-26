@@ -11,9 +11,9 @@ import com.polillas.cocleapp.R
 import com.polillas.cocleapp.Room.Entities.Puntaje
 import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import com.polillas.cocleapp.fragmentos_preguntas.Preguntas1Fragmento
-import com.polillas.cocleapp.fragmentos_preguntas.Preguntas2Fragmento
 
-class ExerciseActivity : AppCompatActivity(), Preguntas1Fragmento.OnFragmentInteractionListener, Preguntas2Fragmento.OnFragmentInteractionListener {
+
+class ExerciseActivity : AppCompatActivity(), Preguntas1Fragmento.OnFragmentInteractionListener{
 
     //private lateinit var p1 : Preguntas1Fragmento
 
