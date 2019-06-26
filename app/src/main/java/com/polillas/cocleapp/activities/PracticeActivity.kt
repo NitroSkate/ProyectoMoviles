@@ -12,7 +12,6 @@ import com.polillas.cocleapp.R
 import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import com.polillas.cocleapp.fragmentos_practica.Practica1Fragment
 import com.polillas.cocleapp.fragmentos_preguntas.Preguntas1Fragmento
-import com.polillas.cocleapp.fragmentos_preguntas.Preguntas2Fragmento
 
 class PracticeActivity : AppCompatActivity(), Practica1Fragment.OnFragmentInteractionListener {
 

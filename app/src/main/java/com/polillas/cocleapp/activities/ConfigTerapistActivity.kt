@@ -55,6 +55,8 @@ class ConfigTerapistActivity : AppCompatActivity() {
                             }
 
                         popupview.dismiss()
+                    } else{
+                        Toast.makeText(this.context, "Llene los campos", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
