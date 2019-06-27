@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.UcaDevs.CocleApp">
+          package="com.polillas.cocleapp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -11,21 +11,21 @@
             android:roundIcon="@mipmap/icon"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name="com.UcaDevs.CocleApp.activities.DificultyActivity">
+        <activity android:name="com.polillas.cocleapp.activities.DificultyActivity">
         </activity>
-        <activity android:name="com.UcaDevs.CocleApp.activities.ConfigTerapistActivity">
+        <activity android:name="com.polillas.cocleapp.activities.ConfigTerapistActivity">
         </activity>
-        <activity android:name="com.UcaDevs.CocleApp.activities.TerapistActivity">
+        <activity android:name="com.polillas.cocleapp.activities.TerapistActivity">
         </activity>
-        <activity android:name="com.UcaDevs.CocleApp.activities.AccountActivity">
+        <activity android:name="com.polillas.cocleapp.activities.AccountActivity">
         </activity>
-        <activity android:name="com.UcaDevs.CocleApp.activities.ScoreActivity">
+        <activity android:name="com.polillas.cocleapp.activities.ScoreActivity">
         </activity>
-        <activity android:name="com.UcaDevs.CocleApp.activities.ExerciseActivity">
+        <activity android:name="com.polillas.cocleapp.activities.ExerciseActivity">
         </activity>
-        <activity android:name="com.UcaDevs.CocleApp.activities.PracticeActivity">
+        <activity android:name="com.polillas.cocleapp.activities.PracticeActivity">
         </activity>
-        <activity android:name="com.UcaDevs.CocleApp.MainActivity">
+        <activity android:name="com.polillas.cocleapp.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
