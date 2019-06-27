@@ -177,7 +177,7 @@ class Preguntas1Fragmento : Fragment() {
 
                                         //tv_pregunta.text = "Pregunta 1"
                                        var conta = 1
-                                        var g = 0
+
                                         Log.d("GAMEON",gameViewModel.getPregunta().toString())
                                         Log.d("RESSS",gameViewModel.getRespuesta().toString())
                                         Log.d("TEST5",gameViewModel.getasc().toString())
@@ -186,7 +186,7 @@ class Preguntas1Fragmento : Fragment() {
                                             Log.d("TEST5",gameViewModel.getDificulty().toString() + " " +(conta-1))
 
                                             arrayImageVe.get(conta-1).setOnClickListener {
-                                                g = conta
+
                                                 Log.d("CONNTA",it.id.toString())
                                                 if (it.id== R.id.one){
                                                     click(mediaPlayer,0,gameViewModel.getDificulty())
@@ -327,6 +327,7 @@ class Preguntas1Fragmento : Fragment() {
             frag.puntaje = puntaje
             frag.start = start
             frag.dificultad = dificultad
+
 
 
             frag.cont = num

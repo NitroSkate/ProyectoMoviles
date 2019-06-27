@@ -25,23 +25,23 @@ class PracticeActivity : AppCompatActivity(), Practica1Fragment.OnFragmentIntera
         preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
         //preguntaViewmodel.retrievePreguntas()
         if (savedInstanceState == null) {
-            initfragment(1)
+            initfragment(1,true)
         }
 
     }
 
-    fun initfragment(id: Int){
-        var frag = Practica1Fragment.newInstance(id)
+    fun initfragment(id: Int,start: Boolean){
+        var frag = Practica1Fragment.newInstance(id,start)
         changefragment(R.id.pr_content, frag)
     }
 
-    override fun onNextQuestion(string: String, id: Int) {
+    override fun onNextQuestion(string: String, id: Int,start: Boolean) {
         if(string == "next") {
             //Toast.makeText(this, id.toString(), Toast.LENGTH_SHORT).show()
-            initfragment(id)
+            initfragment(id,start)
         }
         else if(string == "si"){
-            initfragment(1)
+            initfragment(1,start)
         } else if (string == "no"){
             val intent = Intent(this@PracticeActivity, ScoreActivity::class.java)
             intent.putExtra("AMD", 100)
