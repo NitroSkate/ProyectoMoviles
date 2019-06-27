@@ -8,6 +8,43 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:389021263931:android:45f21cc4dff8144e",
+        "android_client_info": {
+          "package_name": "com.UcaDevs.CocleApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "389021263931-0vgs1vfrpronrpp4utf3riebdvt9i0sr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.UcaDevs.CocleApp",
+            "certificate_hash": "eda4de5d5d0583a39afd797ce9ed3917d568d979"
+          }
+        },
+        {
+          "client_id": "389021263931-sklppg0tkcnsknkh55lud9s1mqdktqot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg88vfcINBOmrFMop2TaPRl7UGNSQpbgA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "389021263931-sklppg0tkcnsknkh55lud9s1mqdktqot.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:389021263931:android:86e81282aebc296b",
         "android_client_info": {
           "package_name": "com.polillas.cocleapp"
