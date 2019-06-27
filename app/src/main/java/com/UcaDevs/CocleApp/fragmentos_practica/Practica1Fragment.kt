@@ -33,6 +33,7 @@ class Practica1Fragment : Fragment()  {
     private var actual: ArrayList<Sonido> = ArrayList()
     private var todos: ArrayList<Sonido> = ArrayList()
     private var pregunta: ArrayList<Sonido> = ArrayList()
+    private var start: Boolean = false
     private var listener: OnFragmentInteractionListener? = null
     private lateinit var preguntaViewmodel : PreguntaViewmodel
     private lateinit var gameViewModel: GameViewModel
@@ -48,15 +49,14 @@ class Practica1Fragment : Fragment()  {
 
         preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
         gameViewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
-        /*preguntaViewmodel.getAllSonidos().observe(this, Observer { sounds ->
-            sounds?.let {
-                it[]
-            }
-        })*/
+        if (start){
+
+            gameViewModel.setCONT(cont)
+        }
         val view =  inflater.inflate(R.layout.fragment_practica1, container, false).apply {
             var mediaPlayer: MediaPlayer = MediaPlayer()
-            when(cont){
-                cont ->{
+            when(gameViewModel.getCont()){
+                gameViewModel.getCont() ->{
                     Log.d("GH",gameViewModel.getRespuesta().toString())
                     Log.d("GH",gameViewModel.getPregunta().toString())
                     Log.d("GH",gameViewModel.geton().toString())
@@ -163,8 +163,7 @@ class Practica1Fragment : Fragment()  {
                                             mediaPlayer.prepare()
                                             mediaPlayer.start()
                                         }
-                                        Log.d("PREGUNTAs",gameViewModel.getPregunta().size.toString())
-                                        Log.d("WHUT",cont.toString() + " " +todos.size)
+
                                         Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[0]).rutaImagen ).into(one_p)
                                         Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[1]).rutaImagen ).into(two_p)
                                         Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[2]).rutaImagen ).into(three_p)
@@ -188,10 +187,7 @@ class Practica1Fragment : Fragment()  {
                                 }
                                 Log.d("PreguntaSIZE",pregunta.size.toString())
                             }
-                            if(cont< gameViewModel.getTodos().size ){
 
-                            }
-                            // tv_pregunta.text = it[cont-1].rutaImagen
                         }
                     })
 
@@ -226,12 +222,12 @@ class Practica1Fragment : Fragment()  {
         popup.apply {
             si.setOnClickListener {
                 popupview.dismiss()
-                listener?.onNextQuestion("si", 0)
+                listener?.onNextQuestion("si", 0,true)
 
             }
             no.setOnClickListener {
                 popupview.dismiss()
-                listener?.onNextQuestion("no", 0)
+                listener?.onNextQuestion("no", 0,true)
 
             }
         }
@@ -252,7 +248,7 @@ class Practica1Fragment : Fragment()  {
 
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onNextQuestion(string: String, id:Int)
+        fun onNextQuestion(string: String, id:Int,start:Boolean)
     }
     fun click(mediaPlayer: MediaPlayer,view: View,pos : Int){
         //mediaPlayer.stop()
@@ -261,16 +257,18 @@ class Practica1Fragment : Fragment()  {
             mediaPlayer.stop()
         }
 
-        if(cont >= gameViewModel.getTodos().size){
+        if(gameViewModel.getCont() >= gameViewModel.getTodos().size){
             mediaPlayer.release()
             popup(view)
             //listener?.onNextQuestion("finish", cont)
         }
         if(check(gameViewModel.getasc()[pos])){
             mediaPlayer.release()
-            cont++
+
+            gameViewModel.setCONT(gameViewModel.getCont()+1)
             gameViewModel.seton(false)
-            listener?.onNextQuestion("next", cont)
+            Snackbar.make(view,"Respuesta Correcta",Snackbar.LENGTH_SHORT).show()
+            listener?.onNextQuestion("next", gameViewModel.getCont(),true)
         }else{
             view?.let { it1 -> make(it1,"Intentalo Otra Vez", LENGTH_SHORT).show() }
         }
@@ -279,8 +277,9 @@ class Practica1Fragment : Fragment()  {
     companion object {
 
         @JvmStatic
-        fun newInstance(num : Int): Practica1Fragment{
+        fun newInstance(num : Int,start: Boolean): Practica1Fragment{
             var frag = Practica1Fragment()
+            frag.start = start
             frag.cont = num
             return frag
         }
