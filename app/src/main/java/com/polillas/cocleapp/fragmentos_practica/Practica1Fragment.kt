@@ -87,7 +87,7 @@ class Practica1Fragment : Fragment()  {
                             }
 
 
-                            if(gameViewModel.getTodos().size > 4 ){
+                            if(gameViewModel.getTodos().size >= 4 ){
                                 var whileint = 1
 
                                 while (whileint <= 4){
