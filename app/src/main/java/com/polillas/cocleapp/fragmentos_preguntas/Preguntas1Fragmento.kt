@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.google.android.material.snackbar.Snackbar
 //import com.example.cocleapp.R
 
 import com.polillas.cocleapp.R
@@ -28,6 +29,7 @@ class Preguntas1Fragmento : Fragment() {
     private var total : Int =  0
     lateinit var respuesta: Sonido
      var puntaje: Int = 0
+    private var maxPreguntas = 10
     private var dificultad: Int= 0
     private var start: Boolean = false
     private var actual: ArrayList<Sonido> = ArrayList()
@@ -66,6 +68,9 @@ class Preguntas1Fragmento : Fragment() {
             }
         })*/
         val view =  inflater.inflate(R.layout.fragment_preguntas1_fragmento, container, false).apply {
+            if(gameViewModel.getDificulty() == 3){
+                four.visibility = View.GONE
+            }
             var mediaPlayer: MediaPlayer = MediaPlayer()
             arrayImageVe.add(one)
             arrayImageVe.add(two)
@@ -218,29 +223,6 @@ class Preguntas1Fragmento : Fragment() {
                                         }
                                         Log.d("PREGUNTAs",gameViewModel.getPregunta().size.toString())
                                         Log.d("WHUT",cont.toString() + " " +todos.size)
-                                        /*
-                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[0]).rutaImagen ).into(one)
-                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[1]).rutaImagen ).into(two)
-                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[2]).rutaImagen ).into(three)
-                                        Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[3]).rutaImagen ).into(four)
-                                        one.setOnClickListener {
-                                        click(mediaPlayer,0)
-
-                                        }
-                                        two.setOnClickListener {
-                                            click(mediaPlayer,1)
-
-                                        }
-                                        three.setOnClickListener {
-                                            click(mediaPlayer,2)
-
-                                        }
-                                        four.setOnClickListener {
-                                            click(mediaPlayer,3)
-
-                                        }
-
-                                        */
 
                                     }
 
@@ -302,16 +284,22 @@ class Preguntas1Fragmento : Fragment() {
         Log.d("TEST5",pos.toString() + "dificultas "+dificultad)
         if (check(gameViewModel.getasc()[pos])){
             gameViewModel.setPunta(gameViewModel.getPunta()+1)
+            view?.let { Snackbar.make(it,"Respuesta Correcta", Snackbar.LENGTH_SHORT).show() }
+        }else{
+            view?.let { Snackbar.make(it,"Respuesta Incorrecta",Snackbar.LENGTH_SHORT).show() }
         }
-        if(gameViewModel.getCont() >= gameViewModel.getTodos().size){
+        if(gameViewModel.getCont() >= AppConstants.MAX_PREGUNTAS){
             gameViewModel.seton(false)
             listener?.onNextQuestion("finish", gameViewModel.getCont(),gameViewModel.getPunta(),true,dificultad)
 
+        }else{
+            gameViewModel.seton(false)
+            gameViewModel.setCONT(gameViewModel.getCont() + 1)
+            listener?.onNextQuestion("next", gameViewModel.getCont(),gameViewModel.getPunta(),true,dificultad)
+
         }
 
-        gameViewModel.seton(false)
-        gameViewModel.setCONT(gameViewModel.getCont() + 1)
-        listener?.onNextQuestion("next", gameViewModel.getCont(),gameViewModel.getPunta(),true,dificultad)
+
     }
 
     companion object {

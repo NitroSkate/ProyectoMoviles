@@ -55,7 +55,7 @@ class ModoFragment : Fragment() {
         val view =  inflater.inflate(R.layout.fragment_modo, container, false)
         view.iV_help_modo.setOnClickListener {
             var popup = inflater.inflate(R.layout.multiple_info_windows, null)
-            var popupview = PopupWindow(popup, 500, 700, true)
+            var popupview = PopupWindow(popup, 700, 400, true)
 
             popupview.showAtLocation(it, Gravity.CENTER,0,0)
             popup.apply {

@@ -30,6 +30,7 @@ class Practica1Fragment : Fragment()  {
     private var cont : Int = 0
     private var contPREGUNTA: Int = 1
     private var total : Int =  0
+    private var maxpreguntas  = 10
     lateinit var respuesta: Sonido
     private var actual: ArrayList<Sonido> = ArrayList()
     private var todos: ArrayList<Sonido> = ArrayList()
@@ -258,21 +259,24 @@ class Practica1Fragment : Fragment()  {
             mediaPlayer.stop()
         }
 
-        if(gameViewModel.getCont() >= gameViewModel.getTodos().size){
+        if(gameViewModel.getCont() >= AppConstants.MAX_PREGUNTAS){
+
             mediaPlayer.release()
             popup(view)
             //listener?.onNextQuestion("finish", cont)
-        }
-        if(check(gameViewModel.getasc()[pos])){
-            mediaPlayer.release()
-
-            gameViewModel.setCONT(gameViewModel.getCont()+1)
-            gameViewModel.seton(false)
-            Snackbar.make(view,"Respuesta Correcta",Snackbar.LENGTH_SHORT).show()
-            listener?.onNextQuestion("next", gameViewModel.getCont(),true)
         }else{
-            view?.let { it1 -> make(it1,"Intentalo Otra Vez", LENGTH_SHORT).show() }
+            if(check(gameViewModel.getasc()[pos])){
+                mediaPlayer.release()
+
+                gameViewModel.setCONT(gameViewModel.getCont()+1)
+                gameViewModel.seton(false)
+                Snackbar.make(view,"Respuesta Correcta",Snackbar.LENGTH_SHORT).show()
+                listener?.onNextQuestion("next", gameViewModel.getCont(),true)
+            }else{
+                view?.let { it1 -> make(it1,"Intentalo Otra Vez", LENGTH_SHORT).show() }
+            }
         }
+
     }
 
     companion object {
