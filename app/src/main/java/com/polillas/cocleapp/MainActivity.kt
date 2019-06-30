@@ -45,14 +45,15 @@ class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionList
         preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
         if(checkNetworkStatus()) {
             preguntaViewmodel.retrievePreguntas()
+            if(savedInstanceState != null){
+                initfragment(opc)
+            }
+            else {
+                opc = "menu"
+                initfragment(opc)
+            }
         }
-        if(savedInstanceState != null){
-            initfragment(opc)
-        }
-        else {
-            opc = "menu"
-            initfragment(opc)
-        }
+
     }
 
     override fun onBackPressed() {
@@ -62,16 +63,19 @@ class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionList
 
 
     override fun onOpcion(verify: Int, string: String) {
-        if(verify > 0 && string == "exercise") {
-            var intent = Intent(this@MainActivity, DificultyActivity::class.java)
-            startActivity(intent)
-        }
-        else if (verify > 0 && string == "practice") {
-            var intent = Intent(this@MainActivity, PracticeActivity::class.java)
-            startActivity(intent)
-        }else {
-            Toast.makeText(this, "Espere a la conexion", Toast.LENGTH_SHORT).show()
-            initfragment("mode")
+        if(checkNetworkStatus()) {
+            if (verify > 0 && string == "exercise") {
+                var intent = Intent(this@MainActivity, DificultyActivity::class.java)
+                startActivity(intent)
+            } else if (verify > 0 && string == "practice") {
+                var intent = Intent(this@MainActivity, PracticeActivity::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Espere a la conexion", Toast.LENGTH_SHORT).show()
+                initfragment("mode")
+            }
+        } else {
+            Toast.makeText(this, "No hay internet, favor conectarse a un punto de red", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -84,7 +88,7 @@ class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionList
                 initfragment(string)
             }
         } else {
-            Toast.makeText(this, "No hay internet, favor conectarse a un punto", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "No hay internet, favor conectarse a un punto de red", Toast.LENGTH_SHORT).show()
         }
     }
 
