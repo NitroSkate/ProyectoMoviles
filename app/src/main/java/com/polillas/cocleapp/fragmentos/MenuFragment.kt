@@ -1,22 +1,16 @@
 package com.polillas.cocleapp.fragmentos
 
 import android.content.Context
-import android.net.Uri
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.PopupWindow
-import android.widget.Toast
 
 import com.polillas.cocleapp.R
 import kotlinx.android.synthetic.main.fragment_menu.view.*
-import kotlinx.android.synthetic.main.fragment_new_account.view.*
-import kotlinx.android.synthetic.main.multiple_info_windows.*
 import kotlinx.android.synthetic.main.multiple_info_windows.view.*
 
 

@@ -1,11 +1,9 @@
 package com.polillas.cocleapp.fragmentos
 
 import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 
-import android.util.Log
 import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,10 +13,8 @@ import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.Toast
 //import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthException
 
 import com.polillas.cocleapp.R
-import kotlinx.android.synthetic.main.fragment_account.view.*
 import kotlinx.android.synthetic.main.fragment_new_account.view.*
 import kotlinx.android.synthetic.main.login.*
 import kotlinx.android.synthetic.main.login.view.*

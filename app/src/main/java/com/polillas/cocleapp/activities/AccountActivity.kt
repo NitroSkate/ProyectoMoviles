@@ -3,13 +3,11 @@ package com.polillas.cocleapp.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.UserProfileChangeRequest
 import com.polillas.cocleapp.MainActivity
 import com.polillas.cocleapp.R
 import com.polillas.cocleapp.fragmentos.AccountFragment

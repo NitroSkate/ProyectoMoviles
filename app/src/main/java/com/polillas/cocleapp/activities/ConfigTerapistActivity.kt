@@ -15,8 +15,6 @@ import com.google.firebase.auth.UserProfileChangeRequest
 import com.polillas.cocleapp.R
 import kotlinx.android.synthetic.main.activity_config_terapist.*
 import kotlinx.android.synthetic.main.fragment_edit_profile.view.*
-import kotlinx.android.synthetic.main.fragment_new_account.view.*
-import java.io.IOException
 import java.lang.Exception
 
 class ConfigTerapistActivity : AppCompatActivity() {

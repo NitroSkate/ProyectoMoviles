@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.addpatient.view.*
 import kotlinx.android.synthetic.main.listpat_elements.view.*
 import kotlinx.android.synthetic.main.popup_info_pat.view.*
 import kotlinx.android.synthetic.main.popup_info_pat.view.lname_patient
-import java.util.*
 
 class ListPatientAdapter (var patients : List<Pacientes>,val click: (Pacientes) -> Unit, var auth : FirebaseAuth, var db : FirebaseFirestore) : RecyclerView.Adapter<ListPatientAdapter.ViewHolder>(){
 

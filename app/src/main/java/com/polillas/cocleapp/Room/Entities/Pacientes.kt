@@ -1,8 +1,5 @@
 package com.polillas.cocleapp.Room.Entities
 
-import androidx.room.ColumnInfo
-import androidx.room.PrimaryKey
-
 data class Pacientes (
     var id: String?,
     var nombre : String?,

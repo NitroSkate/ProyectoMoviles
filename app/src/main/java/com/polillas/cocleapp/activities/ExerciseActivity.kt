@@ -3,12 +3,10 @@ package com.polillas.cocleapp.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.polillas.cocleapp.R
-import com.polillas.cocleapp.Room.Entities.Puntaje
 import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import com.polillas.cocleapp.fragmentos_preguntas.Preguntas1Fragmento
 

@@ -1,6 +1,5 @@
 package com.polillas.cocleapp.activities
 
-import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,25 +7,19 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.View
-import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polillas.cocleapp.MainActivity
 import com.polillas.cocleapp.R
-import com.polillas.cocleapp.Room.Entities.Paciente
 import com.polillas.cocleapp.Room.Entities.Pacientes
 import com.polillas.cocleapp.Room.Entities.Puntaje
 import com.polillas.cocleapp.recycler.ListPatientAdapter
 import kotlinx.android.synthetic.main.activity_terapist.*
 import kotlinx.android.synthetic.main.addpatient.view.*
-import kotlinx.android.synthetic.main.fragment_new_account.view.*
-import kotlinx.android.synthetic.main.login.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 

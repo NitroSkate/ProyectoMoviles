@@ -1,17 +1,8 @@
 package com.polillas.cocleapp.Room.Viewmodel
 
 import android.app.Application
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.viewModelScope
-import com.polillas.cocleapp.Room.Entities.Pregunta
 import com.polillas.cocleapp.Room.Entities.Sonido
-import com.polillas.cocleapp.Room.Repositories.PreguntaRepo
-import com.polillas.cocleapp.Room.RoomDB.CoclearDatabase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class GameViewModel(application: Application): AndroidViewModel(application){
 

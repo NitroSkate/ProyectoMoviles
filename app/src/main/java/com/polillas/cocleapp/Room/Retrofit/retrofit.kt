@@ -1,7 +1,6 @@
 package com.polillas.cocleapp.Room.Retrofit
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.polillas.cocleapp.Room.Entities.Pregunta
 import com.polillas.cocleapp.Room.Entities.ResponsePreg
 import com.polillas.cocleapp.constants.AppConstants
 import kotlinx.coroutines.Deferred

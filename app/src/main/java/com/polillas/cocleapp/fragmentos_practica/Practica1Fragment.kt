@@ -1,9 +1,7 @@
 package com.polillas.cocleapp.fragmentos_practica
 
 import android.content.Context
-import android.content.Intent
 import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -11,15 +9,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.PopupWindow
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.snackbar.Snackbar.*
-import com.google.common.base.Strings
-import com.polillas.cocleapp.MainActivity
 //import com.example.cocleapp.R
 
 import com.polillas.cocleapp.R
@@ -29,7 +23,6 @@ import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import com.polillas.cocleapp.constants.AppConstants
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_practica1.*
-import kotlinx.android.synthetic.main.fragment_preguntas1_fragmento.view.*
 import kotlinx.android.synthetic.main.popup_practice.view.*
 
 
