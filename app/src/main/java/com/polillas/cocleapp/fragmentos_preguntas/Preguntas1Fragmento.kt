@@ -71,6 +71,10 @@ class Preguntas1Fragmento : Fragment() {
             if(gameViewModel.getDificulty() == 3){
                 four.visibility = View.GONE
             }
+            else if(gameViewModel.getDificulty() ==2){
+                four.visibility = View.GONE
+                three.visibility = View.GONE
+            }
             var mediaPlayer: MediaPlayer = MediaPlayer()
             arrayImageVe.add(one)
             arrayImageVe.add(two)

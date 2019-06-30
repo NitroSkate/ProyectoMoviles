@@ -7,6 +7,7 @@
     android:background="#1C313A">
 
     <TextView
+            android:id="@+id/editthis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -92,28 +93,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></DatePicker>
 
-    <NumberPicker
-        android:id="@+id/lvl_patient"
-        android:layout_width="79dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#1C313A"
-        android:max="20"
-        android:min="1"
-        android:solidColor="#16272E"
-        android:textAlignment="gravity"
-        android:textDirection="inherit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.389"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.748">
-
-    </NumberPicker>
+    <EditText android:id="@+id/nivel_patient"
+              android:layout_width="79dp"
+              android:layout_height="33dp"
+              android:layout_marginStart="8dp"
+              android:layout_marginTop="8dp"
+              android:layout_marginEnd="8dp"
+              android:layout_marginBottom="8dp"
+              android:solidColor="#16272E"
+              android:textAlignment="center"
+              android:textDirection="inherit"
+              android:hint="1-10"
+              android:textSize="13sp"
+              android:textColorHint="#fff"
+              android:inputType="numberDecimal"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintHorizontal_bias="0.393"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintVertical_bias="0.745"></EditText>
 
     <Button
         android:id="@+id/add_patient"
