@@ -43,7 +43,7 @@ class ExerciseActivity : AppCompatActivity(), Preguntas1Fragmento.OnFragmentInte
 
 
     override fun onNextQuestion(string: String, id: Int,puntaje: Int,start: Boolean,dificultad:Int) {
-        Toast.makeText(this,puntaje.toString(),Toast.LENGTH_SHORT).show()
+
         
         if(string == "next") {
             //Toast.makeText(this, id.toString(), Toast.LENGTH_SHORT).show()

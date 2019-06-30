@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.polillas.cocleapp.R
+import com.polillas.cocleapp.constants.AppConstants
 import kotlinx.android.synthetic.main.activity_score.*
 
 class ScoreActivity : AppCompatActivity() {
@@ -16,10 +17,11 @@ class ScoreActivity : AppCompatActivity() {
         puntaje = d.getInt("AMD")
         if(puntaje != 100) {
             puntaje_tv.text = puntaje.toString()
+            puntajeMax_tv.text = "/" + AppConstants.MAX_PREGUNTAS
         } else {
             puntaje_textview.text = "Practica"
             puntaje_tv.text = "Finalizada"
-            puntajeMax_tv.text = ""
+           puntajeMax_tv.text = puntaje.toString()
         }
         this.apply {
             lL_scoreaceptar.setOnClickListener {
