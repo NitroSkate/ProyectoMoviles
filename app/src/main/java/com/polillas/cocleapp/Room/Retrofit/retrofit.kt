@@ -9,11 +9,15 @@ import retrofit2.Response
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
+//TODO esta interfaz es la instancia de retrofit
+
 interface retrofit{
 
+    //TODO esta funcion ejecuta un metodo get a la url especificada y retornara los datos que esta devuelva
     @GET("/api/pregunta/")
     fun obtainQuestions(): Deferred<Response<List<ResponsePreg>>>
 
+    //TODO aca se crea la conexion con la api mediante la url que se encuetra en AppConstants
     companion object{
         fun getPreguntas(): retrofit{
             return Retrofit.Builder().baseUrl(AppConstants.BASE_URL).addConverterFactory(MoshiConverterFactory.create())

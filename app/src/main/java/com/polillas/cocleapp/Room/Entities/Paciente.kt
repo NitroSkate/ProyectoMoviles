@@ -5,9 +5,15 @@ import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+/*
+TODO Esta clase contiene el modelo de la entidad Paciente que sera usado por SQLite al momento de instanciar la
+base de datos
+*/
 
+//TODO Se coloca un nombre a esta tabla, con este nombre sera guardada en SQLite
 @Entity(tableName = "Paciente")
 class Paciente(
+    // TODO Se le envian como parametros los campos de la tabla, estos tambien sirven para crear la tabla
     @PrimaryKey
     @ColumnInfo(name = "P_id")
     var id: Int,

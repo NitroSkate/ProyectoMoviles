@@ -6,9 +6,15 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
+/*
+TODO Esta clase contiene el modelo de la entidad Pregunta que sera usado por SQLite al momento de instanciar la
+base de datos
+*/
 
+//TODO se define el nombre con el que SQLite almacenara y referenciara la tabla paciente
 @Entity(tableName = "Pregunta")
 data class Pregunta (
+    //TODO Se definen los campos de la tabla ademas se colocan como parametros del constructor de la clase
     @PrimaryKey
     @ColumnInfo(name = "Q_id")
     @field:Json(name = "_id")

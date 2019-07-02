@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.polillas.cocleapp.Room.DAO.*
 import com.polillas.cocleapp.Room.Entities.*
 
-@Database(entities = arrayOf(Pregunta::class/*, Paciente::class, Terapista::class, Sonido::class*/, Sonido::class), version = 1, exportSchema = false)
+@Database(entities = arrayOf(Pregunta::class/*, Paciente::class, Terapeuta::class, Sonido::class*/, Sonido::class), version = 1, exportSchema = false)
 public abstract class CoclearDatabase : RoomDatabase(){
 
     //abstract fun pruebaDAO() : PruebaDao
