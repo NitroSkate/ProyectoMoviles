@@ -18,6 +18,13 @@ import com.polillas.cocleapp.fragmentos.ConfigFragment
 import com.polillas.cocleapp.fragmentos.MenuFragment
 import com.polillas.cocleapp.fragmentos.ModoFragment
 
+/*
+    TODO actividad principal que es utilizado como punto de inicio de la aplicacion. Se manejan 3 fragmentos: menu y modo.
+    TODO Se tiene una funcion que verifica si el dispositivo posee conexion a internet y una condicional que define si la informacion
+    TODO ya llego al dispositivo (Toast que contiene espere la conexion). Todas las acciones de los botones de los fragmentos son manejados
+    TODO por implementaciones de interfaz de cada fragmento
+ */
+
 class MainActivity : AppCompatActivity(), ModoFragment.OnFragmentInteractionListener, MenuFragment.OnFragmentInteractionListener, ConfigFragment.OnFragmentInteractionListener {
 
 

@@ -9,9 +9,13 @@ import com.polillas.cocleapp.R
 import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import com.polillas.cocleapp.fragmentos_practica.Practica1Fragment
 
+/*
+TODO Actividad encargada de crear la instancia del fragmento Practica y de manejar las acciones manejados por los botones del
+TODO mismo fragmento instanciado. Todas estas acciones se manejan por implementacion de interfaces.
+ */
+
 class PracticeActivity : AppCompatActivity(), Practica1Fragment.OnFragmentInteractionListener {
 
-    //private lateinit var p1 : Preguntas1Fragmento
 
     private lateinit var preguntaViewmodel: PreguntaViewmodel
 
@@ -19,7 +23,6 @@ class PracticeActivity : AppCompatActivity(), Practica1Fragment.OnFragmentIntera
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_practice)
         preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
-        //preguntaViewmodel.retrievePreguntas()
         if (savedInstanceState == null) {
             initfragment(1,true)
         }
@@ -33,7 +36,6 @@ class PracticeActivity : AppCompatActivity(), Practica1Fragment.OnFragmentIntera
 
     override fun onNextQuestion(string: String, id: Int,start: Boolean) {
         if(string == "next") {
-            //Toast.makeText(this, id.toString(), Toast.LENGTH_SHORT).show()
             initfragment(id,start)
         }
         else if(string == "si"){

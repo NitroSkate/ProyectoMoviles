@@ -26,12 +26,18 @@ import kotlinx.android.synthetic.main.fragment_practica1.*
 import kotlinx.android.synthetic.main.popup_practice.view.*
 
 
+/*TODO archivo de Kotlin encargado de controlar la logica y el diseño de el pequeño juego de preguntas en su modo se
+    Practica , la logica del juego funciona gracias a que usando listas se agregan todas las preguntas, luego  se agregan al azar y
+    se saca una respuesta, se escogen 4 preguntas(procurando que no se repitan dos opciones) de estas preguntas para asi obtener las
+    opciones que se muestran en la pregunta, al final se corrobora la respuesta, se lleva el contador que nos dice el numero de
+    preguntas que se lleva hasta el momento
+TODO
+* */
 class Practica1Fragment : Fragment()  {
     private var cont : Int = 0
-    private var contPREGUNTA: Int = 1
+
     private var total : Int =  0
-    private var maxpreguntas  = 10
-    lateinit var respuesta: Sonido
+
     private var actual: ArrayList<Sonido> = ArrayList()
     private var todos: ArrayList<Sonido> = ArrayList()
     private var pregunta: ArrayList<Sonido> = ArrayList()
@@ -59,21 +65,17 @@ class Practica1Fragment : Fragment()  {
             var mediaPlayer: MediaPlayer = MediaPlayer()
             when(gameViewModel.getCont()){
                 gameViewModel.getCont() ->{
-                    Log.d("GH",gameViewModel.getRespuesta().toString())
-                    Log.d("GH",gameViewModel.getPregunta().toString())
-                    Log.d("GH",gameViewModel.geton().toString())
-                    Log.d("TODOS#",todos.size.toString())
-                    Log.d("ONNNNNN",gameViewModel.geton().toString())
+
                     preguntaViewmodel.getAllSonidos().observe(this@Practica1Fragment, Observer { sounds ->
                         sounds?.let {
                             total = sounds.size
-                            Log.i("osunds",sounds.toString())
+
                             if (gameViewModel.getRespuesta() == null){
-                                Log.d("GER","GG")
+
                                 sounds.forEach { sound->
                                     actual.add(sound)
                                     todos.add(sound)
-                                    Log.d("TODOS",todos.size.toString())
+
 
                                 }
                                 gameViewModel.setActual(actual)
@@ -85,7 +87,7 @@ class Practica1Fragment : Fragment()  {
                                 var whileint = 1
 
                                 while (whileint <= 4){
-                                    Log.d("HELLOS","HEERE")
+
                                     if (!gameViewModel.geton()){
                                         if (whileint == 1){
 
@@ -104,9 +106,8 @@ class Practica1Fragment : Fragment()  {
                                         }else{
 
                                             val rnds = (0..gameViewModel.getTodos().size-1).random()
-                                            Log.d("BREAKPOINT1",gameViewModel.getTodos().size.toString() +" "+ rnds.toString())
                                             if(gameViewModel.getTodos().get(rnds)==gameViewModel.getRespuesta()|| pregunta.contains(gameViewModel.getTodos().get(rnds))){
-                                                Log.d("NO HAY","PENAL")
+
                                             }else{
                                                 pregunta.add(gameViewModel.getTodos().get(rnds))
 
@@ -119,10 +120,9 @@ class Practica1Fragment : Fragment()  {
                                         whileint++
                                     }
 
-
                                     if(whileint ==5){
                                         if (!gameViewModel.geton()){
-                                            Log.d("GAMEON","HOLA")
+
                                             gameViewModel.setPregunta(pregunta)
                                             val asc = Array(4) { i -> (5) }
 
@@ -143,17 +143,8 @@ class Practica1Fragment : Fragment()  {
                                             gameViewModel.setasc(asc)
                                             gameViewModel.seton(true)
                                         }
-                                        Log.d("ONNNNNN",gameViewModel.geton().toString())
-
-                                        Log.d("TODOS",gameViewModel.getTodos().size.toString())
 
 
-
-
-
-
-
-                                        //tv_pregunta.text = "Pregunta 1"
 
                                         bt_play_p.setOnClickListener {
                                             if(mediaPlayer.isPlaying){
@@ -187,7 +178,7 @@ class Practica1Fragment : Fragment()  {
                                     }
 
                                 }
-                                Log.d("PreguntaSIZE",pregunta.size.toString())
+
                             }
 
                         }
@@ -238,12 +229,10 @@ class Practica1Fragment : Fragment()  {
     fun check(int: Int):Boolean{
         if (gameViewModel.getPregunta().get(int) == gameViewModel.getRespuesta()){
             return true
-            Log.d("PREGUNTAs",pregunta.size.toString())
-            Log.d("RESPUESTA","CORRECTA")
+
         }else{
             return false
-            Log.d("PREGUNTAs",pregunta.size.toString())
-            Log.d("RESPUESTA","INCORRECTA")
+
         }
 
     }
@@ -253,8 +242,7 @@ class Practica1Fragment : Fragment()  {
         fun onNextQuestion(string: String, id:Int,start:Boolean)
     }
     fun click(mediaPlayer: MediaPlayer,view: View,pos : Int){
-        //mediaPlayer.stop()
-        //mediaPlayer.release()
+
         if(mediaPlayer.isPlaying){
             mediaPlayer.stop()
         }
@@ -263,7 +251,7 @@ class Practica1Fragment : Fragment()  {
 
             mediaPlayer.release()
             popup(view)
-            //listener?.onNextQuestion("finish", cont)
+
         }else{
             if(check(gameViewModel.getasc()[pos])){
                 mediaPlayer.release()

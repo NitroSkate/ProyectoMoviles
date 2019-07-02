@@ -10,6 +10,10 @@ import android.view.ViewGroup
 import com.polillas.cocleapp.R
 import kotlinx.android.synthetic.main.fragment_config.view.*
 
+/*
+TODO Inicialmente era para mostrar la configuracion general del usuario, pero dejo de utilizarse este fragmento.
+ */
+
 class ConfigFragment : Fragment() {
     private var listener: OnFragmentInteractionListener? = null
 

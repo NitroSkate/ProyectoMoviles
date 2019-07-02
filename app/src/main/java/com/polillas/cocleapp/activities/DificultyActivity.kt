@@ -6,6 +6,11 @@ import android.os.Bundle
 import com.polillas.cocleapp.R
 import kotlinx.android.synthetic.main.fragment_account.*
 
+/*
+TODO Pantalla de seleccion de dificultad que sera util para definir cuantas opciones se mostraran al usuario en la pantalla
+TODO del cuestionario de sonidos
+ */
+
 class DificultyActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

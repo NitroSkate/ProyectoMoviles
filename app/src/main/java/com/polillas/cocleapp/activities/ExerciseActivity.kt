@@ -10,10 +10,13 @@ import com.polillas.cocleapp.R
 import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import com.polillas.cocleapp.fragmentos_preguntas.Preguntas1Fragmento
 
+/*
+TODO Actividad encargada de manejar la respuesta del fragmento pregunta y el encargado de crear la instancia de este mismo
+ */
+
 
 class ExerciseActivity : AppCompatActivity(), Preguntas1Fragmento.OnFragmentInteractionListener{
 
-    //private lateinit var p1 : Preguntas1Fragmento
 
     private lateinit var preguntaViewmodel: PreguntaViewmodel
 
@@ -21,7 +24,6 @@ class ExerciseActivity : AppCompatActivity(), Preguntas1Fragmento.OnFragmentInte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise)
         preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
-        //preguntaViewmodel.retrievePreguntas()
 
         if (savedInstanceState == null) {
             var intent = intent.extras
@@ -31,11 +33,6 @@ class ExerciseActivity : AppCompatActivity(), Preguntas1Fragmento.OnFragmentInte
     }
 
     fun initfragment(id: Int,puntaje: Int,start: Boolean,dificultad: Int){
-        /*when(id){
-            1 -> {
-                var frag = Preguntas2Fragmento.newInstance()
-                changefragment(R.id.ex_content, frag)
-            }*/
 
         var frag = Preguntas1Fragmento.newInstance(id,puntaje,start,dificultad)
         changefragment(R.id.ex_content, frag)

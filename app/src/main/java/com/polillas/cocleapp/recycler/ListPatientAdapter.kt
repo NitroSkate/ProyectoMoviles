@@ -18,9 +18,14 @@ import kotlinx.android.synthetic.main.listpat_elements.view.*
 import kotlinx.android.synthetic.main.popup_info_pat.view.*
 import kotlinx.android.synthetic.main.popup_info_pat.view.lname_patient
 
+/*
+TODO Se declararon todas funciones basicas de un recycler view, el cual contiene una lista de tipo pacientes y una funcion click
+TODO Se incluye el auth y db que salen de firebase para poder acceder a la base de datos firestore y poder realizar modificaciones
+TODO del paciente o poder borrar directamente a un paciente de la lista
+ */
+
 class ListPatientAdapter (var patients : List<Pacientes>,val click: (Pacientes) -> Unit, var auth : FirebaseAuth, var db : FirebaseFirestore) : RecyclerView.Adapter<ListPatientAdapter.ViewHolder>(){
 
-    //private var patients = emptyList<Pacientes>()
 
     class ViewHolder (itemView: View): RecyclerView.ViewHolder(itemView) {
         fun bind(pacientes: Pacientes, click: (Pacientes) -> Unit, auth: FirebaseAuth, db: FirebaseFirestore) = with(itemView){

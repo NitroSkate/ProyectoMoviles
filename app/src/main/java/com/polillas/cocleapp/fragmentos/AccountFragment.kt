@@ -19,10 +19,10 @@ import kotlinx.android.synthetic.main.fragment_new_account.view.*
 import kotlinx.android.synthetic.main.login.*
 import kotlinx.android.synthetic.main.login.view.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+/*
+TODO Fragmento encargado de manejar el registro y login de los terapeutas para poder acceder a la siguiente ventana
+TODO Contiene elementos de FirebaseAuth para poder verificar cuenta y crear cuentas
+ */
 
 class AccountFragment : Fragment() {
 

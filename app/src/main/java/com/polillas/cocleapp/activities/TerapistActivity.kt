@@ -23,6 +23,12 @@ import kotlinx.android.synthetic.main.addpatient.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
+/* TODO Archivo de kotlin encargado de crear la vista donde el terapeuta controlara la informacion del paciente
+TODO El codigo funciona en base a firebase por medio del uso de firestore y sus metodos de recopilacion, agregacion
+TODO , edicion y eliminacion de datos en la base de datos en la nube. Hace uso de la autentificacion para mantenerse en
+TODO esta ventana. Los pacientes se muestran por medio de una vista recicladora.
+ */
+
 class TerapistActivity : AppCompatActivity() {
 
     private lateinit var auth : FirebaseAuth
@@ -104,14 +110,9 @@ class TerapistActivity : AppCompatActivity() {
                 for (document in results) {
                     Log.d("abr", document.getString("nombre"))
                     val paciente = Pacientes(document.id, document.getString("nombre"), document.getString("apellido"), document.getString("fechaIngreso"), document.getString("nivel"), listp)
-                    //lista.add(document.getString("nombre"))
                     list.add(paciente)
-                    //Snackbar.make(this, "Paciente agregado", Snackbar.LENGTH_SHORT).show()
-                    //Toast.makeText(this, document.id, Toast.LENGTH_SHORT).show()
                 }
                 initrecycler(list)
-                //val listadap = ArrayAdapter(this, R.layout.listapp, lista)
-                //patient_list.adapter = listadap
             }
             .addOnFailureListener { exc ->
                 Log.d("fail", "Murio", exc)
@@ -135,11 +136,6 @@ class TerapistActivity : AppCompatActivity() {
     private fun onClickPatient(item: Pacientes){
         Log.d("objeto", item.nombre)
         retrievedocuments()
-        /*var popup = inflater.inflate(R.layout.fragment_new_account, null)
-        var popupview = PopupWindow(popup, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true)
-
-        popupview.showAtLocation(, Gravity.CENTER,0,0)
-        popup.apply {*/
     }
 
     override fun onBackPressed() {
