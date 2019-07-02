@@ -22,14 +22,13 @@ import com.polillas.cocleapp.constants.AppConstants
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_preguntas1_fragmento.view.*
 
-
+/*TODO archivo de Kotlin encargado de controlar la logica y el diseño de el pequeño juego de preguntas en su modo se Desaio
+TODO
+* */
 class Preguntas1Fragmento : Fragment() {
     private var cont : Int = 0
-    private var contPREGUNTA: Int = 1
     private var total : Int =  0
-    lateinit var respuesta: Sonido
      var puntaje: Int = 0
-    private var maxPreguntas = 10
     private var dificultad: Int= 0
     private var start: Boolean = false
     private var actual: ArrayList<Sonido> = ArrayList()
@@ -37,12 +36,11 @@ class Preguntas1Fragmento : Fragment() {
     private var pregunta: ArrayList<Sonido> = ArrayList()
     private var listener: OnFragmentInteractionListener? = null
     private var arrayImageVe: ArrayList<ImageView> = ArrayList()
-    private var imageViewDisponibles: ArrayList<ImageView> = ArrayList()
     private lateinit var preguntaViewmodel : PreguntaViewmodel
     private lateinit var gameViewModel: GameViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("HELLO","HELLO")
+
     }
 
     override fun onCreateView(
@@ -50,9 +48,7 @@ class Preguntas1Fragmento : Fragment() {
         savedInstanceState: Bundle?
 
     ): View? {
-        // Inflate the layout for this fragment
 
-//        Log.d("OMG2",one.toString())
         preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
 
         gameViewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
@@ -61,12 +57,7 @@ class Preguntas1Fragmento : Fragment() {
             gameViewModel.setPunta(puntaje)
             gameViewModel.setCONT(cont)
         }
-    //    Log.d("OUNTAE",gameViewModel.getCont().toString()+1)
-        /*preguntaViewmodel.getAllSonidos().observe(this, Observer { sounds ->
-            sounds?.let {
-                it[]
-            }
-        })*/
+
         val view =  inflater.inflate(R.layout.fragment_preguntas1_fragmento, container, false).apply {
             if(gameViewModel.getDificulty() == 3){
                 four.visibility = View.GONE
@@ -80,25 +71,22 @@ class Preguntas1Fragmento : Fragment() {
             arrayImageVe.add(two)
             arrayImageVe.add(three)
             arrayImageVe.add(four)
-            Log.d("MANGO",arrayImageVe.toString())
+
             when(gameViewModel.getCont()){
                 gameViewModel.getCont() ->{
-                    Log.d("OUNTAE",gameViewModel.getCont().toString()+1)
-                    //   Log.d("ONNNNNN",gameViewModel.geton().toString()+"1")
 
-                    //   Log.d("ONNNNNN",gameViewModel.geton().toString()+"1")
                     preguntaViewmodel.getAllSonidos().observe(this@Preguntas1Fragmento, Observer { sounds ->
-                        Log.d("ONNNNNN",gameViewModel.geton().toString()+"2")
+
                         sounds?.let {
-                            Log.d("ONNNNNN",gameViewModel.geton().toString()+"2")
+
                             total = sounds.size
-                            Log.i("osunds",sounds.toString())
+
                             if (gameViewModel.getRespuesta() == null){
-                                Log.d("GER","GG")
+
                                 sounds.forEach { sound->
                                     actual.add(sound)
                                     todos.add(sound)
-                                    Log.d("TODOS",todos.size.toString())
+
 
                                 }
                                 gameViewModel.setActual(actual)
@@ -110,10 +98,10 @@ class Preguntas1Fragmento : Fragment() {
                                 var whileint = 1
 
                                 while (whileint <= gameViewModel.getDificulty()){
-                                    //   Log.d("ONNNNNN",gameViewModel.geton().toString())
+
                                     if (!gameViewModel.geton()){
                                         if (whileint == 1){
-                                            Log.d("ONNNNNN",gameViewModel.geton().toString())
+
                                             val rnds = (0..gameViewModel.getTodos().size-1).random()
                                             if (gameViewModel.getActual().contains(gameViewModel.getTodos().get(rnds))){
 
@@ -144,11 +132,11 @@ class Preguntas1Fragmento : Fragment() {
                                         whileint++
                                     }
 
-                                    Log.d("TEST1",gameViewModel.getDificulty().toString() + whileint.toString())
+
                                     if(whileint > gameViewModel.getDificulty()){
-                                        Log.d("ONNNNNN",gameViewModel.geton().toString())
+
                                         if (!gameViewModel.geton()){
-                                            Log.d("GAMEON","HOLA")
+
                                             gameViewModel.setPregunta(pregunta)
                                             val asc = Array(gameViewModel.getDificulty()) { i -> (5) }
 
@@ -160,7 +148,7 @@ class Preguntas1Fragmento : Fragment() {
                                                 if(!asc.contains(rnds)){
                                                     asc[whileint-1] = rnds
 
-                                                    Log.d("ANS",whileint.toString()+" " + rnds)
+
                                                     whileint++
 
                                                 }
@@ -169,29 +157,15 @@ class Preguntas1Fragmento : Fragment() {
                                             gameViewModel.setasc(asc)
                                             gameViewModel.seton(true)
                                         }
-                                        Log.d("ONNNNNN",gameViewModel.geton().toString())
-
-                                        Log.d("TODOS",gameViewModel.getTodos().size.toString())
 
 
-
-
-
-
-
-                                        //tv_pregunta.text = "Pregunta 1"
                                        var conta = 1
 
-                                        Log.d("GAMEON",gameViewModel.getPregunta().toString())
-                                        Log.d("RESSS",gameViewModel.getRespuesta().toString())
-                                        Log.d("TEST5",gameViewModel.getasc().toString())
                                         while(conta <= gameViewModel.getDificulty()){
-                                            Log.d("OMG2",arrayImageVe.get(conta-1).toString())
-                                            Log.d("TEST5",gameViewModel.getDificulty().toString() + " " +(conta-1))
 
                                             arrayImageVe.get(conta-1).setOnClickListener {
 
-                                                Log.d("CONNTA",it.id.toString())
+
                                                 if (it.id== R.id.one){
                                                     click(mediaPlayer,0,gameViewModel.getDificulty())
                                                 }
@@ -204,12 +178,11 @@ class Preguntas1Fragmento : Fragment() {
                                                 if (it.id== R.id.four){
                                                     click(mediaPlayer,3,gameViewModel.getDificulty())
                                                 }
-                                                Log.d("CONNTA",conta.toString()+ "HERE")
+
 
 
                                             }
-                                            Log.d("CONNTA",conta.toString())
-                                            Log.d("HELLOS","HOOOLA")
+
                                             Picasso.get().load(AppConstants.BASE_URL + "api/preguntadown/" + gameViewModel.getPregunta().get(gameViewModel.getasc()[conta-1]).rutaImagen ).into(arrayImageVe.get(conta-1))
                                             conta++
 
@@ -225,16 +198,15 @@ class Preguntas1Fragmento : Fragment() {
                                             mediaPlayer.prepare()
                                             mediaPlayer.start()
                                         }
-                                        Log.d("PREGUNTAs",gameViewModel.getPregunta().size.toString())
-                                        Log.d("WHUT",cont.toString() + " " +todos.size)
+
 
                                     }
 
                                 }
-                                Log.d("PreguntaSIZE",pregunta.size.toString())
+
                             }
 
-                            // tv_pregunta.text = it[cont-1].rutaImagen
+
                         }
                     })
 
@@ -266,8 +238,7 @@ class Preguntas1Fragmento : Fragment() {
 
         }else{
             return false
-            Log.d("PREGUNTAs",pregunta.size.toString())
-            Log.d("RESPUESTA","INCORRECTA")
+
         }
 
     }
@@ -285,7 +256,7 @@ class Preguntas1Fragmento : Fragment() {
     fun click(mediaPlayer: MediaPlayer,pos: Int,dificultad: Int){
         mediaPlayer.stop()
         mediaPlayer.release()
-        Log.d("TEST5",pos.toString() + "dificultas "+dificultad)
+
         if (check(gameViewModel.getasc()[pos])){
             gameViewModel.setPunta(gameViewModel.getPunta()+1)
             view?.let { Snackbar.make(it,"Respuesta Correcta", Snackbar.LENGTH_SHORT).show() }
