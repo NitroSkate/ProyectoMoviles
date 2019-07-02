@@ -21,10 +21,16 @@ import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import com.polillas.cocleapp.constants.AppConstants
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_preguntas1_fragmento.view.*
-
-/*TODO archivo de Kotlin encargado de controlar la logica y el diseño de el pequeño juego de preguntas en su modo se Desafio
+/*TODO archivo de Kotlin encargado de controlar la logica y el diseño de el pequeño juego de preguntas en su modo se
+    Desafio , la logica del juego funciona gracias a que usando listas se agregan todas las preguntas, luego  se agregan al azar y
+    se saca una respuesta, se escogen de 2 a 4 preguntas(Dependiendo de la dificultad y procurando que no se repitan dos opciones)
+     de estas preguntas para asi obtener las opciones que se muestran en la pregunta, coincidiendo el numero de botones con el numero de opciones,
+     al final se corrobora la respuesta, se lleva el puntaje y el contador que nos dice el numero de preguntas que se lleva
+     hasta el momento
 TODO
 * */
+
+
 class Preguntas1Fragmento : Fragment() {
     private var cont : Int = 0
     private var total : Int =  0

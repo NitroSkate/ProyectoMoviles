@@ -26,7 +26,11 @@ import kotlinx.android.synthetic.main.fragment_practica1.*
 import kotlinx.android.synthetic.main.popup_practice.view.*
 
 
-/*TODO archivo de Kotlin encargado de controlar la logica y el diseño de el pequeño juego de preguntas en su modo se Practica
+/*TODO archivo de Kotlin encargado de controlar la logica y el diseño de el pequeño juego de preguntas en su modo se
+    Practica , la logica del juego funciona gracias a que usando listas se agregan todas las preguntas, luego  se agregan al azar y
+    se saca una respuesta, se escogen 4 preguntas(procurando que no se repitan dos opciones) de estas preguntas para asi obtener las
+    opciones que se muestran en la pregunta, al final se corrobora la respuesta, se lleva el contador que nos dice el numero de
+    preguntas que se lleva hasta el momento
 TODO
 * */
 class Practica1Fragment : Fragment()  {
