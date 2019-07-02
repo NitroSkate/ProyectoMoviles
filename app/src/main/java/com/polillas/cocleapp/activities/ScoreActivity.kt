@@ -17,6 +17,11 @@ import com.polillas.cocleapp.R
 import com.polillas.cocleapp.constants.AppConstants
 import kotlinx.android.synthetic.main.activity_score.*
 
+/*
+TODO Pantalla que mostrara el puntaje obtenido del fragmento desafio y que se obtendra por el intento recibido hacia esta actividad
+TODO Cuando se finaliza en modo practica, se tendra un mensaje de finalizado
+ */
+
 class ScoreActivity : AppCompatActivity() {
     private lateinit var preguntaViewmodel: PreguntaViewmodel
     var puntaje: Int = 0

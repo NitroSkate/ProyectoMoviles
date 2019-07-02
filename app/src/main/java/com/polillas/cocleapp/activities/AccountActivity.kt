@@ -12,6 +12,11 @@ import com.polillas.cocleapp.MainActivity
 import com.polillas.cocleapp.R
 import com.polillas.cocleapp.fragmentos.AccountFragment
 
+/*
+TODO Actividad encargada de manejar las acciones de los botones del fragmento account y el encargado de iniciar el fragmento
+TODO account.
+ */
+
 class AccountActivity : AppCompatActivity(), AccountFragment.OnFragmentInteractionListener {
 
 

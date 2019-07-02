@@ -22,7 +22,7 @@ import com.polillas.cocleapp.constants.AppConstants
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_preguntas1_fragmento.view.*
 
-/*TODO archivo de Kotlin encargado de controlar la logica y el diseño de el pequeño juego de preguntas en su modo se Desaio
+/*TODO archivo de Kotlin encargado de controlar la logica y el diseño de el pequeño juego de preguntas en su modo se Desafio
 TODO
 * */
 class Preguntas1Fragmento : Fragment() {

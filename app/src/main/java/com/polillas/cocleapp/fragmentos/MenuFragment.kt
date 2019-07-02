@@ -13,6 +13,11 @@ import com.polillas.cocleapp.R
 import kotlinx.android.synthetic.main.fragment_menu.view.*
 import kotlinx.android.synthetic.main.multiple_info_windows.view.*
 
+/*
+TODO fragmento encargado de manejar a que ventana se redirigira el usuario que manipule la aplicacion
+TODO Se utilizan 3 botones: info al usuario, iniciar a la pantalla de seleccion de modo e iniciar a la pantalla
+TODO de terapeutas
+ */
 
 class MenuFragment : Fragment() {
 

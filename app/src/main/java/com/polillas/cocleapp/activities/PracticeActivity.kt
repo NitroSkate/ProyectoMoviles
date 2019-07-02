@@ -9,9 +9,13 @@ import com.polillas.cocleapp.R
 import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import com.polillas.cocleapp.fragmentos_practica.Practica1Fragment
 
+/*
+TODO Actividad encargada de crear la instancia del fragmento Practica y de manejar las acciones manejados por los botones del
+TODO mismo fragmento instanciado. Todas estas acciones se manejan por implementacion de interfaces.
+ */
+
 class PracticeActivity : AppCompatActivity(), Practica1Fragment.OnFragmentInteractionListener {
 
-    //private lateinit var p1 : Preguntas1Fragmento
 
     private lateinit var preguntaViewmodel: PreguntaViewmodel
 

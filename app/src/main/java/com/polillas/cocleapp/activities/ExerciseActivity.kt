@@ -10,10 +10,13 @@ import com.polillas.cocleapp.R
 import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import com.polillas.cocleapp.fragmentos_preguntas.Preguntas1Fragmento
 
+/*
+TODO Actividad encargada de manejar la respuesta del fragmento pregunta y el encargado de crear la instancia de este mismo
+ */
+
 
 class ExerciseActivity : AppCompatActivity(), Preguntas1Fragmento.OnFragmentInteractionListener{
 
-    //private lateinit var p1 : Preguntas1Fragmento
 
     private lateinit var preguntaViewmodel: PreguntaViewmodel
 

@@ -16,6 +16,11 @@ import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import kotlinx.android.synthetic.main.fragment_modo.view.*
 import kotlinx.android.synthetic.main.multiple_info_windows.view.*
 
+/*
+TODO Fragmento encargado de refirigir al usuario hacia el modo desafio y modo practica. El boton de modo desafio, redigira a la
+TODO pantalla de dificultad y el de practica directamente a los ejercicios.
+ */
+
 
 class ModoFragment : Fragment() {
     // TODO: Rename and change types of parameters
