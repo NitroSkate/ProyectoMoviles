@@ -60,16 +60,6 @@ class AccountActivity : AppCompatActivity(), AccountFragment.OnFragmentInteracti
                         baseContext, "Error. No se pudo crear al usuario",
                         Toast.LENGTH_SHORT
                     ).show()
-                    /*val nameprofile = UserProfileChangeRequest.Builder()
-                        .setDisplayName(nombre +" "+ apellido)
-                        .build()
-                    val currentsesion = auth.currentUser
-                    currentsesion?.updateProfile(nameprofile)
-                        ?.addOnCompleteListener { task ->
-                            if(task.isSuccessful){
-                                Log.d("suc", "Usuario actualizado")
-                            }
-                        }*/
                     updateUI(null)
                 }
             }
@@ -98,7 +88,6 @@ class AccountActivity : AppCompatActivity(), AccountFragment.OnFragmentInteracti
 
     private fun updateUI(user: FirebaseUser?){
         if(user != null){
-            //Toast.makeText(this, "Logeado", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this@AccountActivity, TerapistActivity::class.java))
         }
     }

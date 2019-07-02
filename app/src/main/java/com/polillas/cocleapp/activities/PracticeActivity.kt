@@ -19,7 +19,6 @@ class PracticeActivity : AppCompatActivity(), Practica1Fragment.OnFragmentIntera
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_practice)
         preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
-        //preguntaViewmodel.retrievePreguntas()
         if (savedInstanceState == null) {
             initfragment(1,true)
         }
@@ -33,7 +32,6 @@ class PracticeActivity : AppCompatActivity(), Practica1Fragment.OnFragmentIntera
 
     override fun onNextQuestion(string: String, id: Int,start: Boolean) {
         if(string == "next") {
-            //Toast.makeText(this, id.toString(), Toast.LENGTH_SHORT).show()
             initfragment(id,start)
         }
         else if(string == "si"){

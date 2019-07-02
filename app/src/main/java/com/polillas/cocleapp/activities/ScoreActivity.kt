@@ -34,11 +34,7 @@ class ScoreActivity : AppCompatActivity() {
         }
 
         if(puntaje != 100) {
-            /*preguntaViewmodel.getAllPreguntas().observe(this, Observer {
-                puntajeMax_tv.text = "/"+ it.size.toString()
-            })*/
             puntaje_tv.text = puntaje.toString()
-            //puntajeMax_tv.text = "/" + AppConstants.MAX_PREGUNTAS
 
         } else {
             puntaje_textview.text = "Practica"

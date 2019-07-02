@@ -21,7 +21,6 @@ class ExerciseActivity : AppCompatActivity(), Preguntas1Fragmento.OnFragmentInte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise)
         preguntaViewmodel = ViewModelProviders.of(this).get(PreguntaViewmodel::class.java)
-        //preguntaViewmodel.retrievePreguntas()
 
         if (savedInstanceState == null) {
             var intent = intent.extras
@@ -31,11 +30,6 @@ class ExerciseActivity : AppCompatActivity(), Preguntas1Fragmento.OnFragmentInte
     }
 
     fun initfragment(id: Int,puntaje: Int,start: Boolean,dificultad: Int){
-        /*when(id){
-            1 -> {
-                var frag = Preguntas2Fragmento.newInstance()
-                changefragment(R.id.ex_content, frag)
-            }*/
 
         var frag = Preguntas1Fragmento.newInstance(id,puntaje,start,dificultad)
         changefragment(R.id.ex_content, frag)

@@ -16,20 +16,7 @@ import com.polillas.cocleapp.Room.Viewmodel.PreguntaViewmodel
 import kotlinx.android.synthetic.main.fragment_modo.view.*
 import kotlinx.android.synthetic.main.multiple_info_windows.view.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [modo.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [modo.newInstance] factory method to
- * create an instance of this fragment.
- *
- */
 class ModoFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var listener: OnFragmentInteractionListener? = null
@@ -70,26 +57,8 @@ class ModoFragment : Fragment() {
             listener?.onOpcion(verifyQ, "exercise")
         }
 
-        //var mediaplayer : MediaPlayer = MediaPlayer.create(this.context, R.raw.pwtb)
         view.lL_Practica.setOnClickListener {
             listener?.onOpcion(verifyQ, "practice")
-            /*try {
-
-                val mediaPlayer: MediaPlayer? = MediaPlayer().apply {
-                    setDataSource("https://projecto-moviles.herokuapp.com/upload/sounds/undefined_1561234022587_34.mp3")
-                    prepare()
-                    start()
-                }
-            } catch (e : IOException){
-                e.printStackTrace()
-            }*/
-
-            /*if(mediaplayer.isPlaying()){
-                mediaplayer.pause()
-            }*/
-            //else {
-            //mediaplayer.start()
-            //}
         }
         return view
     }

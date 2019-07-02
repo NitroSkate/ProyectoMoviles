@@ -17,6 +17,12 @@ import kotlinx.android.synthetic.main.activity_config_terapist.*
 import kotlinx.android.synthetic.main.fragment_edit_profile.view.*
 import java.lang.Exception
 
+/*
+TODO Dentro de esta actividad, se utilizan los conceptos de firebaseauth, para poder realizar modificaciones
+TODO A la cuenta de usuario del terapeuta. En este caso se modifican los campos nombre, apellido y contraseña
+
+ */
+
 class ConfigTerapistActivity : AppCompatActivity() {
 
     private lateinit var user : FirebaseAuth
